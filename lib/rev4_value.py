@@ -29,9 +29,42 @@ def hurdle(gov_10y: float) -> float:
     return max(0.10, gov_10y + 0.03)
 
 
-def owner_earnings(net_income: float, d_and_a: float, maintenance_capex: float,
-                   sbc: float) -> float:
-    return net_income + d_and_a - maintenance_capex - sbc
+def owner_earnings(net_income: float, d_and_a: float, maintenance_capex: float) -> float:
+    """GAAP net income already expenses stock compensation, so it is not added back."""
+    return net_income + d_and_a - maintenance_capex
+
+
+def owner_earnings_from_ocf(ocf: float, maintenance_capex: float, sbc: float) -> float:
+    """Operating cash flow adds stock compensation back; take it out again."""
+    return ocf - maintenance_capex - sbc
+
+
+def explicit_dcf(revenue0: float, growth: list[float], ebitda_margin: list[float],
+                 capex: list[float], capex_history: list[float], r: float,
+                 tax: float, terminal_multiple: float = MAX_TERMINAL_MULTIPLE,
+                 life: int = 8) -> tuple[float, list[dict]]:
+    """Ten explicit years for capital-heavy growth: FCF = EBIT*(1-t) + D&A - capex.
+
+    D&A is straight-line over `life` years on each capex vintage, starting the
+    year after it is spent. `capex_history` holds the most recent `life` years,
+    oldest first. Returns (PV of the business before net cash, yearly rows).
+    """
+    assert len(growth) == len(ebitda_margin) == len(capex) == 10
+    vintages = list(capex_history)
+    rev, pv, rows = revenue0, 0.0, []
+    for year in range(10):
+        rev *= 1 + min(growth[year], 1.0)
+        dep = sum(vintages[-life:]) / life
+        ebitda = rev * ebitda_margin[year]
+        ebit = ebitda - dep
+        fcf = ebit * (1 - tax) + dep - capex[year]
+        pv += fcf / (1 + r) ** (year + 1)
+        vintages.append(capex[year])
+        rows.append({"revenue": rev, "ebitda": ebitda, "d_and_a": dep, "ebit": ebit,
+                     "ebit_margin": ebit / rev, "capex": capex[year], "fcf": fcf})
+    tm = min(terminal_multiple, MAX_TERMINAL_MULTIPLE)
+    pv += rows[-1]["fcf"] * tm / (1 + r) ** 10
+    return pv, rows
 
 
 def epv(owner_earn: float, r: float, net_cash: float = 0.0) -> float:

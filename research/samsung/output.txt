@@ -1,0 +1,16 @@
+r=10% shares=6.599bn mcap~1,509T net cash 197.6T
+avg OP 2016-25 38.3T; 2017-26E 72.8T; 2026E 374T
+== Samsung Electronics (per common-equivalent share) (KRW) price 232,000.00 grade C
+  10x pre-tax, 2016-25 average OP      88,052.55   price/value  2.63
+  10x pre-tax, 2017-26E average OP    140,312.78   price/value  1.65
+  EPV on 2017-26E average OP          125,425.75   price/value  1.85
+  base: EPV + PV of 2027-28 boom      189,754.52   price/value  1.22
+  scenario bear     p=0.30    140,829.76
+  scenario base     p=0.45    189,754.52
+  scenario bull     p=0.25    258,054.41
+  probability-weighted value           192,152.07
+  buy line (50% - 0%)               94,877.26   price/line 2.45
+price implies normal OP of 115T after a 450/300 boom
+preferred at 166,300: discount 28%, price/base 0.88, price/buy line 1.75
+Q3 DPS 4,601: 2.0% on common, 2.8% on pref (one quarter)
+2026 returns 90-110T = 6.0%-7.3% of market cap

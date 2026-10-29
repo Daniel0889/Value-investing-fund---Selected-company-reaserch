@@ -1,0 +1,11 @@
+shares 314.5M  NAV 406.2M  NAV/share 1.291  P/NAV 0.62
+market cap 251.6M  MOU uplift 90.7M  fee factor 0.823
+== Aluma Infrastructure Fund (ILS) price 0.80 grade C
+  pro-forma book NAV                        1.29   price/value  0.62
+  NAV incl. MOU mark                        1.58   price/value  0.51
+  owner value after fees (base)             1.06   price/value  0.75
+  scenario bear     p=0.30          0.80
+  scenario base     p=0.50          1.06
+  scenario bull     p=0.20          1.30
+  probability-weighted value                 1.03
+  buy line (50% - 5%)                    0.48   price/line 1.67
