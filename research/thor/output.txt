@@ -1,0 +1,19 @@
+price C$0.9 = US$0.634; mcap US$422M; EV US$186M
+ bear gold $2,800: pit   94.0  UG(100%)   55.8  Douta(attrib, unrisked)  207.7  NAV  378.5
+ base gold $3,500: pit  120.6  UG(100%)  121.0  Douta(attrib, unrisked)  403.0  NAV  642.3
+ bull gold $4,500: pit  158.5  UG(100%)  214.3  Douta(attrib, unrisked)  681.9  NAV 1119.5
+Douta unrisked at spot: 570; one-year delay at base: 366
+== Thor Explorations (USD per share) (USD) price 0.63 grade C
+  NAV at $2,800 gold (bear)                 0.57   price/value  1.12
+  NAV at $3,500 gold (base)                 0.96   price/value  0.66
+  NAV at $4,500 gold (bull)                 1.68   price/value  0.38
+  NAV at $4,100 spot, base risking          1.19   price/value  0.53
+  scenario bear     p=0.25          0.57
+  scenario base     p=0.50          0.96
+  scenario bull     p=0.25          1.68
+  probability-weighted value                 1.04
+  buy line (50% - 5%)                    0.43   price/line 1.46
+buy line in CAD: C$0.62; base value C$1.37
+price implies a long-term gold price of $2,643/oz (base risking)
+cash per share US$0.355 = 56% of market cap
+dividend C$0.05/yr = 5.6% yield
