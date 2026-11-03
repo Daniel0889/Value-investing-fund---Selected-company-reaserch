@@ -12,4 +12,8 @@ Valuations of individual companies under the fund's Revision 4 constitution
 - `lib/rev4_value.py` — the earlier, simpler methods (owner earnings, EPV, conservative DCF with
   a 15x terminal multiple, 10x pre-tax test, reverse DCF, buy line by grade), used by the
   October 2026 studies (Alphabet, Samsung, Aluma, Thor).
-- `research/` — per-company inputs, sources and outputs.
+- `research/` — per-company inputs, sources and outputs. The November 2026 studies (Paymeant, Gilat
+  Telecom) also carry the reconciled `financials.json`, the 60-item `checklist.md`, the Hebrew investment
+  memo `thesis_he.md`, and under `work/` the analysts' notes, the red-team objections and the CIO gate
+  (`gate.md`). Memos cite those notes as `work/<company>/...`, which is `research/<company>/work/...`
+  here. The company filings themselves are not in the repository.

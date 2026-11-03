@@ -1,0 +1,94 @@
+PAYMEANT FINANCIAL TECHNOLOGIES (TASE 1180876) - derived series from financials.json (reconciled)
+ILS thousands unless stated; per-share in ILS. TTM = FY2025 + H1 2026 - H1 2025; TTM balance sheet = 30.6.2026.
+Maintenance capex = max(PPE purchases + capitalised development incl. capitalised SBP + ROU investment,
+  D&A ex ROU): all capex treated as maintenance, floored at non-lease D&A (binds in FY2025 only).
+
+                                                           FY2021       FY2022       FY2023       FY2024       FY2025          TTM
+Revenue                                                     7,850       23,874       38,524       43,046       56,616       60,301
+  revenue growth y/y                                          n/a       204.1%        61.4%        11.7%        31.5%        22.0%
+Total revenues, net (Mega "gross profit")                   7,760       21,239       30,016       36,569       51,122       53,317
+Operating income before other items                         1,516        8,295       13,500       17,216       23,772       24,460
+Other income (expenses)                                    -2,285          437         -228            0            0            0
+Pre-tax income (Mega "operating income")                     -769        8,732       13,272       17,216       23,772       24,460
+Net income to owners                                         -769        8,809       10,298       13,291       18,188       18,466
+  net income growth y/y                                       n/a          n/a        16.9%        29.1%        36.8%        13.4%
+Gross margin (net revenues / revenue)                       98.9%        89.0%        77.9%        85.0%        90.3%        88.4%
+Operating margin (op. income before other / rev.)           19.3%        34.7%        35.0%        40.0%        42.0%        40.6%
+Pre-tax margin                                              -9.8%        36.6%        34.5%        40.0%        42.0%        40.6%
+Net margin                                                  -9.8%        36.9%        26.7%        30.9%        32.1%        30.6%
+-- owner earnings inputs --
+D&A total (cash-flow add-back, incl. ROU)                     308          789          944        2,140        3,194        3,278
+  of which ROU depreciation                                   n/a          379          594          606          772          697
+D&A excluding ROU (FY2021: upper bound)                       308          410          350        1,534        2,422        2,581
+PPE purchases (cash)                                           64          394          116          128          559          321
+Capitalised development (cash + capitalised SBP)            2,021        2,377        2,892        2,356        1,279        2,576
+Cash invested in ROU assets                                     0           27            0            0           25            0
+Capex, all (= maintenance before floor)                     2,085        2,798        3,008        2,484        1,863        2,897
+MAINTENANCE CAPEX used = max(capex, D&A ex ROU)             2,085        2,798        3,008        2,484        2,422        2,897
+Lease payments (CF repayment of lease liability)              248          539          520          575        1,017          919
+SBC expensed (cash-flow add-back)                           2,150          890          750           78          816          741
+Operating cash flow (reported)                             -1,109       -7,566       -5,296        3,910        2,785       12,963
+OE1 = NI + D&A - maint capex - lease                       -2,794        6,261        7,714       12,372       17,943       17,928
+OE2 = OCF - maint capex - lease - SBC                      -5,592      -11,793       -9,574          773       -1,470        8,406
+  OE1 / net income                                            n/a        71.1%        74.9%        93.1%        98.7%        97.1%
+Cash conversion OCF / NI (reported)                           n/a       -85.9%       -51.4%        29.4%        15.3%        70.2%
+memo: change in bank credit (BS)                              n/a       94,856       13,647      -32,482       21,831       51,875
+memo: change in loan book (BS)                                n/a      116,396       33,066      -15,941       48,751       74,160
+memo: change in payables re credit transactions (CF)          120        1,380          372        1,483        9,013       10,786
+memo: OCF ex loan-book growth & its funding                   837       12,594       13,751       18,968       20,692       24,462
+memo: OE2 on that OCF                                      -3,646        8,367        9,473       15,831       16,437       19,905
+memo: cash conversion on that OCF                             n/a       143.0%       133.5%       142.7%       113.8%       132.5%
+-- returns --
+Equity to owners, opening                                  -1,918       22,163       56,186       61,569       68,081       76,556
+Equity to owners, closing                                  22,163       56,186       61,569       68,081       82,198       86,912
+ROE (NI / average equity; FY2021 n/m)                       -7.6%        22.5%        17.5%        20.5%        24.2%        22.6%
+Operating NWC (loan book + receivables - op. payables)        9,580      121,224      153,676      132,468      173,823      190,435
+Net PPE                                                        88          396          386          353          738          677
+Capitalised intangibles                                     2,021        4,271        6,937        7,920        7,307        8,269
+Tangible capital = NWC + PPE + intangibles                 11,689      125,891      160,999      140,741      181,868      199,381
+EBIT = pre-tax + finance expense (funding cost)              -679       10,714       21,022       22,440       28,483       30,432
+ROTC (unlevered) = EBIT / tangible capital                  -5.8%         8.5%        13.1%        15.9%        15.7%        15.3%
+ROTC after funding = pre-tax / (capital - bank credit)       -14.5%        35.4%        28.8%        29.5%        30.6%        29.1%
+ROTC (unlevered) on average capital                           n/a        15.6%        14.7%        14.9%        17.7%        18.1%
+ROTC after funding on average capital                         n/a        58.3%        37.5%        33.0%        35.0%        31.0%
+-- balance sheet / net cash --
+Cash incl. designated cash                                 18,426       31,411       16,922       10,920        5,938        4,877
+Bank credit (short-term, on-call)                           6,389      101,245      114,892       82,410      104,241      115,225
+Financial debt incl. other credit balances                  8,013      101,268      114,892       82,410      104,241      115,225
+NET CASH (cash - financial debt)                           10,413      -69,857      -97,970      -71,490      -98,303     -110,348
+Lease liabilities                                             421        1,296          954          936        2,808        2,594
+Net cash after leases                                       9,992      -71,153      -98,924      -72,426     -101,111     -112,942
+Loan book (FV + amortised cost)                             9,221      125,617      158,683      142,742      191,493      209,853
+memo: net cash after leases + loans - payables CT             n/a       51,208       56,109       65,183       76,236       77,638
+-- per share (ILS) --
+Shares outstanding, end of period                      30,903,464   36,890,750   37,021,525   37,278,200   39,245,034   39,330,034
+Weighted basic shares                                  24,418,589   33,750,244   36,921,773   37,168,546   38,723,775          n/a
+Revenue / weighted share                                    0.321        0.707        1.043        1.158        1.462          n/a
+EPS = NI / weighted basic shares                           -0.031        0.261        0.279        0.358        0.470          n/a
+EPS reported (basic)                                        -0.03         0.26         0.28         0.36         0.47          n/a
+NI / shares at period end                                  -0.025        0.239        0.278        0.357        0.463        0.470
+OE1 / shares at period end                                 -0.090        0.170        0.208        0.332        0.457        0.456
+OE2 / shares at period end                                 -0.181       -0.320       -0.259        0.021       -0.037        0.214
+Book value / share                                          0.717        1.523        1.663        1.826        2.094        2.210
+Tangible book (equity - intangibles) / share                0.652        1.407        1.476        1.614        1.908        2.000
+Net cash / share                                            0.337       -1.894       -2.646       -1.918       -2.505       -2.806
+Net cash after leases / share                               0.323       -1.929       -2.672       -1.943       -2.576       -2.872
+Dividends per share paid in period                         0.0000       0.0000       0.1647       0.1842       0.2300       0.2300
+Dividends paid (ILS k)                                          0            0        6,000        7,000        9,000        9,000
+-- dilution --
+Change in shares outstanding (period end)                   36.4%        19.4%         0.4%         0.7%         5.3%         0.2%
+Change in weighted basic shares                               n/a        38.2%         9.4%         0.7%         4.2%          n/a
+Options outstanding at period end                             n/a    8,592,000    8,682,225    2,737,750    2,189,875          n/a
+  options / shares at period end                              n/a        23.3%        23.5%         7.3%         5.6%          n/a
+Cash from share issues + option exercises (ILS k)          19,214       24,248          232            2        4,001            0
+
+Also: H1 2026 vs H1 2025 revenue 14.8%; TTM growth is TTM Jun-26 vs TTM Jun-25 (FY2024 + H1 2025 - H1 2024 from quarters: revenue 49,411, NI 16,288).
+NOTES
+ 1. FY2021 is an IPO year: other expenses 2,285 (1,997 immediately-vested options + 288 IPO grant) and no FY2021 balance sheet in the documents; FY2021 NWC is rebuilt from totals (32,944 assets / 10,781 liabilities, paymeant_fy2023 p.19) and includes ~2,519 designated cash; FY2021 bank credit 6,389 is UNVERIFIED (CF statement vs nil in note 13f); opening equity -1,918 (1.1.2021, paymeant_fy2023 p.83) makes FY2021 ROE not meaningful.
+ 2. FY2021 dilution uses a derived 1.1.2021 count of 22,651,600 (31.12.2021 count 30,903,464 less the IPO 7,310,400 and the loan conversion 941,464); consistent with the 24,418,589 weighted average.
+ 3. FY2022 NI includes a tax credit of 2,085 versus a 23% charge (paymeant_fy2023 p.105) and 1,188 one-off income; the FY2022 memo OCF includes the release of 2,519 designated cash.
+ 4. Reported OCF of this originate-to-sell lender includes the on-call bank credit (financing in substance) and the growth of the loan book (working capital): OE2 and OCF/NI on reported OCF are therefore not meaningful; the memo lines strip both, together with the payables re credit transactions that fund newly set-up loans (loan-book change from the balance sheets; FY2021 from the cash-flow lines). The memo OE2 still differs from OE1 by tax timing (no tax paid in 2023-2024, catch-up in 2025) and the other working-capital lines.
+ 5. FY2025 OCF is also depressed by 7,124 of tax paid in 2025 (catch-up: no tax paid in 2023-2024 while taxes payable rose 0 -> 1,459 -> 5,707). Memo OCF = OCF - change in bank credit + change in loan book - change in payables re credit transactions.
+ 6. TTM: per-share figures use 39,330,034 shares (TASE count implied by the Mega market value at 3.18 ILS, 3.11.2026) as an upper bound - the 30.6.2026 count is not disclosed (>= 39,245,034). TTM ROU depreciation 697 is derived from ROU balances; TTM capitalised development 2,576 = cash + capitalised SBP. TTM dilution = change from 31.12.2025 to the 3.11.2026 count (upper bound for H1 2026).
+ 7. ROTC: operating NWC = loans held for sale (FV) + amortised-cost loans + receivables + long-term receivables - payables re credit transactions - suppliers - other payables - taxes payable (cash, bank credit, leases, deferred tax excluded); year-end and average capital (TTM average with 30.6.2025; FY2022 average uses the rebuilt FY2021 figure). "Unlevered" adds the funding cost back to pre-tax income because the loan book in the denominator is financed by the bank credit; "after funding" nets the bank credit out of capital.
+ 8. Lease payments: the CF financing line equals note 9 total lease cash outflow in FY2024-FY2025 (interest 49 / 191 may be counted twice, <=1% of NI).
