@@ -1,0 +1,155 @@
+GILAT TELECOM GLOBAL LTD (TASE 1080597) - CHARTER REV 4 VALUATION, 3.11.2026
+ILS thousands unless stated; per-share values in ILS (agorot; USD at the BoI rate 3.157 of 3.11.2026).
+Reporting currency: USD to FY2025, ILS from 1.1.2026; the TTM to 30.6.2026 is ILS. USD window converted at 3.157.
+
+== 0. Market inputs
+  price 1.653 ILS (165.3 ag), close 2026-11-03; Mega snapshot 14:03 implies 1.6460 ILS (-0.4%)
+  shares listed 120,417,631 (ex dormant); market cap 199,050k ILS = USD 63.1M at 3.157
+  hurdle r = max(10%, IL y10 4.16% + 3 points) = 10% (US y10 4.91% + 3 = 7.91%: also below 10%)
+  Series D 26,337,927 ILS par converts 1:1 at ILS 1.00 until 1.4.2028 -> 26,337,927 shares if converted
+  options: 12,093,500 gross; net-exercise shares at the price 5,422,102
+  fully diluted at the price: 152,177,660 shares
+
+== 1. TTM to 30.6.2026 (FY2025 - H1 2025 + H1 2026, ILS; gilat_q2_2026_full p.32, p.38-39)
+  revenue 276,092; EBIT 39,534 (14.3%); pre-tax 31,315; net income 32,985; OCF 80,967   (Mega: op. income 39,534, NI 32,985, OCF 80,967)
+  D&A 41,960 + IRU amortisation 6,955; SBC 1,270; capex 10,159; IRU payments 13,714
+  lease principal 28,590 + lease interest 7,950 = 36,540; bond interest paid 3,144
+  non-operating items inside TTM NI: FX gain on cash 7,185; option/warrant revaluation loss 1,029; tax line -1,670 (a benefit: DTA recognition and tax losses)
+  one-off 1, 2025 satellite-supplier credit (estimate): Q4 2025 GP above the Q1-Q3 margin 28.53% = USD 1,423 = ILS 4,700 at the implied H2 2025 rate 3.3023
+  one-off 2, H1 2026 war equipment (estimate): equipment revenue +4,179 x 31.3% = 1,308
+  C7 identities (30.6.2026, consolidated): assets - liabilities - equity = 0; H1 2026 cash flow foots to the cash change: difference 0; NI / basic EPS = 108,088k vs weighted basic shares 108,088k
+
+== 2. Lane and tier evidence (framework d11; checklist A3, C2; screen_spec 2.3)
+  2a. Pre-tax return on tangible capital = EBIT_adj / (NWC_op + net PP&E + ROU) (IFRS basis; NWC_op floored at 0)
+      FY2021  EBIT_adj   -2,731 USD k  capital   19,466  ROTC  -14.0%   (FY2021: NWC_op unknown, set to 0)
+      FY2022  EBIT_adj   -1,499 USD k  capital   12,460  ROTC  -12.0%
+      FY2023  EBIT_adj    2,178 USD k  capital   12,140  ROTC   17.9%
+      FY2024  EBIT_adj    4,949 USD k  capital   29,079  ROTC   17.0%
+      FY2025  EBIT_adj    8,266 USD k  capital   21,224  ROTC   38.9%
+      TTM     EBIT_adj   33,526 ILS k  capital   65,776  ROTC   51.0%
+      median 17.5%, minimum -14.0% over FY2021-FY2025 + TTM -> Tier A needs >= 20% and never < 10%: fails; B's 12-20% band only on the median
+
+== 3. Normalised earnings (d2), owner earnings (d1), tax, cash, claims
+  EBIT_adj / revenue (one-off gains removed; USD years at 3.157):
+      FY2021  -5.3%  FY2022  -3.5%  FY2023   3.9%  FY2024   7.1%  FY2025  10.9%  TTM  12.3%
+  window FY2021-FY2025 + TTM (six observations; the TTM overlaps FY2025 by six months): m_norm 5.53%; cyclical True (operating losses in FY2021-FY2022)
+  BASE EBIT_norm = min(mean 11,461, median 11,250, mean revenue x m_norm 11,100) = 11,100  (33% of TTM EBIT_adj 33,526)
+  CONSERVATIVE EBIT_norm, fiscal years only: m_norm 3.95%; min(mean 7,048, median 6,876, mean revenue x m_norm 7,364) = 6,876
+  screen flags: ttm_above_norm True (TTM EBIT_adj = 3.0x EBIT_norm): a peak, not depressed earnings; no endogenous add-back used (FY2021 doubtful debts 3,191 USD k left in)
+  maintenance capex TTM: capex 10,159 + IRU payments 13,714, growth part 7.62% x revenue growth 15,757; floor Dep 46,361 (PP&E, ROU, licences, IRU) -> 46,361 (floor binds: leases stay a cost)
+  owner earnings d1, TTM reported: NI 32,985 + Dep 46,361 + Amort_acq 2,554 + other non-cash -6,156 - maintenance 46,361 = 29,383  (SBC 1,270 stays expensed; tax line is a benefit)
+  cash proxy (C4) = OCF - lease and other interest - SBC - maintenance capex (owned assets) - lease principal:
+      FY2021 -5,763  FY2022 -2,435  FY2023 876  FY2024 -390  FY2025 5,971 (USD k)   TTM 31,055 ILS k (94% of TTM NI)
+      C4: window sum -1,741 / sum of positive NI 8,851 = -20%; FY2023-FY2025 73% (test >= 80%: fails)
+  tax: statutory 23% (gilat_fy2025 p.164) used; effective TTM -5.3% (unrecognised tax losses USD 19.0M at 31.12.2025, gilat_fy2025 p.163: the shield is not valued, conservative)
+  cash 30.6.2026 92,955 (restricted 3,500 excluded) - Oct buyback 4,620 - Series C final redemption 741 - Series D coupon 738 = 86,855 pro forma 3.11.2026 (Q3 operating cash flow not added)
+  excess cash (d3) = 86,855 - 2/12 x cash operating costs 224,183 = 49,491
+  claims: leases 33,116; Series D 26,338 at par if not converted (book 24,307 at 30.6.2026); Series C nil after 1.9.2026; no bank debt; NCI nil; preferred nil
+  Bezeq IRU: committed 248,020 for 54,000 lines; paid to 30.6.2026 24,425; unpaid 223,595, of which for the ~27,600 lines in service 106,262 (UNVERIFIED: the filings do not state it)
+      PV per line at r over 15 years, contract terms (10 payments at 5%, 4% O&M): IRU-1 5,658, IRU-2 5,142 vs regulated BSA at ILS 58/month 5,552 -> IRU vs BSA if every line is filled: +12,850 pre-tax
+      base treats the lines as NPV-neutral when filled (no credit taken for the +12,850); 26,400 committed lines are not yet filled; an unused IRU-2 line costs 5,142 (PV, pre-tax)
+  net debt with leases (Series D at par) -27,401 = -2.5x EBIT_norm (net cash); with the IRU unpaid for lines in service 78,860 = 7.1x; with all committed IRU 196,194 = 17.7x
+  interest cover TTM: EBIT_adj / (lease + bond interest paid) = 3.0x (C2 asks >= 8x for A/B)
+
+== 4. Methods
+  d3 EPV: OE_unlevered = (EBIT_norm 11,100 + Amort_acq 2,554) x (1 - 23%) + Dep - maintenance (floor: 0) = 10,514; / r = 105,139
+      + excess cash 49,491 - leases 33,116 = 121,514 before Series D ->   0.789 ILS (  78.9 ag; USD  0.250)  [Series D stays debt at par]
+  d4 growth cap: per-share EPS, 3-year averages -0.0507 -> +0.0350 USD: negative base, no rate (Israeli window, not ten years); ROIIC = r (no moat), so growth adds no value; cap g1 <= 10%
+  d4 DCF base, g1 0%, gT 0%: operations 105,139 (terminal 39% of total) ->   0.789 ILS (  78.9 ag; USD  0.250) (= EPV)
+      diagnostic: revenue per share FY2021-FY2025 -2.3% a year (dilution outran growth); at that rate for ten years operations 89,934 ->   0.664 ILS (  66.4 ag; USD  0.210)
+      year  1: OE 10,514  reinvestment 0  FCF 10,514
+      year  5: OE 10,514  reinvestment 0  FCF 10,514
+      year 10: OE 10,514  reinvestment 0  FCF 10,514
+  d6 NCAV = current assets 179,955 - total liabilities 142,111 = 37,844 -> 0.321 ILS/share
+  d6 Dempster = cash 100% + receivables 85% + inventory 60% + prepaid/other 25% - liabilities (PP&E, ROU, IRU at nil) = 11,095 -> 0.094 ILS/share
+      net-net test: market cap 199,050 <= 2/3 NCAV 25,229 and <= Dempster 11,095? False (market cap = 5.3x NCAV)
+  d7 tangible book = equity 132,371 - intangibles incl. goodwill 21,337 = 111,034 ->   0.940 ILS (  94.0 ag; USD  0.298)
+      of which ROU 43,241 and IRU prepayments 16,229: assets tied to lease and Bezeq obligations
+  d7 private-owner value: none. No disclosed control transaction; the 2023 placement and rights at 0.30, the July 2025
+      placement at 0.88, conversions at 1.00/1.35 and buybacks at 2.60 and ~2.03 are minority trades (framework d7).
+  d5 EV 188,848 (as-converted market cap + leases - cash): EV/EBIT_norm 17.0x (yield 5.9%); EV/TTM EBIT_adj 5.6x (yield 17.8%)
+      10x EBIT_norm + excess cash - leases ->   0.836 ILS (  83.6 ag; USD  0.265) (sanity check; about 10x is d5's fair price for Tier A)
+  d9 Graham [I, looser: ILS government yield]: NI_norm_ttm 14,746 (pre-tax less one-offs and non-cash FX/option items, at 23%); earnings yield 7.4% vs 8.32%; P/E 13.5 vs cap 10 -> False
+  d8 implied growth: operations value at the price 235,174 (fully diluted 152,177,660 shares x price + leases - excess cash)
+      = 22.4x normalised OE 10,514 -> +11.4% a year for ten years (no reinvestment charged: the generous reading)
+      = 8.5x TTM OE 27,782 -> -2.5% a year: the price assumes the war-era earnings largely persist
+      record: revenue per share -2.3% a year FY2021-FY2025; EPS from losses to profits (no rate); implied growth is above any per-share record (D4 is a FLAG for A/B/D only)
+
+== 5. Value range (per share, at 3.11.2026)
+  worst case      0.000 ILS (   0.0 ag; USD  0.000)  ten years out, held with confidence as a floor: pre-war defence demand, Vodacom lost (3.2027),
+                ISP stalls. Today's liquidation value already sits below the claims: Dempster 31,508 (before Series D) - 26,400 unused committed IRU lines 135,760 (PV, pre-tax) [equity nil: claims exceed value];
+                losses as in FY2021-FY2022 only widen the gap. Without the IRU the liquidation floor is 0.043
+  conservative    0.356 ILS (  35.6 ag; USD  0.113)  EPV on base EBIT_norm; the ISP fills half of the 26,400 unfilled IRU lines, the rest paid for unused (52,268 after tax) [Series D stays debt at par]
+                variants: fiscal-year EBIT_norm 6,876 with the lines filled 0.520; both 0.086; base earnings with the ISP stalled at today's lines 0.000
+  base            0.789 ILS (  78.9 ag; USD  0.250)  EPV on EBIT_norm 11,100 (FY2021-FY2025 + TTM), IRU lines filled at NPV nil [Series D stays debt at par]
+  optimistic      1.921 ILS ( 192.1 ag; USD  0.609)  EPV on TTM EBIT_adj 33,526: war-era demand and the 2026 shekel persist [Series D converts]
+  probabilities {'worst': 0.1, 'conservative': 0.25, 'base': 0.45, 'optimistic': 0.2} -> probability-weighted   0.828 ILS (  82.8 ag; USD  0.262)
+  impairment markers in the worst case (charter Mandate; checklist E1):
+      (1) maturity -> dilution: below ILS 1.00 Series D stays debt, 25% a year due 1.4.2028-2031 (gilat_h1_2026 p.24), and the
+          Bezeq instalments run ~10 years; the 2023 rights issue at 0.30 and the 2024 bond-for-share exchange are the precedent
+      (2) going concern: cash 86,855 against unpaid IRU 223,595 (UNVERIFIED) and operating losses as in FY2021-FY2022
+      (3) assets worth less than debt: Dempster 11,095 vs IRU commitments 223,595 (UNVERIFIED) -> yes
+      A plausible path to all three exists: E1 fails closed (capital preservation ranks above return).
+  F4 stresses on base (currency of revenue ~77% ILS, Africa USD; satellite costs USD; debt ILS unlinked fixed; IRU half-CPI-linked):
+      USD/ILS +10%: pre-tax -7,577 a year (USD 24M hedged-cost proxy) ->   0.306 ILS (  30.6 ag; USD  0.097); -10% ->   1.202 ILS ( 120.2 ag; USD  0.381)
+      the USD is already +6.0% since the 30.6.2026 balance-sheet rate 2.978 (H1 2026 margins were earned on a weaker dollar); forwards cover USD 2M a month to 12.2026 and 1.5M in 2027 (gilat_h1_2026 p.19)
+      +2 points on rates: no floating debt (Series D fixed 5.5%); r stays 10% (IL y10 6.16% + 3 < 10%); cash earns more: no hit
+      high CPI: no CPI-linked debt (gilat_q2_2026_full p.41); Bezeq principal half-linked until each pulse starts; wages ILS: small hit
+  sensitivity grid, base value per share (r +/- 1 point; g +/- 2 points around g 0%; ROIIC 10%):
+      r \ g        -2%      0%     +2%
+        9%    0.761   0.883   0.913
+       10%    0.681   0.789   0.789
+       11%    0.614   0.711   0.700
+      minimum 0.614, maximum 0.913 vs price 1.653: base > price everywhere (D3): False
+
+== 6. Margin of safety and buy price
+== Gilat Telecom Global (TASE 1080597), per share (ILS) price 1.6530 on 2026-11-03 close
+  method EPV, EBIT_norm FY2021-25 + TTM (d3)             0.7888   price/value   2.10
+  method DCF 10y, g 0%, ROIIC = r (d4)                   0.7888   price/value   2.10
+  method 10x EBIT_norm + net excess cash (d5)            0.8362   price/value   1.98
+  method tangible book 30.6.2026 (d7)                    0.9405   price/value   1.76
+  method spread 19%
+  worst_case                                               0.0000   price/value    n/m
+  conservative                                          0.3563   price/value   4.64
+  base                                                  0.7888   price/value   2.10
+  optimistic                                            1.9215   price/value   0.86
+  tier C: margin 50% + data 10% + endogenous 0% = 60%
+  buy price (40% of base)                  0.3155   price/buy price 5.24
+  note: data additions capped at +10 points
+  data additions: cycle_window_short, derived_tier2_field, microcap_field_unavailable (+5 each, capped at +10); no endogenous add-back
+  method spread resolved: EPV, DCF (ROIIC = r makes it equal EPV) and 10x pre-tax are one earnings view; tangible book is the
+      independent asset view. EPV / tangible book = 0.84: normalised NOPAT 10,514 on tangible equity 111,034 = 9.5% < r, so value below book; book also holds ROU 43,241 and IRU prepayments tied to obligations.
+  buy price, shadow Tier C (40% of base):   0.316 ILS (  31.6 ag; USD  0.100); price / buy price 5.24
+      the charter's own Tier C routes: net-net (<= 2/3 NCAV and <= Dempster) -> 0.092 ILS; private-owner value: no disclosed transaction -> no evidenced C line
+  reference only: on the analyst's segment normalisation (business.md §12: 15,099 after lease interest) the base would be   1.237 ILS ( 123.7 ag; USD  0.392); price / that value 1.34
+
+== 7. Liquidity, sizing and preliminary verdict
+  liquidity: 60-session median turnover 1,303,000 ILS (floor 50,000: passes; above 100,000: no price-reliability block needed); 25th percentile 960,250 ILS
+  e2 (informational): full Kelly 0%; L_worst 100%; limits quarter_kelly 0.0%, tier_cap 5.0%, sector_room 25.0%, permanent_loss_budget 5.0%, tase_room 30.0%; liquidity maximum 3,841,000 ILS at cost -> size 0% (quarter_kelly)
+  lane C, tier C: A/B fail A3 (no moat in the numbers: operating losses FY2021-22, ROTC minimum -14%; competition
+      'mainly on price', share 'not material', gilat_fy2025 p.32); D needs an A/B franchise; E has no deal. C is the only lane whose
+      basis (normalised earnings, assets) fits; today it is not a C bargain: market cap 5.3x NCAV, TTM EBIT_adj 3.0x EBIT_norm (a peak), no private-owner transaction.
+  VETO items that fail: D2 (price 5.2x the shadow buy price), D5 (expected return from base far below r: price/base 2.10), E1 (impairment path via the IRU commitments), E3 (no refutable pessimism in the price),
+      B3 (listed shares x2.06 since 31.12.2022, 21% a year, issued at 0.30-1.35; Series D adds 22%), H4 (no catalyst, no basket), H5 (no low-cost position; net debt once the IRU is counted).
+      Open (fail closed): Q1/A0 circle (theses/CIRCLE.md not available here), B5 (headline metrics exclude the IRU cost; unpaid
+      IRU balance undisclosed), D8 (immediate reports read via the company site and news feeds; Maya not reachable).
+  investment test: Q1 cannot be assessed here; Q2 no (no C bargain today); Q3 no (price/base 2.10); Q4 the price implies
+      +11.4% a year from normalised earnings, or -2.5% from TTM: it already pays for the war-era earnings.
+  PRELIMINARY VERDICT: NO_THESIS (not WATCHLIST: price is not the only failure; E1 fails at any price until the IRU exposure is known).
+  re-examination triggers (dated, observable):
+      1. Vodacom DRC (16.3% of 2025 revenue, gilat_fy2025 p.55-56): renewal announced by 31.3.2027 at >= USD 1M a month, or lost.
+      2. Bezeq IRU: the FY2026 annual report (due by 31.3.2027) states the unpaid balance and whether pulse-1 tranches can be declined;
+         and lines active under the agreement reach 54,000 by 31.12.2028 (gilat_h1_2026 p.5 reports ~27,600).
+      3. War premium: satellite-segment revenue in H1 2027 (report due ~8.2027) below 75% of H1 2026 (ILS 119,422k, gilat_h1_2026 p.12)
+         confirms the normalisation; at or above it for a second year after the April 2026 ceasefire calls for re-underwriting EBIT_norm.
+
+Per-share summary (ILS, agorot, USD at 3.157):
+  price                                         1.653 ILS ( 165.3 ag; USD  0.524)
+  worst case                                    0.000 ILS (   0.0 ag; USD  0.000)
+  conservative                                  0.356 ILS (  35.6 ag; USD  0.113)
+  base                                          0.789 ILS (  78.9 ag; USD  0.250)
+  optimistic                                    1.921 ILS ( 192.1 ag; USD  0.609)
+  probability-weighted                          0.828 ILS (  82.8 ag; USD  0.262)
+  buy price (shadow Tier C, 40% of base)        0.316 ILS (  31.6 ag; USD  0.100)
+  implied growth (normalised OE, ten years)   +11.4%;  on TTM OE -2.5%
+  total margin 60%; sensitivity minimum 0.614; method spread 19%
