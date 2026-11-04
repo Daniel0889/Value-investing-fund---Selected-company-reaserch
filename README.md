@@ -17,3 +17,8 @@ Valuations of individual companies under the fund's Revision 4 constitution
   memo `thesis_he.md`, and under `work/` the analysts' notes, the red-team objections and the CIO gate
   (`gate.md`). Memos cite those notes as `work/<company>/...`, which is `research/<company>/work/...`
   here. The company filings themselves are not in the repository.
+- `research/tase_studies_20261103.xlsx` — the Excel workbook of the November 2026 studies: a summary of both
+  companies, each company's filings data by period (every value carries its document and page as a cell
+  comment), the valuation with the base-case chain as live formulas, and the 60-item checklists. A checks
+  sheet compares every formula result with `valuation.py`. `research/build_workbook.py` builds it from the
+  study files (`python3 -I research/build_workbook.py`, then recalculate in LibreOffice or Excel).
