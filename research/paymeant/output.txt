@@ -1,0 +1,198 @@
+PAYMEANT FINANCIAL TECHNOLOGIES LTD (TASE 1180876) - CHARTER REV 4 VALUATION, 3.11.2026, CIO GATE REVISION
+ILS thousands unless stated; per-share values in ILS per DILUTED share (agorot in brackets). Lender (equity) basis
+primary for a lender (screen_spec 3.1, 4.7); the EV basis of framework d3 as written is printed beside it.
+
+== 0. Market inputs
+  price 3.173 ILS (317.3 ag), 2026-11-03 close; Mega snapshot 3.18 at 14:04
+  shares 39,330,034 basic (31.12.2025 filed: 39,245,034); market cap 124,794k ILS = USD 39.5M at 3.157; dilutive shares at the price 401,732 (1.02%)
+  hurdle r = max(10%, y10 4.16% on 3.11.2026 + 3 points) = 10% (generic 10-year; the 0537 bond's 4.29% also gives 10%; y10 + 2 points still gives 10%)
+  P/E TTM 6.76; P/B 1.44; P/TBV 1.59; tangible equity 78,643k
+
+== 1. Lane and tier evidence
+  1a. Pre-tax return on tangible operating capital, UNLEVERED: (EBIT_adj + funding cost) / (loan book + receivables
+      + PP&E + ROU - operating payables). EBIT_adj per screen_spec 2.3 (stock pay a cost). FY2021 is in the window but
+      has no full balance sheet; it was an operating loss (EBIT_unl -679, EBIT_adj -769), so both its returns are negative on any positive capital.
+      FY2022  EBIT_unl   9,526 capital   122,991  year-end    7.7%  | pre-tax RoTE   14.5%
+      FY2023  EBIT_unl  21,022 capital   154,994  year-end   13.6%  on average capital   15.1%  | pre-tax RoTE   24.3%
+      FY2024  EBIT_unl  22,440 capital   133,704  year-end   16.8%  on average capital   15.5%  | pre-tax RoTE   28.6%
+      FY2025  EBIT_unl  28,483 capital   177,232  year-end   16.1%  on average capital   18.3%  | pre-tax RoTE   31.7%
+      TTM     EBIT_unl  30,432 capital   193,504  year-end   15.7%  on average capital   18.7%  | pre-tax RoTE   31.1%
+      over W (fiscal years; TTM not counted): unlevered ROTC median   13.6% with FY2021,   14.8% on FY2022-FY2025 (on average capital, FY2023-FY2025:   15.5%); minimum negative (FY2021),    7.7% without it
+      bank lens, pre-tax return on tangible equity: median   24.3% with FY2021,   26.5% on FY2022-FY2025; minimum negative (FY2021) (levered: equity is 37.5% of assets)
+      tier test: A needs median >= 20% and never < 10%; B is 12-20%. Unlevered returns sit in B's band on either
+      reading and FY2021 fails A's floor; the TTM return on equity is a single benign-credit reading (no credit cycle
+      in the window).
+  1b. Leverage (30.6.2026)
+      bank credit 115,225 (on-call, all due within a year) + leases 2,594 - cash 4,877 = net debt with leases 112,942
+      net debt with leases / normalised EBIT: 9.6x after funding cost (EBIT_norm 11,707), 7.0x before it (16,158); Tier A allows 1x, Tier B 2x (C2)
+      bank credit / equity 1.33x; drawn 31.12.2025 104,000 of 340,000 of lines; bank B 88.5% of drawn; unused on lines A and D 189,000 (A undrawn; D 11,000 drawn)
+      interest cover TTM (EBIT before funding / funding cost) 5.1x (C2 needs >= 8x); FY2022 stress year 4.8x; FY2020 not in the documents (C6), so the screen_spec X4 history gate fails closed
+      SPC debt consolidated: cannot be computed. The SPCs' bank borrowings and outstanding pools are not disclosed (paymeant_fy2025 p.94, p.106-108).
+      Sold to them since 6.2023 539,000; since 1.2025 304,000 = 1.45x the on-balance-sheet book (indemnities attach to these pools).
+
+== 2. Normalised earnings (d2), owner earnings (d1), tax, capitalisation, cash
+  EBIT_adj (screen_spec 2.3, lender basis) = pre-tax profit less the 1,188 termination gain of 2022; the IPO
+  share-based pay of note 19e stays a cost (FY2021 2,285; FY2022 751; FY2023 228; framework d1: never added back)
+  FY2021 -769 (-9.8%)  FY2022 7,544 (31.6%)  FY2023 13,272 (34.5%)  FY2024 17,216 (40.0%)  FY2025 23,772 (42.0%)  | TTM 24,460
+  window W = FY2021-FY2025 (fiscal years; TTM supplies Rev_ttm only). m_norm 34.45%; stdev 21.34% vs half the median 17.23%; operating loss in FY2021 -> cyclical: True
+  EBIT_norm (cyclical) = min(mean 12,207, median 13,272, mean revenue x m_norm 11,707) = 11,707
+      TTM EBIT_adj 24,460 = 2.09x EBIT_norm: screen_spec flag ttm_above_norm (> 1.5x, possible peak): True
+      reading: the formula is conservative partly for the wrong reason (the window holds the 2021-2022 start-up scale,
+      not a credit cycle); the real cyclical risk, a credit cycle, is in no window statistic. It is the charter's rule
+      for a cyclical and it is used. The alternatives are printed so the effect of each choice is visible:
+      first version: note 19e removed, W = FY + TTM (stable)           m_norm 37.52% cyclical False EBIT_norm  22,624
+      note 19e removed, fiscal years (stable)                          m_norm 35.04% cyclical False EBIT_norm  21,131
+      screen_spec EBIT_adj, W = FY + TTM (cyclical)                    m_norm 37.22% cyclical True  EBIT_norm  14,249
+      ADOPTED: screen_spec EBIT_adj, fiscal years (cyclical)           m_norm 34.45% cyclical True  EBIT_norm  11,707
+      optimistic input: same, FY2021 loss read as start-up (stable)    m_norm 34.45% cyclical False EBIT_norm  20,774
+      cross-check: business workstream through-cycle pre-tax (3.74% of 553M originations) 20,679
+  tax: statutory 23% used (B11 rejected). Reconciliation 'other' (FY2023 -79; FY2024 -35; FY2025 116) alternates in sign; cumulative FY2023-FY2025 effective rate 23.01%; yearly FY2023 22.4%, FY2024 22.8%, FY2025 23.5%, TTM 24.5%
+  maintenance capex: H1 2026 run-rate capex 4,044 (TTM 2,897) - growth part 530, floor D&A 3,278 -> 3,514 (first version 3,278; B4)
+  owner earnings (d1), lender basis: OE_norm = (EBIT_norm + lease interest 191) x (1 - t) + D&A - maintenance = 8,926; TTM 18,378; optimistic input 15,908; first version 17,421
+      (SBC stays expensed; maintenance 3,514 is above the D&A floor of 3,278, which includes right-of-use depreciation, so the floor does not bind; leases are debt, as in d3: the 2,594 liability is deducted in the bridge and the 191 of FY2025 lease interest in the funding-cost line leaves earnings; the bank credit is not deducted, so its interest stays; dWC_maint = 0.)
+  capitalised development (B4): net capitalisation (additions - amortisation): FY2022 2,250; FY2023 2,666; FY2024 983; FY2025 -613; H1_2025 -163; H1_2026 962; TTM 512
+      H1 pre-tax growth reported +6.7%; before net capitalisation -4.2%; capitalised share of gross R&D H1 2025 14% -> H1 2026 34%; controllers' pay capitalised FY2023 1,363; FY2024 751; FY2025 500 (fy2025 p.115)
+      growth record: reported EPS, 3-year averages 0.170 -> 0.370: 47.5% a year (from a
+      start-up base); NI per period-end share FY2022 -> FY2025 +24.7% a year reported, +35.3% before net capitalisation (capitalisation fell over FY2022-FY2025, so the annual record is not flattered by it; the latest half is)
+      H1 2026 pre-tax annualised 21,920 = -10.4% vs TTM 24,460
+  TTM cash figures UNRECONCILED (B12; not used as evidence): TTM OCF 12,963 includes 51,875 of new bank
+      credit; the H1 2025 column shows no tax paid (0) although taxes payable fell from 5,707 to 1,066, and Q2 2025 shows no interest received (paymeant_h1_2026 p.28). Lender-adjusted cash proxy 19,288.
+  H3 burn test: reported OCF FY2023-FY2025 FY2023 -5,296; FY2024 3,910; FY2025 2,785, average 466 (>= 0; it includes bank-credit and loan-book changes)
+  C4 (annual audited figures): FY2023-FY2025 lender-adjusted cash owner earnings / net income 100% (>= 80%); loans held for sale in months of originations 2023-12 5.14, 2024-12 4.37, 2025-12 4.19, 2026-06 4.41 (no build-up); capitalised development is building (above): C4 'no' on its deferred-asset clause
+  excess cash: cash 4,877 vs two months of operating costs 5,974 -> 0 (the cash sits in pledged dedicated accounts, paymeant_fy2025 p.99 note 11b)
+  dilution (B10): note 17's 2,189,875 options at 31.12.2025 are all identified (1,000,000 at 3.01; 418,960 at 3.97; 510,000 Amitim at 6.05; 260,915 at 0.01). Note 17 prints an average strike of 4.02; the instruments average 3.54 with the 0.01 options and 4.02 without them
+      treasury method at 3.11.2026 (the 85,000 shares issued in 2026 netted against the 0.01 options; 175,000 RSUs; 512,000 options of 20.8.2026): diluted shares at 2.00 / 3.173 / 5.00: 350,035 / 401,732 / 834,869; note 17 (2,189,875) and Reg. 24A (1,136,125) are not reconciled by the company
+  share count (B3, dilution at most 2% a year): FY2022 +19.4%; FY2023 +0.4%; FY2024 +0.7%; FY2025 +5.3%; 3.11.2026 +0.2%; FY2021-FY2025 CAGR 6.2% (screen_spec X3 tests > 5%)
+      2025: 1,966,835 shares issued on exercise at a weighted 2.02 (p.112), against a price of 3.19 at the founders' January 2025 grant (p.111); 2022: the founders took 985,000 shares for 10k in total (fy2023 p.107)
+  FY2025: operating cash flow before the change in bank credit -19,046 (OCF 2,785 less bank credit 21,831) against dividends paid 9,000: the payout is funded by on-call credit while the book grows
+  H1_2026: operating cash flow before the change in bank credit -5,749 (OCF 5,236 less bank credit 10,985) against dividends paid 4,000: the payout is funded by on-call credit while the book grows
+
+== 3. Methods
+  d3 EPV, lender basis: OE_norm 8,926 / r = 89,261; + excess cash 0 - leases 2,594 = 86,667 ->   2.18 ILS (  218 ag)
+  d4 growth cap: record 47.5%; retention 51.3% x ROIIC 11.4% = 5.8%; cap 10% -> g1 <= 5.8%. ROIIC = OE_norm / tangible equity 78,643
+  d4 DCF, lender basis, base g 2% (CPI), ROIIC 11.4%, gT 2.5%, ROIIC_T = r: operations 90,809 (explicit 47,810, terminal 42,999, 47% of total) -> equity 88,215 ->   2.22 ILS (  222 ag)
+  d6 NCAV = current assets 215,334 - total liabilities 145,031 = 70,303 ->   1.77 ILS (  177 ag)
+  d6 Dempster = cash 4,877 + 85% x loans and receivables 215,728 - liabilities 145,031 = 43,215 ->   1.09 ILS (  109 ag); net-net test (MCap <= 2/3 NCAV and <= Dempster): False
+  d7 tangible book 78,643 ->   1.98 ILS (  198 ag); at amortised cost (step-up 9,515 pre-tax, 7,327 after tax, removed) 71,316 ->   1.80 ILS (  180 ag)
+  d7 private-owner value: none. No disclosed control transaction; minority placements and blocks are not owner value.
+  d5 pre-tax multiple, lender basis: EV 122,511 / EBIT_norm 11,707 = 10.46x (yield 9.6%); on TTM 5.01x
+  d9 Graham's yardstick [I, looser: ILS government yield]: on normalised NI 7.2% vs 8.3%, P/E 13.8 vs cap 10 -> False; on TTM NI 14.8%, P/E 6.76 -> True
+  EV basis of framework d3 as written (cross-check; screen_spec 3.1: meaningless for a lender):
+      charter normalisation (cyclical)       EBIT_norm before funding  16,158; OE_unlevered  12,206; EPV equity     4,246 ->   0.11 ILS (   11 ag)
+      first-version normalisation (stable)   EBIT_norm before funding  30,384; OE_unlevered  23,161; EPV equity   113,786 ->   2.87 ILS (  287 ag)
+      reading: on the charter normalisation the EV basis values the equity below the run-off value of the book
+      (Dempster   1.09 ILS (  109 ag)), i.e. it treats self-liquidating, matched warehouse debt as a claim on a
+      cycle-depressed income stream. That is screen_spec 3.1's point; the lender basis is primary, the EV basis shown.
+  bank-route gates (screen_spec 4.7):
+      F.1 NI > 0 in every FY of W: False (FY2021 -769); F.2 ROE median 22.5%, ROA median 9.0%: True; F.3 equity / assets 37.5%: True
+      F.4 P/TBV 1.59 (<= 1.2) and pe_norm 13.8 (<= 10): False; bank-route price line min(1.2 x TBV, 10 x NI_norm) =   2.27 ILS (  227 ag)
+
+== 4. Value range (per diluted share) and stresses
+  worst case    0.64 ILS (   64 ag) to   1.09 ILS (  109 ag)  run-off of the 30.6.2026 book (funding withdrawn, origination
+              stops). Low end: book at amortised cost 193,652, performing loans at 85%, defaults 4,395 at 30%,
+              receivables 5,875 at 50%, wind-down cost 7,214; liabilities exclude the 1,919 net deferred tax liability,
+              which sits on the fair-value step-up and the intangible asset that the run-off removes (fy2025 p.105).
+              High end: Dempster at 85% on every loan, all liabilities deducted (d6). Both exclude the SPC
+              indemnities and the 360 guarantee exposure (not disclosed), so neither is held with confidence (A2).
+  conservative   1.74 ILS (  174 ag)  no moat: ROE converges on r, so equity is worth tangible book at amortised cost 71,316
+              less the UNVERIFIED provision shortfall at 50% coverage on defaulted loans (2,791 pre-tax)
+  base          2.22 ILS (  222 ag)  DCF, lender basis, OE_norm 8,926 (cyclical EBIT_norm 11,707), g 2%, ROIIC 11.4%, r 10%
+  optimistic    4.72 ILS (  472 ag)  DCF, lender basis, OE 15,908 (TTM revenue x m_norm 20,774: today's scale holds), g 5%, ROIIC 20.2%
+  superseded first-version base (note 19e added back, W + TTM, g 5%):   5.24 ILS (  524 ag) per diluted share (5.36 per basic share, as first published)
+  tax sensitivity (B11 rejected): base at the TTM effective rate 24.5%   2.17 ILS (  217 ag) (-2.3%)
+  probabilities {'worst': 0.15, 'conservative': 0.25, 'base': 0.4, 'optimistic': 0.2} (uncalibrated) -> probability-weighted   2.37 ILS (  237 ag)
+      the price equals the weighted value only if the optimistic case carries 47% of the weight (the other
+      cases in their stated proportions): the market is paying for today's scale persisting and growing
+  covenants, note 11a(6) (B6), at 30.6.2026:
+      (a) TE >= 20% of the balance sheet (or the tangible balance sheet): on balance-sheet TE 33.9% of the balance sheet and 35.2% of the tangible one; on the company's TE of 76,000 33.1% / 34.4% (the company reports 34% / 33%-34%, h1_2026 p.18)
+          breaks after a loss of 40,318 / 42,385 on balance-sheet TE and 37,675 / 39,742 on the company's TE: the total balance sheet binds
+      (b) equity >= 25M in note 11a(6)(b); tangible equity in the directors' report (fy2025 p.68): breaks after a loss of 53,643 / 51,000 on tangible equity (the stricter reading), 61,912 on equity
+      (c) senior debt <= 80% of loans: 54.9%; with debt unchanged the book can shrink to 144,031 (-31.4%)
+      (d) annual net profit >= 1M: breaks after a pre-tax fall of 23,161 (94.7% of TTM). Origination-driven revenue (fees + sales/FV) TTM 45,617 vs opex 28,857: with opex flat an
+          origination fall of 50.8% reaches it; an origination stop breaches it within the year
+      (e) change of control: founders 29.54%; voting agreement lapses below 25%; headroom 4.54% = 1,784,758 shares; the lines restrict changes of control
+  C1 test (flat revenue, EBIT -30%): net profit 13,184 >= 1,000 and TE unchanged -> no covenant breach; but the
+      115,225 of bank credit is on-call and the funders 'may stop the engagement unilaterally' (paymeant_fy2025 p.55):
+      survival 'without new money' needs the lines to keep rolling -> C1 fails closed
+  impairment markers in the worst case (E1):
+      (1) covenant breach or maturity -> dilution: plausible. All funding is callable; the profit covenant breaks at an
+          origination fall of about 51% or a funding stop; the SPC indemnities 'in other cases' (paymeant_h1_2026 p.7)
+          and the circular's cancellation right from 12.1.2027 (h1 p.8) can bring sold loans back
+      (2) going-concern doubt: plausible if the funders withdraw and origination stops
+      (3) assets below debt: no on the balance sheet; the run-off value stays positive (  0.64 ILS (   64 ag) at the low end)
+      Plausible paths to (1) and (2) exist, so E1 fails closed.
+  credit (B5; the economic credit cost is UNVERIFIED: expected losses on the fair-value book sit inside revenue):
+      defaults 1,481 -> 4,395 (x2.97); share of book 0.8% -> 2.1%; all arrears 2.65% -> 4.57%
+      amortised-cost provision coverage 2024 64.0%, 2025 16.3%; 2025 write-offs 1,680 = 2.15x the charge
+      IF the defaulted loans sit in the amortised-cost book: shortfall at 50% coverage 2,791, at 70% 8,651 (11%-35% of TTM pre-tax) [UNVERIFIED]
+      f3 stress: pre-provision pre-tax TTM 25,472 covers defaults of 20.2% of the 209,853 book at 60% severity (19.2% before the profit covenant); the binding risk is the origination engine
+  F4 stresses (B7): revenue, costs and debt are all ILS; FX exposure 'not material' (paymeant_fy2025 p.101)
+      +2 points, held-book duration = loan duration 14 months (fy2025 p.42): warehouse 2,304/yr + one-off fair-value loss 4,741 + sale-price compression 7,742/yr for 0.5 yr = year-1 pre-tax hit 10,916 (45% of TTM);
+          profit covenant: TTM NI after the hit 10,429; on EBIT_norm 610 (>= 1,000 needed)
+      +2 points, held-book duration 7 months (assumed lower bound): warehouse 2,304/yr + one-off fair-value loss 2,370 + sale-price compression 7,742/yr for 0.5 yr = year-1 pre-tax hit 8,545 (35% of TTM);
+          profit covenant: TTM NI after the hit 12,254; on EBIT_norm 2,435 (>= 1,000 needed)
+      lender EPV on the base normalisation: repriced after the lag (warehouse cost kept)   1.74 ILS (  174 ag); never repriced   0.23 ILS (   23 ag); the held book's discount-rate sensitivity is not disclosed: F4 open
+      CPI -1 point: one-off fair-value loss 1,981 pre-tax (h1 p.8); high CPI helps (CPI-linked loans, unlinked funding) until the rate rise follows
+  sensitivity grid (base value per share, lender basis; r +/- 1 point, g +/- 2 points)
+      r \ g          0%       2%       4%
+         9%       2.43     2.51     2.60
+        10%       2.18     2.22     2.27
+        11%       1.98     1.99     2.00
+      range 1.98-2.60 vs price 3.173: base > price everywhere (D3): False
+      EV basis, first-version normalisation, g 5% +/- 2 (red team's reading): range 2.43-4.51: D3 False. The optimistic case (lender basis) is above the price: it is a scenario, not the base.
+
+== 5. Margin of safety and price lines
+  method EPV, lender basis (d3)                    2.1841   price/value  1.45
+  method DCF 10y, lender basis, g 2% (d4)          2.2232   price/value  1.43
+  method tangible book (d7)                        1.9819   price/value  1.60
+  method spread 12% (<= 30%: earnings and assets agree once the add-back is removed; the EV basis is excluded as meaningless for a lender, screen_spec 3.1)
+  worst_case                                      0.6391   price/value  4.96
+  conservative                                    1.7431   price/value  1.82
+  base                                            2.2232   price/value  1.43
+  optimistic                                      4.7220   price/value  0.67
+  lane: none, so no tier margin applies and there is NO BUY PRICE under any lane (the shadow Tier B line of the first
+  version is withdrawn). Reference lines only:
+      Tier C net-net line, min(2/3 NCAV 1.18, Dempster 1.09) =   1.09 ILS (  109 ag) = 51% below base; price / line 2.91
+      bank-route line   2.27 ILS (  227 ag); price / line 1.40
+  data additions carried (F6): cycle_window_short, derived_tier2_field, microcap_field_unavailable -> +10% (capped); no endogenous add-back (C5)
+
+== 6. Liquidity, sizing, the investment test
+  Bizportal daily proceeds, 60 sessions 08-04..11-03.2026: median 19,125 ILS (before 20.10: 12,476); 25th percentile 2,590 (linear; exclusive method 2,561)
+  floor 50,000 (screen_spec X5, hard exclusion): passes False; price-reliability line 100,000: passes False; 45 of 60 sessions below the floor; 89.8% of the proceeds in the 10 sessions from 20.10
+  October selling: 3,485,393 shares traded 20.10-3.11 = 8.86% of the company, all on-exchange; no holder above 5% reported a sale (seller unidentified, scuttlebutt.md §6)
+  price-reliability block (median below 100,000): the 3.173 close is a traded price, from a session of 352,392 ILS and 111,691 shares in 46 trades (range 307.5-319 ag), 18.4x the 60-session median;
+      but 10 of the 60 sessions traded under 1,000 ILS (the lowest 14), and the October selling sets the 60-session statistics. It is a dated mark, not a level at which a position could be built.
+  e2 position_size (tier C, the cheap track a cyclical lender would have to use): full Kelly 0.0%; L_worst 79.9% (low-end worst case); limits: quarter_kelly 0.0%, tier_cap 5.0%, sector_room 25.0%, permanent_loss_budget 6.3%
+      size 0.0% of NAV, binding quarter_kelly (tier B gives 0.0%, binding quarter_kelly); liquidity maximum 20 x 20% x p25 = 10,361 ILS at cost
+  d8 implied growth at 3.173 (ten years, lender basis): on today's scale (optimistic OE 15,908) -3.3%; on OE_norm +5.0% if growth were free;
+      with the reinvestment charged at ROIIC 11.4%, no growth the business can fund from its own earnings reaches the price: at g = ROIIC, with all of OE reinvested, operations are worth 102,001 against the 127,388 the price implies
+      (lib d8 prints +13.7% because it caps the reinvestment at 100% of OE, which leaves growth above ROIIC partly free: library issue, verification.md); first version -4.7%; EV basis, first-version normalisation +3.7%
+      the record: TTM NI +13.4% y/y; H1 2026 NI +3.5%; H1 2026 pre-tax before net capitalisation -4.2%
+  peers (Tier 2): P/E 6.76 vs Israeli specialist-lender median 7.67 (-11.9%); P/B 1.44 vs 1.37 (+4.8%): no material discount on lender metrics
+  who sold: the founders 869,564 shares at 6.90 on 13.3.2026 (price now -54.0%), between the board's (22.2.2026) and the meeting's (30.3.2026) approval of their raise
+  investment test, in order:
+    Q1 inside the circle? Cannot be assessed here (theses/CIRCLE.md); the model is on the avoid list ('dependent on
+       refinancing markets', Delta Financial's warehouse lines, framework f2). Fails closed.
+    Q2 a good business by its lane? No lane fits: A/B fail on moat (A3, A4), leverage (C2) and funding (C1, C3, E8);
+       C fails (not a net-net, no private-owner value, net debt: H2, H4, H5); D has no A/B franchise; E has no deal.
+    Q3 price well below value? No: price / base 1.43, price / EPV 1.45, price / tangible book 1.60; probability-weighted   2.37 ILS (  237 ag).
+    Q4 what the price assumes: today's earnings scale persisting (-3.3% a year on it); on the charter's
+       normalisation +5.0% a year even if growth were free, and more growth than the business can fund
+       itself once the reinvestment is charged (102,001 at most against 127,388). The record
+       cannot show that is too pessimistic, and the remaining gap to peers is explained by known facts the filings do
+       not refute: on-call funding concentrated in one bank, defaults up x2.97, the BNPL circular from 12.1.2027,
+       informed insiders selling at 6.90, illiquidity. Priced (the Petco rule).
+  CIO VERDICT: NO_THESIS. Price is not the only failure (so not WATCHLIST); the deciding failures rest on filed,
+  verified facts (so not TOO_HARD). Price alone never reopens the file (re-examination conditions: gate.md).
+
+Per-share summary (ILS per diluted share, agorot):
+  price                                                3.17 ILS (  317 ag)
+  worst case, low end (sizing)                         0.64 ILS (   64 ag)
+  worst case, high end (Dempster)                      1.09 ILS (  109 ag)
+  conservative                                         1.74 ILS (  174 ag)
+  base                                                 2.22 ILS (  222 ag)
+  optimistic                                           4.72 ILS (  472 ag)
+  probability-weighted                                 2.37 ILS (  237 ag)
+  buy price                                          none: no lane fits (NO_THESIS)
+  reference: Tier C net-net line (not a buy price)     1.09 ILS (  109 ag)
+  reference: bank-route line (not a buy price)         2.27 ILS (  227 ag)

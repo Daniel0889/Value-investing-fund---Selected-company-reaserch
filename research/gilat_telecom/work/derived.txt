@@ -1,0 +1,122 @@
+GILAT TELECOM GLOBAL (TASE 1080597) - DERIVED METRICS from financials.json (every input has a document/page ref there)
+Units: FY2021-FY2025 USD thousands (audited, USD functional currency); TTM = 1.7.2025-30.6.2026 in ILS thousands (functional and
+presentation currency ILS from 1.1.2026; TTM = FY2025 translated + H1 2026 - H1 2025, all three from gilat_h1_2026 p.6-7, p.13).
+Convenience rate for TTM per-share in USD: 3.157 ILS/USD (BoI, 3.11.2026, task input) - not an average rate.
+
+== 1. Revenue growth and margins
+                                       FY2021     FY2022     FY2023     FY2024     FY2025    TTM 6/26
+revenue                                51,816     42,997     55,154     69,592     75,793     276,092
+revenue growth                            n/a     -17.0%      28.3%      26.2%       8.9%        6.1%
+gross margin                            24.0%      24.4%      21.8%      23.2%      30.4%       30.9%
+operating (EBIT) margin                 -5.3%      -3.5%       3.9%       7.1%      12.8%       14.3%
+net margin (NI to owners)              -10.5%      -9.5%       1.3%       2.6%       8.4%       11.9%
+EBIT less lease interest (margin)       -8.0%      -5.2%       3.2%       4.7%      10.4%       see 3
+  FY2021 growth n/a: 2020 revenue is not in the supplied documents.
+  TTM growth shown = TTM vs FY2025 (both ILS; a six-month shift). H1 2026 vs H1 2025 (ILS): 12.7%. In ILS the 2025
+  comparatives are translated at 2025 rates (avg FY2025 3.4348, H1 2025 3.5928, derived); the H1 2026 average rate is not in the
+  documents (UNVERIFIED), so USD growth cannot be stated - with a stronger shekel in 2026 it would be higher than the ILS figure.
+  Charter d2 test on FY2021-FY2025 operating margins: cyclical = True (operating losses in 2021-2022).
+
+== 2. Owner earnings, FY2021-FY2025 (USD k)
+MAINTENANCE-CAPEX ASSUMPTION (base). Charter d1 rule (lib/charter_valuation.maintenance_capex) applied to owned, capitalised assets:
+  MC_core = max(CapEx_own - GrowthCapEx, Dep_own), where CapEx_own = PPE + intangible (licence/software) capex from investing CF;
+  Dep_own = PPE depreciation + licence amortisation (the depreciation floor); GrowthCapEx = 5-yr average NetPPE/revenue x max(dRev, 0)
+  (FY2021 dRev unknown -> 0). ROU depreciation is NOT in the floor because the lease cost is charged through lease principal (fund rule:
+  leases are an operating cost); acquired customer-relationship amortisation (809/yr) needs no replacement and is not in the floor.
+  Bezeq fibre IRU (2025 on): OE1 deducts its amortisation (MC1 = MC_core + IRU amortisation; prepayments above it = growth for new lines);
+  OE2 starts from OCF, where the whole IRU prepayment is already deducted, so MC2 = MC_core (IRU growth spend stays in, conservative).
+  5-yr average NetPPE/revenue = 7.6%
+                                            FY2021    FY2022    FY2023    FY2024    FY2025
+NI to owners                                -5,423    -4,064       715     1,786     6,350
+D&A added back (CF D&A + IRU amort.)        18,340    11,781     7,366    10,065    14,178
+  of which ROU (lease) depreciation         13,661     8,181     4,644     7,215     9,983
+  of which IRU amortisation                      0         0         0         0     1,079
+CapEx_own (PPE + intangibles)                2,081     1,464     3,278     2,647     1,444
+IRU prepayments (inside OCF)                     0         0         0         0     3,902
+Dep_own floor (PPE dep + licences)           3,870     2,791     1,911     2,041     2,307
+GrowthCapEx                                      0         0       927     1,101       473
+MC_core = max(CapEx-Growth, Dep)             3,870     2,791     2,351     2,041     2,307
+MC1 = MC_core + IRU amortisation             3,870     2,791     2,351     2,041     3,386
+lease principal paid                        13,387     7,986     4,297     6,717     9,521
+lease interest paid (financing CF)           1,396       724       408     1,698     1,788
+bond interest paid (financing CF)              918       827       543       407       729
+SBC                                             63       123        53        51        88
+OCF (reported)                              14,028    10,099     8,718    10,587    20,533
+OE1 = NI + D&A - MC1 - lease principal      -4,340    -3,060     1,433     3,093     7,621
+OE2 = OCF - MC_core - lease pr. - SBC       -3,292      -801     2,017     1,778     8,617
+OE2i = OE2 - lease int. - bond int.         -5,606    -2,352     1,066      -327     6,100
+  OE2 is the task formula. Gilat reports lease interest and bond interest paid in FINANCING cash flow, so its OCF is before those
+  payments; OE2i deducts them so that the cash measure is after interest like OE1 (whose NI already carries both).
+  FY2023-FY2025 cumulative: OE1 12,147; OE2i 6,839; NI 8,851 -> OE2i/OE1 0.56
+  Sensitivity of MC (FY2025): depreciation floor only (Dep_own + IRU amort.) 3,386; all owned spend incl. full IRU prepayments 5,346 -> OE1 5,661 (vs base 7,621).
+  Non-cash items inside FY2025 NI: option revaluation loss 2,162 (Series D +2,459, Series C -168, warrants -129) and FX gain on cash
+  -2,331 (gilat_fy2025 p.131) - they roughly offset; deferred-tax income 599 (p.164). Company non-GAAP NI 8,043 (p.93).
+
+== 3. TTM to 30.6.2026 (ILS k): owner earnings with the undisclosed inputs estimated (consolidated H1 2026 statements not supplied)
+  disclosed: NI 32,985; D&A (EBITDA - EBIT, incl. satellite-lease dep. 29,676 and IRU amortisation) 48,928; OCF 80,967;
+             capex (PPE and other) 10,159; lease payments (principal + interest) 36,537; prepaid (IRU, net) 11,242
+  UNVERIFIED estimates: lease interest 4,776 (FY2025 effective rate 10.3% x TTM avg lease liability 46,500) -> lease principal 31,761;
+    IRU amortisation 3,766 (IRU balance 30.6.2025 8,753 + net prepaid 11,242 - balance 30.6.2026 16,229);
+    SBC 327 (FY2025 88 USD k x 3.4348 / 2 + parent H1 2026 176; bound 1,500); bond interest paid 3,582 (parent CF, upper bound);
+    maintenance capex = whole TTM capex 10,159 (no growth credit; Dep_own floor estimate 7,924 does not bind).
+  OE1 base  = NI + D&A - (capex + IRU amort.) - lease principal       = 36,227
+  OE1 conservative = NI + D&A - (capex + all IRU prepaid) - all lease payments = 23,975
+  OE2 (task formula) = OCF - capex - lease principal - SBC              = 38,720
+  OE2i = OE2 - lease interest - bond interest                          = 30,362
+  OE2 conservative = OCF - capex - all lease payments - bond int. - SBC bound = 29,189
+  In USD at the 3.157 spot (convenience): OE1 base 11,475; OE1 conservative 7,594; OE2i 9,617 (FY2025 OE1 7,621; FY2025 OE1 at the FY2025 average rate = 26,177 ILS k).
+  One-offs inside TTM NI: Q4 2025 deferred-tax income 599 USD k (DTA recognition, gilat_fy2025 p.164) and war-related one-off equipment
+  revenue in H1 2026 ('Roaring Lion', amount not disclosed, gilat_h1_2026 p.12); no conversion-option revaluation from 2026 (p.6).
+
+== 4. Cash conversion, ROE, return on tangible capital
+                                        FY2021    FY2022    FY2023    FY2024    FY2025   TTM 6/26
+cash conversion OCF / NI                   n/m       n/m    12.19x     5.93x     3.23x      2.45x
+(OCF - lease payments) / NI                n/m       n/m     5.61x     1.22x     1.45x      1.35x
+ROE = NI / average equity               -35.1%    -34.4%      6.7%     13.1%     31.6%      34.8%
+equity, year end                        13,785     9,835    11,438    15,843    24,322    132,371
+NWC (operating), year end                  n/a    -9,287    -8,218    -4,758    -2,867     -5,956
+net PPE                                  4,529     3,292     4,599     5,223     4,455     18,017
+capitalised intangibles                    n/a       713       774     2,566     4,664     18,338
+tangible capital (sum)                     n/a    -5,282    -2,845     3,031     6,252     30,399
+RoTC = EBIT / tangible capital             n/a       n/m       n/m    163.3%    155.0%     130.1%
+  variant: + ROU assets in capital         n/a    -38.6%     46.4%     18.4%     42.1%      53.7%
+  FY2021: 31.12.2021 working capital is not in the supplied documents (only the 2022-2025 balance sheets are). RoTC is n/m when
+  tangible capital is negative (2022-2023: supplier credit, incl. overdue satellite-capacity payables, exceeds receivables + PPE).
+  30.6.2026 licences estimated at 2,109 ILS k (UNVERIFIED: 31.12.2025 661 USD k x 3.19); the rest of that column is reported.
+  The network is mostly leased (satellite transponders, fibre segments): capital excluding ROU is tiny, so RoTC is very high; with ROU
+  assets counted as capital (IFRS 16 view) the return is still well above the 10% hurdle in 2024-2026.
+
+== 5. Net cash (cash + short-term deposits - bonds (liability components) - bank/state loans; restricted cash, leases and
+       share-settled conversion-option liabilities shown separately)
+                                2021-12-31  2022-12-31  2023-12-31  2024-12-31  2025-12-31  2026-06-30
+cash + ST deposits                  21,245      14,880      12,215      11,017      29,753      92,955
+financial debt ex leases            20,691      14,003      10,651       8,471      16,625      26,513
+NET CASH ex leases                     554         877       1,564       2,546      13,128      66,442
+lease liabilities                    9,822       4,113       2,765      20,573      14,246      33,116
+net cash after leases               -9,268      -3,236      -1,201     -18,027      -1,118      33,326
+  2021-2025 USD k; 30.6.2026 ILS k. Company statements: net financial asset ~7.3M USD at 31.12.2025 (gilat_fy2025 p.89) and ~66M ILS at
+  30.6.2026 (gilat_h1_2026 p.3). As-converted view at 30.6.2026: Series D (1.00 ILS/share) and public Series C are deep in the money;
+  treating them as equity gives net cash = cash 92,955 ILS k with ~31.5M more shares - use either the debt view or the dilution view.
+
+== 6. Per-share figures (shares outstanding at each balance-sheet date) and dilution
+                                      FY2021    FY2022    FY2023    FY2024    FY2025    TTM ILS  TTM USD*
+shares outstanding (m)                 58.44     58.44     68.63     86.07     93.94     117.41          
+dilution (change in shares)              n/a      0.0%     17.4%     25.4%      9.1%      25.0%   (H1 26)
+revenue / share                       0.8867    0.7358    0.8036    0.8086    0.8068     2.3515    0.7449
+NI / share (year-end count)          -0.0928   -0.0695    0.0104    0.0208    0.0676     0.2809    0.0890
+OE1 / share                          -0.0743   -0.0524    0.0209    0.0359    0.0811     0.3085    0.0977
+OE2i / share                         -0.0959   -0.0402    0.0155   -0.0038    0.0649     0.2586    0.0819
+book value / share                    0.2359    0.1683    0.1667    0.1841    0.2589     1.1274    0.3571
+tangible book / share                 0.0565    0.0042    0.0379    0.0910    0.1833     0.9457    0.2996
+net cash ex leases / share            0.0095    0.0150    0.0228    0.0296    0.1398     0.5659    0.1792
+reported basic EPS (weighted)        -0.0930   -0.0700    0.0110    0.0234    0.0707        n/a
+  FY in USD per share; TTM in ILS per share on 117,411,162 shares outstanding at 30.6.2026 (*USD at the 3.157 spot, convenience).
+  TTM NI and OE1 per share on the 19.8.2026 count 119,034,974: NI 0.2771 ILS, OE1 base 0.3043 ILS, OE1 conservative 0.2014 ILS.
+  Share-count uncertainty: the 1-ILS-par share-capital line rose 652,151 more than the conversion shares in H1 2026 (probably option
+  exercises, UNVERIFIED): upper bound 119,687,125 at 19.8.2026.
+  Fully diluted at 19.8.2026 (Series D 29,134,661 shares at 1.00 ILS until 1.4.2028): 148,169,635; with all 12,093,500 options gross and the
+  public Series C: 160,992,740 (Series C conversion right ended 22.8.2026; options are net-exercise).
+  Dilution sources: 2023 CEO placement + rights at 0.30 ILS (+10.2M shares); 2024 Series C exchange offer (+17.4M); 2025 placement at
+  0.88 ILS (+7.7M) and option exercises; H1 2026 bond conversions (+25.8M) less a 2.3M-share buyback at ~2.59 ILS (June 2026).
+
+Every number above is computed in this script from financials.json; UNVERIFIED marks the TTM estimates listed in section 3.
