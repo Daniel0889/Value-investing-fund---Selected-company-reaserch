@@ -575,11 +575,10 @@
     "ref": "gilat_fy2023 p.145"
    },
    "da_ppe": {
-    "v": 3729,
-    "status": "derived",
-    "calc": "CF D&A 18,340 (gilat_fy2023 p.122) - ROU depreciation 13,661 (p.146) - intangible amortisation 950 (p.141)",
-    "ref": "gilat_fy2023 p.122, p.146, p.141",
-    "note": "PPE depreciation for 2021 not disclosed in supplied docs"
+    "v": 3353,
+    "status": "reported",
+    "ref": "gilat_fy2021 p.145 (= gilat_fy2022 p.148)",
+    "note": "PP&E note 7: accumulated depreciation 41,198 -> 44,551. Corrected at the final edit (AR-2): the earlier derived 3,729 (CF D&A 18,340 - ROU depreciation 13,661 - intangible amortisation 950) included 376 of other amortisation"
    },
    "bond_issue_proceeds_liability_line": {
     "v": 15317,
@@ -685,9 +684,9 @@
    },
    "da_customer_relations": {
     "v": 809,
-    "ref": "gilat_fy2023 p.141",
-    "status": "estimate",
-    "note": "UNVERIFIED: straight-line 8,086 / 10 years, as in 2022 and 2024",
+    "ref": "gilat_fy2021 p.146",
+    "status": "reported",
+    "note": "confirmed on gilat_fy2021 p.146 (note 8a) at the final edit; FY2020 also carried 949 of amortisation of the acquired contract backlog (cost 5,698, fully amortised in 2020)",
     "source": "completion pass"
    },
    "lease_cash_outflow_total": {
@@ -2023,7 +2022,7 @@
     "v": 68629480,
     "ref": "gilat_fy2023 p.151",
     "status": "reported",
-    "note": "printed count; 58,438,636 + 6,148,754 (placement) + 4,056,402 (rights) = 68,643,792, 14,312 more (unexplained, 0.02%); the printed count ties forward to 86,069,060 at 31.12.2024"
+    "note": "printed count; 58,438,636 + 6,148,754 (placement) + 4,056,402 (rights) = 68,643,792, 14,312 more (unexplained, 0.02%); the printed count ties forward to 86,069,060 at 31.12.2024; explained at the final edit: with the 6,134,442 placement shares printed on gilat_fy2023 p.7, p.91 and p.183 the bridge is exact"
    },
    "shares_weighted_basic": {
     "v": 63233000,
@@ -6718,7 +6717,9 @@
    "shares": 6148754,
    "price_ils": 0.3,
    "proceeds": "~1.8M ILS (496K USD)",
-   "ref": "gilat_fy2025 p.165; gilat_fy2023 p.151"
+   "ref": "gilat_fy2025 p.165; gilat_fy2023 p.151",
+   "shares_alt": 6134442,
+   "note": "the equity note prints 6,148,754 (gilat_fy2023 p.151; gilat_fy2024 p.155); the directors' report and the Reg. 20 description print 6,134,442 for ILS 1,840,333 (gilat_fy2023 p.7, p.91, p.183; gilat_fy2024 p.8, p.90, p.190). Only 6,134,442 reconciles: 58,438,636 + 6,134,442 + 4,056,402 = 68,629,480, the printed count, and 6,134,442 x 0.30 = 1,840,333"
   },
   {
    "date": "2023-07-26",
@@ -7053,14 +7054,14 @@
   },
   {
    "period": "FY2025",
-   "customer": "A (global business)",
+   "customer": "A (global business): Vodacom DRC, 12,392 on gilat_fy2025 p.55. The letter is this dataset's label; the note p.182 says only 'one customer'",
    "revenue_usd_k": 12400,
    "share_of_revenue": 0.164,
    "ref": "gilat_fy2025 p.182"
   },
   {
    "period": "FY2025",
-   "customer": "C (government & defence)",
+   "customer": "C (government & defence): 'Customer A' of gilat_fy2025 p.32 (19,278; an Israeli buyer of mobile satellite solutions). The letter is this dataset's label; the note p.182 says only 'a second customer'",
    "revenue_usd_k": 19300,
    "share_of_revenue": 0.255,
    "ref": "gilat_fy2025 p.182"
@@ -7105,7 +7106,7 @@
    "period": "contracts",
    "customer": "Israeli satellite orders Dec 2025-Jan 2026",
    "detail": "~110M ILS for the coming year incl. VAT",
-   "ref": "gilat_fy2025 p.101; gilat_h1_2026 p.15"
+   "ref": "gilat_fy2025 p.101; gilat_h1_2026 p.14"
   },
   {
    "period": "contracts",
@@ -7803,11 +7804,11 @@
   }
  },
  "caveats": [
-  "CONSOLIDATED H1 2026 STATEMENTS MISSING: the supplied Q2 2026 PDF holds the directors' report and the separate (solo) interim data twice (p.27-37 = p.38-48) but not the reviewed consolidated interim statements/notes. All consolidated H1/Q2 2026 and H1/Q2 2025 figures come from directors' report tables; no consolidated equity statement, full CF, D&A, SBC, interest/tax paid, EPS or share count for H1 2026.",
+  "RESOLVED (final edit): CONSOLIDATED H1 2026 STATEMENTS MISSING: the supplied Q2 2026 PDF holds the directors' report and the separate (solo) interim data twice (p.27-37 = p.38-48) but not the reviewed consolidated interim statements/notes. All consolidated H1/Q2 2026 and H1/Q2 2025 figures come from directors' report tables; no consolidated equity statement, full CF, D&A, SBC, interest/tax paid, EPS or share count for H1 2026. -> The reviewed consolidated condensed statements were found in the same report on the company's site (gilat_q2_2026_full p.27-49); the record uses them (balance sheet p.30-31, P&L p.32, cash flow p.38-39).",
   "CURRENCY: FY2021-FY2025 are USD thousands (functional currency USD). From 1.1.2026 the functional and presentation currency is ILS; the Q2 2026 report shows FY2025, H1 2025 and Q2 2025 translated into ILS. TTM is therefore built in ILS thousands; a reported USD TTM does not exist. Implied FY2025 average rate 3.4348; 31.12.2025 closing 3.19 (note 11 uses 3.19).",
   "H1 2026 NET INCOME: consolidated 15,770 (directors' report) vs solo P&L 15,261; total comprehensive income 15,809 in the solo statement. Mega's TTM (32,985) fits 15,770 (Q1 2026 = 7,353; a web summary of a company release also cites ~7.35M ILS for Q1 - UNVERIFIED). Used 15,770.",
   "SHARE COUNT: last reported issued count 93,937,313 (31.12.2025). 30.6.2026 (117,411,162 outstanding) and 19.8.2026 (119,034,974 outstanding) are DERIVED from disclosed conversions and the 2,300,000-share buyback; H1 2026 option exercises are not disclosed (solo share capital leaves room for up to 652,151 more shares - UNVERIFIED). Series D (29,134,661 NV, convertible 1:1 until 1.4.2028) and 12,093,500 options (31.12.2025) are potential dilution.",
-  "MARKET CAP CHECK: Mega market cap 198,207,421 ILS / 119,034,974 derived shares implies 1.665 ILS per share, while the June 2026 buyback averaged 2.59 ILS and the Series D market value at 19.8.2026 implies 2.119 ILS per conversion share. Verify the 3.11.2026 price and the TASE share count before valuing.",
+  "RESOLVED (final edit): MARKET CAP CHECK: Mega market cap 198,207,421 ILS / 119,034,974 derived shares implies 1.665 ILS per share, while the June 2026 buyback averaged 2.59 ILS and the Series D market value at 19.8.2026 implies 2.119 ILS per conversion share. Verify the 3.11.2026 price and the TASE share count before valuing. -> The close of 3.11.2026 is 165.3 agorot and the TASE count is 120,417,631; Mega's 198,207,420.626 = 164.6 agorot x 120,417,631 (market.md §1.2-1.3; out §0).",
   "SERIES D CONVERSIONS: 16,737,339 of 45,872,000 NV converted by 19.8.2026; the remainder converts 1:1 (in the money whenever the share trades above 1.00 ILS), so treat Series D either as debt (24,307K ILS carrying, 30.6.2026) or as 29,134,661 extra shares - not both.",
   "LEASES (fund rule): satellite-transponder leases are capitalised under IFRS 16 (ROU depreciation 9,082K USD in 2025; company 'adjusted EBITDA' strips it). Lease principal 9,521 + interest 1,788 (2025) and lease payments 17,210K ILS (H1 2026) must be treated as operating costs in owner earnings. Short-term satellite leases (11,550 in 2025) are already expensed.",
   "BEZEQ IRU PREPAYMENTS: capex-like payments run through OCF as 'increase in deferred expenses' (3,902K USD in 2025; company 'prepaid expenses' 10,019K ILS in H1 2026) and are amortised over 25 years (1,079 in 2025). The company's FCF 'excluding prepaid expenses' adds them back - do not. Future pulses (~160M ILS + ~80M ILS x3) are large unrecognised commitments.",
@@ -7815,15 +7816,15 @@
   "TAX: 2025 tax line is a 499 benefit (DTA recognition 599); unrecognised gross tax losses 19,022K USD remain, so cash taxes stay low for a while; statutory rate 23%.",
   "FINANCE COSTS 2021-2025 include non-cash revaluation of ILS-denominated options/conversion features (company non-GAAP adj: 2023 293, 2024 465, 2025 1,693) and FX; from 2026 the conversion features sit in equity.",
   "INCONSISTENCIES IN SOURCE DOCUMENTS (recorded with alternatives): FY2025 OCF 20,533 (FS) vs 20,611 (directors' report); FY2025 EBITDA 23,869 vs 23,893; backlog 52.3M USD to 2029 vs 58.3M to 2028 in the same report; H1 2025 revenue 124,234 vs region total 124,324; FY2025 ILS EBITDA 81,804 vs 81,881; Series D option 16,351 vs 16,531 ILS; FY2023 segment pretax 972 vs P&L 944; 2022 Israel segment revenue 881/882/822; 31.12.2023 share count 14,312 below issues arithmetic; FY2023 lease cash outflow 4,161 (note) vs 4,705 (CF).",
-  "FY2021 balance sheet is not in the supplied documents (only 1.1.2022 opening balances for PPE, intangibles, ROU, lease liabilities, bonds, loans, equity and year-end cash); FY2021 employees, receivables, inventory, payables and total assets are missing.",
+  "RESOLVED (final edit): FY2021 balance sheet is not in the supplied documents (only 1.1.2022 opening balances for PPE, intangibles, ROU, lease liabilities, bonds, loans, equity and year-end cash); FY2021 employees, receivables, inventory, payables and total assets are missing. -> The 31.12.2020 and 31.12.2021 balance sheets are in the company's FY2021 report (gilat_fy2021 p.114-115), downloaded at the CIO gate.",
   "NO NCI, NO ASSOCIATES, NO DIVIDENDS 2021-H1 2026; first share buyback June 2026. No R&D line and no separate other income/expense line in the P&L.",
   "Intelsat (main satellite supplier) open/overdue balance ~4.1-4.5M USD in each year-end report (with a 2023 service suspension warning) - working-capital financing from a key supplier.",
   "Small corporation (תאגיד קטן): the company adopted all small-company reporting reliefs (e.g., no ICFR auditor opinion; abbreviated management declarations) - gilat_h1_2026 p.2, p.20.",
   "Web sources (funder.co.il, bizportal.co.il) could not be reached from this session (network allowlist); any web fact in this file is labelled UNVERIFIED.",
   "RECONCILIATION: 1,322 A/B pairs compared, 1,131 identical; 2 differ by more than 0.5% (FY2021 bond-issue proceeds: one CF line vs both Series C lines; FY2022 concentration share: B used customer A alone) and 8 by 0.5% or less (rounding / printed-total choices). 502 figures were held by one extraction only; all were checked (350 on page images, 151 by re-computation, 11 narrative figures on the text layer); none rejected; 19 'not disclosed' nulls agreed.",
   "DOCUMENT INCONSISTENCIES (both extractions agree, the filings disagree with themselves): see reconcile.md section 3 - e.g. Series D option 16,531 vs 16,351 (gilat_h1_2026 p.31 vs p.10), H1 2026 profit 15,770 vs 15,261/15,809, FY2025 OCF 20,533 vs 20,530/20,611.",
-  "MEGA SHARE COUNT: Mega's market value 198.2M ILS / 93,937,313 (31.12.2025 count) = 2.110 ILS, close to Series D bond parity ~2.12 ILS (19.8.2026); on the derived 119.0M count it implies 1.665 ILS. Mega probably uses the stale count - verify price and count.",
-  "LEASE INTEREST / IRU AMORTISATION / SBC / PPE DEPRECIATION for H1 2026 are not disclosed (no consolidated interim statements); derived.py labels its TTM estimates of these as UNVERIFIED and shows conservative bounds."
+  "RESOLVED (final edit): MEGA SHARE COUNT: Mega's market value 198.2M ILS / 93,937,313 (31.12.2025 count) = 2.110 ILS, close to Series D bond parity ~2.12 ILS (19.8.2026); on the derived 119.0M count it implies 1.665 ILS. Mega probably uses the stale count - verify price and count. -> Mega uses the current count: 198,207,420.626 / 120,417,631 = 1.646 ILS.",
+  "PARTLY RESOLVED (final edit): LEASE INTEREST / IRU AMORTISATION / SBC / PPE DEPRECIATION for H1 2026 are not disclosed (no consolidated interim statements); derived.py labels its TTM estimates of these as UNVERIFIED and shows conservative bounds. -> Lease interest, IRU amortisation, SBC and total D&A for H1 2026 are in the consolidated cash flow (gilat_q2_2026_full p.38-39); only the split of D&A between owned and right-of-use assets remains undisclosed (UNVERIFIED in the record)."
  ],
  "debt_and_covenants": {
   "series_c": {
@@ -8041,9 +8042,9 @@
    "FY2021": {
     "capex_ppe": 1810,
     "capex_intangibles": 271,
-    "ppe_depreciation": 3729,
+    "ppe_depreciation": 3353,
     "lease_principal_plus_interest": 14783,
-    "ref": "gilat_fy2023 p.123 (capex, lease payments); PPE depreciation derived (gilat_fy2023 p.122, p.141, p.146)"
+    "ref": "gilat_fy2023 p.123 (capex, lease payments); PPE depreciation gilat_fy2021 p.145 (final edit; was derived 3,729)"
    },
    "FY2022": {
     "capex_ppe": 1402,
@@ -8343,7 +8344,7 @@
    },
    {
     "where": "gilat_fy2023 p.151",
-    "issue": "Shares 31.12.2023: 58,438,636 + 6,148,754 + 4,056,402 = 68,643,792, but the note prints 68,629,480 (14,312 fewer); the printed count ties forward (+17,439,580 = 86,069,060 at 31.12.2024, gilat_fy2025 p.165). Printed count used."
+    "issue": "Shares 31.12.2023: 58,438,636 + 6,148,754 + 4,056,402 = 68,643,792, but the note prints 68,629,480 (14,312 fewer); the printed count ties forward (+17,439,580 = 86,069,060 at 31.12.2024, gilat_fy2025 p.165). Printed count used. Explained at the final edit: the directors' report prints 6,134,442 placement shares (gilat_fy2023 p.7, p.91, p.183), with which the bridge is exact."
    },
    {
     "where": "gilat_fy2025 p.89/p.134 vs p.102",

@@ -622,8 +622,9 @@ def build_val_paymeant(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
     C["shares"] = S.line("מניות רגילות (בסיסי)", g["SHARES"], nf=NF_INT, comment="valuation.py SHARES (מספר המניות בבורסה)")
     C["mcap"] = S.line("שווי שוק (אלפי ש\"ח)", f"={C['price']}*{C['shares']}/1000", nf=NF_K1)
     checks.append(("פיימנט", "שווי שוק", C["mcap"], g["MCAP"]))
-    C.update({f"h_{k}": v for k, v in hurdle_rows(S, g["Y10_ILS"], "valuation.py Y10_ILS: 4.29% YTM on ממשל שקלית 0537 "
-                                                    "(TheMarker, 3.11.2026); generic 4.162% (Trading Economics)").items()})
+    C.update({f"h_{k}": v for k, v in hurdle_rows(S, g["Y10_ILS"], "valuation.py Y10_ILS: the generic Israel 10-year, 4.162% "
+                                                    "(Trading Economics, 3.11.2026), the series the Gilat study uses; cross-check: "
+                                                    f"{g['Y10_CROSSCHECK']:.2%} YTM on ממשל שקלית 0537 (TheMarker), also r = 10%").items()})
     checks.append(("פיימנט", "שיעור היוון r", C["h_r"], g["R"]))
     C["tax"] = S.line("שיעור מס סטטוטורי", g["T_STATUTORY"], nf=NF_PCT, comment="valuation.py T_STATUTORY (paymeant_fy2025 p.106)")
     S.blank()
@@ -643,10 +644,15 @@ def build_val_paymeant(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
 
     S.section("3. רווחי בעלים מנורמלים (framework d1)")
     C["nopat"] = S.line("EBIT_norm × (1 - מס)", f"={n['ebit_norm']}*(1-{C['tax']})", nf=NF_K1)
+    C["lease_int"] = S.line("ריבית על התחייבויות חכירה, FY2025", g["LEASE_INTEREST"], nf=NF_K,
+                            comment="valuation.py LEASE_INTEREST (paymeant_fy2025 p.97, note 9a). It sits in the funding-cost line "
+                                    "inside EBIT_adj, while the lease liability is also deducted in the bridge: d3 treats leases as "
+                                    "debt, so the interest is added back after tax (verification F5)")
+    C["lease_at"] = S.line("+ ריבית החכירה אחרי מס (החכירות הן חוב: d3)", f"={C['lease_int']}*(1-{C['tax']})", nf=NF_K1)
     C["da"] = S.line("פחת והפחתות TTM", g["DA"]["TTM"], nf=NF_K, comment="valuation.py DA['TTM'], including ROU depreciation and the amortisation of capitalised development")
     C["maint"] = S.line("השקעה תחזוקתית (Maint CapEx)", g["maint"], nf=NF_K1,
-                        comment="valuation.py maint = max(CapEx at the H1 2026 run-rate - growth CapEx, D&A); never below D&A")
-    C["oe"] = S.line("רווחי בעלים מנורמלים (OE_norm)", f"={C['nopat']}+{C['da']}-{C['maint']}", nf=NF_K1, bold=True,
+                        comment="valuation.py maint = max(CapEx at the H1 2026 run-rate - growth CapEx, D&A); above the D&A floor here")
+    C["oe"] = S.line("רווחי בעלים מנורמלים (OE_norm)", f"={C['nopat']}+{C['lease_at']}+{C['da']}-{C['maint']}", nf=NF_K1, bold=True,
                      note="אין החזרה של תשלום מבוסס מניות")
     checks.append(("פיימנט", "OE_norm", C["oe"], g["oe_norm"]))
     S.blank()
@@ -706,8 +712,8 @@ def build_val_paymeant(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
     S.blank()
 
     S.section("6. למניה מדוללת (שיטת האוצר, מכשיר אחר מכשיר)")
-    items = [(o[0], o[1], o[2], o[3]) for o in g["OPTIONS"]] + \
-            [("שארית אופציות ביאור 17 שלא זוהו (נגזר)", g["RES_N"], g["RES_K"], "valuation.py residual_note17 (paymeant_fy2025 p.112)")]
+    # note 17's roll-forward identifies every option (verification F3); valuation.py asserts the instruments sum to note 17
+    items = [(o[0], o[1], o[2], o[3]) for o in g["OPTIONS"]]
     n_rng, k_rng = instruments_table(S, items)
     v = treasury_rows(S, "בסיס", C["eq"], C["shares"], n_rng, k_rng)
     C["base"] = S.line("שווי בסיס למניה מדוללת (ש\"ח)", f"={v}", nf=NF_PS, bold=True)
@@ -771,9 +777,16 @@ def build_val_paymeant(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
     S.blank()
 
     S.section("12. מה המחיר מגלם (framework d8)")
-    S.line("צמיחה שנתית ל-10 שנים על OE_norm, עם השקעה", g["g_impl"], nf=NF_PCT)
-    S.line("כנ\"ל, אילו הצמיחה הייתה חינם", g["g_impl_free"], nf=NF_PCT)
-    S.line("על קנה המידה של היום (OE אופטימי)", g["g_impl_opt"], nf=NF_PCT)
+    S.line("על קנה המידה של היום (OE אופטימי): צמיחה שנתית ל-10 שנים", g["g_impl_opt"], nf=NF_PCT, comment="valuation.py g_impl_opt")
+    S.line("על OE_norm, אילו הצמיחה הייתה חינם", g["g_impl_free"], nf=NF_PCT, comment="valuation.py g_impl_free")
+    C["ev_impl"] = S.line("שווי הפעילות שהמחיר מגלם = שווי שוק + חכירות - מזומן עודף", f"={C['mcap']}+{C['lease']}-{C['xs']}", nf=NF_K1)
+    checks.append(("פיימנט", "שווי הפעילות שהמחיר מגלם", C["ev_impl"], g["ev_impl_l"]))
+    C["ops_full"] = S.line("שווי הפעילות בצמיחה = ROIIC, כשכל רווחי הבעלים מושקעים מחדש", g["ops_full_reinv"], nf=NF_K1,
+                           comment="valuation.py ops_full_reinv: the most growth the business can fund itself (verification F2)")
+    S.line("צמיחה במימון עצמי מגיעה למחיר?", f"={C['ops_full']}>={C['ev_impl']}",
+           note="לא: עם חיוב ההשקעה ב-ROIIC, שום צמיחה שהעסק מממן בעצמו אינה מגיעה למחיר")
+    S.line("לייחוס: d8 של הספרייה (מגביל את ההשקעה ל-100% מ-OE, ולכן חלק מהצמיחה חינם)", g["g_impl"], nf=NF_PCT,
+           comment="valuation.py g_impl; library issue L1 in verification.md")
     return S, C, checks
 
 
@@ -811,7 +824,18 @@ def build_val_gilat(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
     S.blank()
 
     S.section("3. רווחי בעלים מנורמלים (framework d1)")
-    C["amort"] = S.line("הפחתת נכסים שנרכשו (אלפי ש\"ח)", g["AMORT_ACQ"], nf=NF_K1, comment="valuation.py AMORT_ACQ = USD 809k x 3.157")
+    # d3 adds back the acquired amortisation that sits inside EBIT_norm; EBIT_norm is the W mean, so the add-back is the
+    # W mean of each year's acquired amortisation (verification AR-1)
+    amort_src = {2020: "gilat_fy2021 p.146: customer relations 809 + acquired contract backlog 949 (fully amortised in 2020)",
+                 2021: "gilat_fy2021 p.146", 2022: "gilat_fy2023 p.141", 2023: "gilat_fy2023 p.141",
+                 2024: "gilat_fy2025 p.150", 2025: "gilat_fy2025 p.150"}
+    a0 = S.row
+    for y in years:
+        S.line(f"הפחתת נכסים שנרכשו FY{y} (אלפי דולר)", g["AMORT_ACQ_W_USD"][y], nf=NF_K,
+               comment=f"valuation.py AMORT_ACQ_W_USD[{y}] ({amort_src[y]})")
+    C["amort"] = S.line("הפחתת נכסים שנרכשו: ממוצע החלון × שער (אלפי ש\"ח)", f"=AVERAGE(B{a0}:B{S.row - 1})*{C['fx']}", nf=NF_K1,
+                        note="ה-add-back שתואם EBIT_norm שהוא ממוצע החלון (d3); של ה-TTM: 809 אלף דולר")
+    checks.append(("גילת", "Amort_acq (ממוצע החלון)", C["amort"], g["AMORT_ACQ_NORM"]))
     C["dep"] = S.line("פחת והפחתות TTM, כולל ROU ו-IRU", g["DEP_TTM"], nf=NF_K1, comment="valuation.py DEP_TTM")
     C["maint"] = S.line("השקעה תחזוקתית (לא פחות מהפחת)", g["MAINT_TTM"], nf=NF_K1, comment="valuation.py MAINT_TTM: floored at depreciation, so leases stay a cost")
     C["oe"] = S.line("רווחי בעלים מנורמלים (OE_norm)", f"=({n['ebit_norm']}+{C['amort']})*(1-{C['tax']})+{C['dep']}-{C['maint']}", nf=NF_K1, bold=True)
@@ -829,8 +853,10 @@ def build_val_gilat(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
     C["xs"] = S.line("+ מזומן עודף = מזומן - חודשיים של עלויות", f"=MAX({C['cash_pf']}-{C['opex']}*2/12,0)", nf=NF_K1)
     checks.append(("גילת", "מזומן עודף", C["xs"], g["EXCESS"]))
     C["lease"] = S.line("- התחייבויות חכירה", g["LEASES"], nf=NF_K, comment="valuation.py LEASES")
-    C["iru"] = S.line("- עלות צפויה של קווי IRU שלא ינוצלו (25% מהמקרה החצי-מת, אחרי מס)", g["IRU_EXP_BASE"], nf=NF_K1,
-                      fill=FILL_SOFT, comment="valuation.py IRU_EXP_BASE; the IRU schedule is UNVERIFIED")
+    C["iru"] = S.line("- עלות צפויה של קווי IRU שלא ינוצלו (25% מהמקרה החצי-מת, מהוון ל-3.11.2026, אחרי מס)", g["IRU_EXP_BASE"],
+                      nf=NF_K1, fill=FILL_SOFT,
+                      comment="valuation.py IRU_EXP_BASE = 25% x half the unfilled lines unused, the latest-delivered half, each line's "
+                              "PV discounted from its tranche's delivery to 3.11.2026 (verification AR-3); the IRU schedule is UNVERIFIED")
     C["fxadj"] = S.line("- תיקון הגשר לשער 3.157 (התחייבויות דולריות נטו)", g["FX_BRIDGE_ADJ"], nf=NF_K1, comment="valuation.py FX_BRIDGE_ADJ")
     C["eq"] = S.line("הון לפני סדרה ד'", f"={C['ops']}+{C['xs']}-{C['lease']}-{C['iru']}-{C['fxadj']}", nf=NF_K1, bold=True)
     checks.append(("גילת", "הון לפני סדרה ד'", C["eq"], g["e_base"]))
@@ -877,12 +903,17 @@ def build_val_gilat(wb: Workbook, g: dict) -> tuple[Sheet, dict, list]:
     S.line("מסלול", "C (מציאה, תת-כלל מחזורי). אף מסלול אינו מתקיים היום", bold=True)
     S.line("מרווח בסיס של Tier C", m.base_margin, nf=NF_PCT)
     S.line("תוספות נתונים (" + ", ".join(g["DATA_FLAGS"]) + ")", m.data_addition, nf=NF_PCT)
-    S.line("מרווח כולל", f"=B{S.row - 2}+B{S.row - 1}", nf=NF_PCT)
+    S.line("מרווח כולל", f"=B{S.row - 2}+B{S.row - 1}", nf=NF_PCT,
+           note="חל רק על שווי לבעלים פרטי שיש לו ראיה (d7, d11); אין כזה, ולכן אינו נותן קו")
     C["ncav"] = S.line("NCAV, 30.6.2026", g["NCAV"], nf=NF_K, comment="valuation.py NCAV")
     C["dempster"] = S.line("שווי Dempster, 30.6.2026", g["DEMPSTER"], nf=NF_K1, comment="valuation.py DEMPSTER")
-    C["line_c"] = S.line("קו ה-net-net = min(2/3 NCAV, Dempster) למניה (אינו מחיר קנייה חי)",
-                         f"=MIN(2/3*{C['ncav']},{C['dempster']})*1000/{C['shares']}", nf=NF_PS, bold=True)
+    C["line_c"] = S.line("קו ייחוס net-net = min(2/3 NCAV, Dempster), למניה רשומה ב-3.11.2026 (לא מחיר קנייה)",
+                         f"=MIN(2/3*{C['ncav']},{C['dempster']})*1000/{C['shares']}", nf=NF_PS, bold=True,
+                         note="NO_THESIS אינו קובע מחיר קנייה")
     checks.append(("גילת", "קו net-net", C["line_c"], g["NETNET_LINE"]))
+    C["sh_30jun"] = S.line("מניות במחזור, 30.6.2026", g["SHARES_30JUN"], nf=NF_INT, comment="valuation.py SHARES_30JUN")
+    C["line_c_30jun"] = S.line("אותו קו למניה של 30.6.2026", f"=MIN(2/3*{C['ncav']},{C['dempster']})*1000/{C['sh_30jun']}", nf=NF_PS)
+    checks.append(("גילת", "קו net-net (מניות 30.6.2026)", C["line_c_30jun"], g["NETNET_LINE_30JUN"]))
     C["price_line"] = S.line("מחיר / קו net-net", f"={C['price']}/{C['line_c']}", nf=NF_X)
     S.line("קו net-net פרו פורמה, 3.11.2026", g["NETNET_LINE_PF"], nf=NF_PS, comment="valuation.py NETNET_LINE_PF")
     S.blank()
@@ -993,8 +1024,8 @@ FALSIFY = {
     "gilat_telecom": [
         "פרמיית המלחמה: עד 31.1.2027 הזמנות 2027 מלקוחות ביטחוניים וממשלתיים בישראל בהיקף של כ-110 מיליון ש\"ח "
         "כולל מע\"מ לפחות (רמת 2026)",
-        "בזק: בדוח השנתי 2026 (עד 31.3.2027) גילוי יתרת תמורת ה-IRU ולוח התשלומים, והרצה מחדש שמראה מזומן מעל "
-        "חודשיים של עלויות עד 2031 עם ליבה אפסית",
+        "בזק: בדוח השנתי 2026 (עד 31.3.2027) גילוי יתרת תמורת ה-IRU ולוח התשלומים (או שאפשר לוותר על נתחי הפעימה "
+        "הראשונה), והרצה מחדש על הלוח המדווח שמראה מזומן מעל חודשיים של עלויות עד 2031 עם ליבה אפסית",
         "Vodacom: עד 31.3.2027 חידוש חוזה Vodacom DRC ל-24 חודשים לפחות, במיליון דולר לחודש לפחות",
     ],
 }
@@ -1035,7 +1066,7 @@ def build_summary(wb: Workbook, P: dict, G: dict, gp: dict, gg: dict, ckp: dict,
     r_mcap = row("שווי שוק (אלפי ש\"ח)", link(Pv, P["mcap"]), link(Gv, G["mcap"]), nf=NF_K)
     row("שיעור היוון r", link(Pv, P["h_r"]), link(Gv, G["h_r"]), nf=NF_PCT)
     row("y10 ששימש", link(Pv, P["h_y10"]), link(Gv, G["h_y10"]), nf=NF_PCT2,
-        note="שני מכשירים שונים באותו יום: אג\"ח שקלית 0537 (פיימנט) מול התשואה הכללית ל-10 שנים (גילת). r = 10% בשניהם")
+        note="התשואה הכללית ל-10 שנים, 3.11.2026, בשני המחקרים (אג\"ח שקלית 0537, 4.29%, כבדיקה צולבת בפיימנט). r = 10% בשניהם")
     row("שווי במקרה הגרוע (ש\"ח למניה)", link(Pv, P["sc_גרוע"]), link(Gv, G["sc_גרוע"]), nf=NF_PS)
     row("שווי שמרני", link(Pv, P["sc_שמרני"]), link(Gv, G["sc_שמרני"]), nf=NF_PS)
     r_base = row("שווי בסיס", link(Pv, P["base"]), link(Gv, G["base"]), nf=NF_PS, bold=True)
@@ -1046,13 +1077,14 @@ def build_summary(wb: Workbook, P: dict, G: dict, gp: dict, gg: dict, ckp: dict,
         note="שלילי = המחיר גבוה מהשווי")
     row("רשת הרגישות: מינימום", link(Pv, P["grid_min"]), link(Gv, G["grid_min"]), nf=NF_PS)
     row("רשת הרגישות: מקסימום", link(Pv, P["grid_max"]), link(Gv, G["grid_max"]), nf=NF_PS)
-    row("מחיר קנייה", "אין", "אין מחיר קנייה חי", bold=True)
+    row("מחיר קנייה", "אין", "אין", bold=True, note="NO_THESIS אינו קובע מחיר קנייה; הקווים שלהלן הם קווי ייחוס בלבד")
     row("קו ייחוס של Tier C (net-net; אינו מחיר קנייה)", link(Pv, P["line_c"]), link(Gv, G["line_c"]), nf=NF_PS)
     row("מחיר / קו הייחוס", link(Pv, P["price_line"]), link(Gv, G["price_line"]), nf=NF_X)
     row("גודל פוזיציה מוצע", link(Pv, P["size"]), link(Gv, G["size"]), nf=NF_PCT, bold=True)
     row("מחזור יומי חציוני, 60 ימים (ש\"ח)", link(Pv, P["med"]), link(Gv, G["med"]), nf=NF_INT, note="רצפת החוקה: 50,000 ש\"ח")
     row("תקרת נזילות לפוזיציה (ש\"ח)", link(Pv, P["liq"]), link(Gv, G["liq"]), nf=NF_INT)
-    row("צמיחה שנתית שהמחיר מגלם (על הרווח המנורמל, 10 שנים)", gp["g_impl"], gg["IG_NORM"], nf=NF_PCT)
+    row("צמיחה שהמחיר מגלם, אילו הייתה חינם", gp["g_impl_free"], gg["IG_NORM"], nf=NF_PCT,
+        note="בשנה, 10 שנים, על הרווח המנורמל. פיימנט: עם חיוב ההשקעה ב-ROIIC, שום צמיחה שהעסק מממן בעצמו אינה מגיעה למחיר (גיליון ההערכה, סעיף 12)")
     r_ni = row("רווח נקי TTM (אלפי ש\"ח)", gp["NI"]["TTM"], gg["NI_TTM"], nf=NF_K,
                note="12 החודשים עד 30.6.2026 (valuation.py NI['TTM'], NI_TTM)")
     row("P/E על מחיר 3.11.2026 (חישוב)", f"=B{r_mcap}/B{r_ni}", f"=C{r_mcap}/C{r_ni}", nf='0.00',
@@ -1061,8 +1093,12 @@ def build_summary(wb: Workbook, P: dict, G: dict, gp: dict, gg: dict, ckp: dict,
     row("פריטי וטו שלא ניתן להעריך כאן (נכשלים)", ", ".join(ckp["veto_cannot"]), ", ".join(ckg["veto_cannot"]), wrap=True)
     for i in range(3):
         row(f"תנאי הפרכה {i + 1}", FALSIFY["paymeant"][i], FALSIFY["gilat_telecom"][i], wrap=True)
+    row("אימות בלתי תלוי (3 עדשות)",
+        "25 ממצאים; כולם אושרו ותוקנו, חוץ מ-MF-7 שנדחה בחלקו. שווי הבסיס 2.19 → 2.22",
+        "28 ממצאים; 27 אושרו ותוקנו, CH-3 נדחה. שווי הבסיס 0.428 → 0.474", wrap=True,
+        note="עדשות: חשבון וקלטים, חוקה, עובדות המזכר. פסק הדין לא השתנה באף אחת. בבדיקת ה-CIO נקבע D1 \"לא\" בשתיהן: המחיר היה בתדריך ההערכה")
     row("הקבצים", "research/paymeant/", "research/gilat_telecom/",
-        note="thesis_he.md (מזכר), output.txt, checklist.md, sources.md, work/gate.md")
+        note="thesis_he.md (מזכר), output.txt, checklist.md, sources.md, work/gate.md, verification.md")
     for r in range(hdr + 1, S.row):
         S.ws.row_dimensions[r].height = None
     return S
@@ -1108,6 +1144,11 @@ def build_sources(wb: Workbook, fins: dict, logs: list[str], ck: dict) -> Sheet:
          "או פריט בדיקה שנכשל.", False),
         ("מערכת הרשומה היא valuation.py ו-output.txt. שינוי הנחה בחוברת (r, g, ROIIC, הסתברויות) מראה את ההשפעה על שרשרת "
          "הבסיס בלבד; הוא אינו מעדכן את התרחישים האחרים או את רשת הרגישות.", False),
+        ("", False),
+        ("אימות", True),
+        ("שני המחקרים עברו אימות בלתי תלוי בשלוש עדשות: חשבון וקלטים, החוקה, ועובדות המזכר מול עמודי הדוחות. כל ממצא, "
+         "ההכרעה בו והתיקון מתועדים ב-research/<חברה>/verification.md. החוברת נבנתה מהרשומה המתוקנת. פסק הדין לא השתנה "
+         "באף אחד מהמחקרים.", False),
         ("", False),
         ("הנתונים מהדוחות", True),
     ]

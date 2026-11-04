@@ -16,7 +16,7 @@ lib/charter_valuation.py (lib/rev4_value.py is superseded; lib/valuation.py is n
 
 CIO GATE REVISION (3.11.2026). The red-team objections (gilat_telecom:redteam-accounting O1-O11,
 gilat_telecom:redteam-business O1-O10) are answered one by one in
-scratchpad/work/gilat_telecom/gate.md. What changed in this file:
+research/gilat_telecom/work/gate.md (drafted in scratchpad/work/gilat_telecom/). What changed in this file:
   A-O1  the cyclical window W is fiscal years FY2020-FY2025 (framework d2: "FY2020 to the latest year"); FY2020
         was obtained from the company's own FY2022 and FY2021 annual reports on its website; the TTM is no
         longer a W observation (it counted H2 2025 twice and added the war-peak H1 2026).
@@ -31,6 +31,17 @@ scratchpad/work/gilat_telecom/gate.md. What changed in this file:
   B-O3  probabilities 15/30/45/10; the conservative case is Vodacom not renewed; the optimistic case is net of
         the IRU accounting gap.
   B-O6  the base carries an expected cost for committed but unfilled IRU lines.
+
+FINAL EDIT AFTER VERIFICATION (record as of 3.11.2026; no price, rate or date changed). Findings and dispositions are
+in research/gilat_telecom/verification.md. What changed in this file:
+  AR-1  the d3 add-back Amort_acq now matches the acquired amortisation inside EBIT_norm: its W mean, USD 968k a year
+        (customer relations 809, 814 in FY2023, plus FY2020's 949 of acquired contract-backlog amortisation,
+        gilat_fy2021 p.146), not 809 alone. The 949 is a mandated add-back (d1, d3), not an endogenous one.
+  AR-2  FY2021 PP&E depreciation is the filed 3,353 (gilat_fy2021 p.145), not the residual 3,729.
+  AR-3  the PV of each unfilled IRU line is dated from its tranche's delivery back to 3.11.2026.
+  AR-4, AR-5, CH-2, CH-4, CH-5, CH-8, MF-8, MF-9: labels and printed reasons (net-net reference line, not a buy
+        price; F4 split into flow and remeasurement; the verdict's price-independent list; Q2/Q3 on the Lane C tests;
+        the three falsification conditions as in gate.md §3; CEO quote and filing quotes as filed). CH-1: B7 fails closed.
 
 DOCUMENTS (cited as document id + PDF page index, p.1 = first PDF page):
   gilat_fy2023, gilat_fy2024, gilat_fy2025  annual reports (USD thousands), supplied by the investor
@@ -113,10 +124,15 @@ OCF_USD = {2020: 18_264, 2021: 14_028, 2022: 10_099, 2023: 8_718, 2024: 10_587, 
 SBC_USD = {2020: -67, 2021: 63, 2022: 123, 2023: 53, 2024: 51, 2025: 88}                    # same pages (2020: a credit)
 CAPEX_PPE_USD = {2020: 3_050, 2021: 1_810, 2022: 1_402, 2023: 3_082, 2024: 2_529, 2025: 1_362}  # gilat_fy2022 p.124; gilat_fy2023 p.123; gilat_fy2024 p.125; gilat_fy2025 p.132
 CAPEX_INT_USD = {2020: 390, 2021: 271, 2022: 62, 2023: 196, 2024: 118, 2025: 82}             # same pages
-DEP_PPE_USD = {2020: 2_690, 2021: 3_729, 2022: 2_640, 2023: 1_776, 2024: 1_905, 2025: 2_130}   # gilat_fy2021 p.145; gilat_fy2023 p.140; gilat_fy2024 p.143; gilat_fy2025 p.149
+DEP_PPE_USD = {2020: 2_690, 2021: 3_353, 2022: 2_640, 2023: 1_776, 2024: 1_905, 2025: 2_130}   # gilat_fy2021 p.145 (2020, 2021; 2021 = gilat_fy2022 p.148); gilat_fy2023 p.140; gilat_fy2024 p.143; gilat_fy2025 p.149
 AMORT_LIC_USD = {2020: 115, 2021: 141, 2022: 151, 2023: 135, 2024: 136, 2025: 177}           # licences/software, gilat_fy2021 p.146; gilat_fy2023 p.141; gilat_fy2025 p.150
-AMORT_ACQ_USD = 809              # customer-relations amortisation a year, 2020-2025 (gilat_fy2021 p.146; gilat_fy2025 p.150) = Amort_acq.
-                                 # FY2020 also carried 949 of contract-backlog amortisation (gilat_fy2021 p.146), left in FY2020 EBIT (conservative)
+AMORT_ACQ_USD = 809              # customer-relations amortisation a year (gilat_fy2025 p.150) = Amort_acq of the TTM (d1)
+# Acquired-intangible amortisation inside each year's EBIT (note 8): customer relations, plus in FY2020 the contract backlog
+# (cost 5,698, fully amortised in 2020); both came with goodwill in one purchase price allocation. d1/d3 add it back.
+AMORT_ACQ_W_USD = {2020: 809 + 949,  # gilat_fy2021 p.146 (customer relations 809; contract backlog 949, net nil at 31.12.2020)
+                   2021: 809,        # gilat_fy2021 p.146
+                   2022: 809, 2023: 814,   # gilat_fy2023 p.141
+                   2024: 809, 2025: 809}   # gilat_fy2025 p.150
 LEASE_PRIN_USD = {2020: 13_621, 2021: 13_387, 2022: 7_986, 2023: 4_297, 2024: 6_717, 2025: 9_521}  # financing CF, gilat_fy2022 p.124; gilat_fy2023 p.123; gilat_fy2024 p.125; gilat_fy2025 p.132
 LEASE_INT_USD = {2020: 1_974, 2021: 1_396, 2022: 724, 2023: 408, 2024: 1_698, 2025: 1_788}      # financing CF (Gilat classifies interest in financing), same pages
 OTHER_INT_USD = {2020: 898, 2021: 1_075, 2022: 910, 2023: 733, 2024: 470, 2025: 858}          # interest paid excl. leases (bonds, loans), same pages
@@ -265,10 +281,17 @@ IRU_TRANCHES = ([(2025.00, 39_120.0, 0.0)]
                 + [(2025.25 + 0.25 * i, 24_450 / 4, 0.5) for i in range(4)]
                 + [(2026.25 + 0.25 * i, 24_450 / 4, 0.5) for i in range(4)]
                 + [(2025.92 + 0.25 * i, IRU2_TOTAL / 12, 0.5) for i in range(12)])
+# The same tranches as (delivery start, lines): IRU-1 8,000 + 2 x 4 x 1,250; IRU-2 12 x 3,000 (gilat_fy2025 p.152-153, p.183)
+IRU_LINE_TRANCHES = ([(2025.00, 8_000)]
+                     + [(2025.25 + 0.25 * i, 1_250) for i in range(4)]
+                     + [(2026.25 + 0.25 * i, 1_250) for i in range(4)]
+                     + [(2025.92 + 0.25 * i, 3_000) for i in range(12)])
+VAL_T = 2026.84                  # 3.11.2026 as a year fraction, the date of every bridge (as in iru_schedule)
 # Probability that the base carries for "half of the committed but unfilled lines are paid for and never used" (B-O6): assumed,
 # a model judgement (uncalibrated). Private net additions ran ~3,500 a quarter in H2 2025-H1 2026 (gilat_h1_2026 p.8) against
-# tranches of 3,000, so filling is on track today; promotions (Q2 2026 ARPU 80.19, -9.6% y/y) and the regulated BSA available
-# to every rival are the risks.
+# tranches of 3,000, so filling is on track today; fast recruitment at a lower ARPU (Q2 2026 80.19 against 88.71 a year earlier,
+# -9.6%, which the company attributes to the surge in new customers: gilat_h1_2026 p.8) and the regulated BSA available to every
+# rival are the risks.
 P_IRU_HALF_DEAD = 0.25
 # IRU line-years inside the TTM for the accounting-gap estimate (B-O1/B-O3): IRU-1 assumed in use all TTM (upper bound; the
 # contractual delivery dates give 12,375), IRU-2 tranches of 12.2025, 3.2026 and 6.2026 (7 + 4 + 1 months x 3,000): UNVERIFIED
@@ -483,10 +506,25 @@ P(f"      reading: the six-year mean, half pre-war and half war: FY2020-22 mean 
 P(f"  sensitivities (not the base): FY2021-25 only {norm_5.ebit_norm:,.0f}; W + TTM {norm_w_ttm.ebit_norm:,.0f};"
   f" the team's earlier base FY2021-25 + TTM {norm_team.ebit_norm:,.0f} (it counted H2 2025 EBIT {H2_2025_EBIT:,.0f} twice)")
 P(f"  screen flags: ttm_above_norm {EBIT_ADJ_TTM > 1.5 * EBIT_NORM} (TTM EBIT_adj = {EBIT_ADJ_TTM / EBIT_NORM:.1f}x EBIT_norm): a peak, not depressed earnings;"
-  " no endogenous add-back used (FY2021 doubtful debts 3,191 USD k left in; FY2020 backlog amortisation 949 left in)")
+  " no endogenous add-back used (FY2021 doubtful debts 3,191 USD k left in)")
+
+# Amort_acq (d1, d3). EBIT_adj keeps every year's acquired amortisation as a cost (screen_spec 2.3); d3 adds back the amount that
+# sits inside EBIT_norm. EBIT_norm is the W mean here, so the matching add-back is the W mean of acquired amortisation (AR-1).
+AMORT_ACQ = AMORT_ACQ_USD * FX                                  # derived, ILS a year: the TTM's (d1)
+
+
+def amort_acq_mean(years: tuple, with_ttm: bool = False) -> float:
+    """Mean acquired-intangible amortisation (ILS k) over a window, the add-back that matches a window-mean EBIT_norm."""
+    vals = [AMORT_ACQ_W_USD[y] * FX for y in years] + ([AMORT_ACQ] if with_ttm else [])
+    return statistics.mean(vals)
+
+
+AMORT_ACQ_NORM = amort_acq_mean(YEARS)                          # BASE: W = FY2020-FY2025
+P(f"  Amort_acq added back to EBIT_norm (d3) = the W mean of acquired amortisation inside it: USD {AMORT_ACQ_NORM / FX:,.1f}k a year"
+  f" (customer relations 809, 814 in FY2023; FY2020 also the acquired contract backlog 949, fully amortised that year: gilat_fy2021 p.146)"
+  f" = {AMORT_ACQ_NORM:,.0f}; the TTM's is {AMORT_ACQ:,.0f}. The 949 is a mandated add-back (d1, d3), not an endogenous one")
 
 # Maintenance capex (d1): floored at depreciation. Dep (charter notation) = PP&E + ROU depreciation + licences + IRU amortisation.
-AMORT_ACQ = AMORT_ACQ_USD * FX                                  # derived, ILS a year
 DEP_TTM = DA_TTM - AMORT_ACQ + IRU_AMORT_TTM
 avg_ppe_rev = statistics.mean(NETPPE_USD[y] / REV_USD[y] for y in YEARS_5)
 MAINT_TTM = maintenance_capex(CAPEX_TTM + IRU_PAID_TTM, DEP_TTM, avg_ppe_rev, REV_TTM - REV_ILS["FY25"])
@@ -552,16 +590,41 @@ IRU_UNPAID_IN_SERVICE = (IRU1_LINES * IRU1_PRICE + (ACTIVE_LINES - IRU1_LINES) *
 LINES_UNFILLED = IRU1_LINES + IRU2_LINES - ACTIVE_LINES
 pv_iru1, pv_iru2, pv_bsa = pv_iru_line(IRU1_PRICE, R), pv_iru_line(IRU2_PRICE, R), pv_bsa_line(R)
 IRU_NPV_VS_BSA = (IRU1_LINES * (pv_bsa - pv_iru1) + IRU2_LINES * (pv_bsa - pv_iru2)) / 1000
-DEAD_HALF = LINES_UNFILLED / 2 * pv_iru2 / 1000 * (1 - TAX)    # half the unfilled lines paid for and never used, after tax
-DEAD_ALL_AT = LINES_UNFILLED * pv_iru2 / 1000 * (1 - TAX)
-DEAD_ALL_PRETAX = LINES_UNFILLED * pv_iru2 / 1000
+# AR-3: pv_iru_line is a PV at the line's delivery date. The bridges are dated 3.11.2026, so each unfilled line's PV is
+# discounted from its tranche's start to VAL_T. Unfilled = the tranches not yet delivered at VAL_T plus the delivered but
+# unfilled remainder (factor 1). Lines fill in delivery order, so the lines that are never used are the latest delivered.
+assert sum(n for _, n in IRU_LINE_TRANCHES) == IRU1_LINES + IRU2_LINES
+IRU_FUTURE = sorted(((s, n) for s, n in IRU_LINE_TRANCHES if s > VAL_T), reverse=True)    # latest first
+LINES_FUTURE = sum(n for _, n in IRU_FUTURE)
+LINES_DELIVERED_UNFILLED = LINES_UNFILLED - LINES_FUTURE
+assert LINES_DELIVERED_UNFILLED >= 0
+
+
+def dated_line_count(k: float) -> float:
+    """Sum of the 3.11.2026 discount factors of the k latest-delivered unfilled lines (delivered ones count 1 each)."""
+    acc, rem = 0.0, k
+    for s, n in IRU_FUTURE:
+        take = min(n, rem)
+        acc += take / (1 + R) ** (s - VAL_T)
+        rem -= take
+    return acc + rem                      # what remains are delivered-but-unfilled lines, already at VAL_T
+
+
+DF_HALF = dated_line_count(LINES_UNFILLED / 2) / (LINES_UNFILLED / 2)
+DF_ALL = dated_line_count(LINES_UNFILLED) / LINES_UNFILLED
+DEAD_HALF = LINES_UNFILLED / 2 * pv_iru2 * DF_HALF / 1000 * (1 - TAX)    # half the unfilled lines paid for and never used, after tax
+DEAD_ALL_AT = LINES_UNFILLED * pv_iru2 * DF_ALL / 1000 * (1 - TAX)
+DEAD_ALL_PRETAX = LINES_UNFILLED * pv_iru2 * DF_ALL / 1000
 IRU_EXP_BASE = P_IRU_HALF_DEAD * DEAD_HALF                      # B-O6: the base's expected cost of the skew
 assert abs(sum(c for _, c, _ in IRU_TRANCHES) - IRU_COMMITTED) < 1
 P(f"  Bezeq IRU: committed {IRU_COMMITTED:,.0f} for {IRU1_LINES + IRU2_LINES:,} lines; paid to 30.6.2026 {IRU_PAID_TO_30JUN:,.0f};"
   f" unpaid {IRU_UNPAID_ALL:,.0f}, of which for the ~{ACTIVE_LINES:,} lines in service {IRU_UNPAID_IN_SERVICE:,.0f} (UNVERIFIED: the filings do not state it)")
-P(f"      PV per line at r over 15 years, contract terms (10 payments at 5%, 4% O&M): IRU-1 {pv_iru1:,.0f}, IRU-2 {pv_iru2:,.0f}"
+P(f"      PV per line at r over 15 years at its delivery date, contract terms (10 payments at 5%, 4% O&M): IRU-1 {pv_iru1:,.0f}, IRU-2 {pv_iru2:,.0f}"
   f" vs regulated BSA at ILS {BSA_MONTHLY}/month {pv_bsa:,.0f} -> IRU vs BSA if every line is filled: {IRU_NPV_VS_BSA:+,.0f} pre-tax (not credited)")
-P(f"      {LINES_UNFILLED:,} committed lines not yet filled; half unused costs {DEAD_HALF:,.0f} after tax; the base carries"
+P(f"      {LINES_UNFILLED:,} committed lines not yet filled: {LINES_FUTURE:,} in tranches delivered after 3.11.2026 (to 9.2028) and"
+  f" {LINES_DELIVERED_UNFILLED:,} delivered; each PV dated to 3.11.2026 (AR-3: factor {DF_HALF:.3f} for the latest-delivered half,"
+  f" {DF_ALL:.3f} for all)")
+P(f"      half unused (the latest-delivered half) costs {DEAD_HALF:,.0f} after tax; the base carries"
   f" {P_IRU_HALF_DEAD:.0%} of it = {IRU_EXP_BASE:,.0f} (B-O6); all unused {DEAD_ALL_PRETAX:,.0f} pre-tax")
 
 # Leverage (C2 / tier table), at 3.11.2026 pro forma
@@ -584,7 +647,7 @@ P("  C6 stress years (EBIT_adj / (lease interest + other interest paid), USD k):
 # =====================================================================================================
 # 4. Methods
 # =====================================================================================================
-OE_NORM = unlevered_owner_earnings(EBIT_NORM, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)
+OE_NORM = unlevered_owner_earnings(EBIT_NORM, AMORT_ACQ_NORM, TAX, DEP_TTM, MAINT_TTM)     # AR-1: the W-mean add-back
 OE_TTM_UNLEV = unlevered_owner_earnings(EBIT_ADJ_TTM, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)
 
 
@@ -598,7 +661,7 @@ P("")
 P("== 4. Methods")
 e_base = equity_value(OE_NORM)
 v_epv, how_epv = per_share(e_base)
-P(f"  d3 EPV: OE_unlevered = (EBIT_norm {EBIT_NORM:,.0f} + Amort_acq {AMORT_ACQ:,.0f}) x (1 - {TAX:.0%}) + Dep - maintenance (floor: 0)"
+P(f"  d3 EPV: OE_unlevered = (EBIT_norm {EBIT_NORM:,.0f} + Amort_acq {AMORT_ACQ_NORM:,.0f}, W mean) x (1 - {TAX:.0%}) + Dep - maintenance (floor: 0)"
   f" = {OE_NORM:,.0f}; / r = {epv_operations(OE_NORM, R):,.0f}")
 P(f"      + excess cash {EXCESS:,.0f} - leases {LEASES:,.0f} - FX restatement {FX_BRIDGE_ADJ:,.0f} - IRU expected cost {IRU_EXP_BASE:,.0f}"
   f" = {e_base:,.0f} before Series D -> {fmt(v_epv)}  [{how_epv}]")
@@ -624,7 +687,10 @@ for row in (dcf_base.rows[0], dcf_base.rows[4], dcf_base.rows[9]):
 NCAV = ncav(CURRENT_ASSETS, TOTAL_LIAB)
 DEMPSTER = dempster_value(CASH, RECEIVABLES, INVENTORY, DEFERRED_ST + OTHER_REC, 0.0, TOTAL_LIAB)
 nn = netnet_buy_test(MCAP, NCAV, DEMPSTER)
-NETNET_LINE = min(nn["two_thirds_ncav"], DEMPSTER) * 1000 / SHARES_LISTED          # the only charter Tier C line (d6, d11)
+NETNET_LINE = min(nn["two_thirds_ncav"], DEMPSTER) * 1000 / SHARES_LISTED          # the only charter Tier C line (d6, d11): a reference, not a buy price
+# Share basis (AR-4): the 30.6.2026 balance sheet per 3.11.2026 listed share, i.e. the price at which today's market cap (the
+# aggregate test above) would equal the 30.6.2026 line; per 30.6.2026 share the same amount is NETNET_LINE_30JUN
+NETNET_LINE_30JUN = min(nn["two_thirds_ncav"], DEMPSTER) * 1000 / SHARES_30JUN
 # pro forma 3.11.2026 (same events as the EPV bridge): cash after the October buyback and Series C/D payments; Series C gone; Series D at par; FX at 3.157
 TL_PF = TOTAL_LIAB - SERIES_C_LIAB - SERIES_D_LIAB + SERIES_D_PAR / 1000 + FX_BRIDGE_ADJ
 NCAV_PF = ncav(CURRENT_ASSETS - (CASH - CASH_PF), TL_PF)
@@ -634,7 +700,8 @@ P(f"  d6 NCAV (30.6.2026) = current assets {CURRENT_ASSETS:,.0f} - total liabili
 P(f"  d6 Dempster (30.6.2026) = cash 100% + receivables 85% + inventory 60% + prepaid/other 25% - liabilities (PP&E, ROU, IRU at nil) = {DEMPSTER:,.0f}"
   f" -> {DEMPSTER * 1000 / SHARES_30JUN:.3f} ILS/share")
 P(f"      net-net test: market cap {MCAP:,.0f} <= 2/3 NCAV {nn['two_thirds_ncav']:,.0f} and <= Dempster {DEMPSTER:,.0f}? {nn['passes']}"
-  f" (market cap = {MCAP / NCAV:.1f}x NCAV, {MCAP / DEMPSTER:.1f}x Dempster) -> charter Tier C line {NETNET_LINE:.3f} ILS/share")
+  f" (market cap = {MCAP / NCAV:.1f}x NCAV, {MCAP / DEMPSTER:.1f}x Dempster) -> charter Tier C net-net reference line {NETNET_LINE:.3f} ILS"
+  f" per 3.11.2026 listed share ({NETNET_LINE_30JUN:.3f} per 30.6.2026 share)")
 P(f"      pro forma 3.11.2026: NCAV {NCAV_PF:,.0f}, Dempster {DEMPSTER_PF:,.0f} -> line {NETNET_LINE_PF:.3f}: the October buyback, the Series C"
   " redemption and the dollar's rise since 30.6 have used up most of the liquidation cushion")
 P(f"      off balance sheet: unpaid Bezeq consideration {IRU_UNPAID_ALL:,.0f} (UNVERIFIED) = {IRU_UNPAID_ALL / NCAV:.1f}x NCAV; PV of the"
@@ -711,16 +778,16 @@ v_base, how_base = v_epv, how_epv
 # conservative (B-O3): Vodacom DRC not renewed at 31.3.2027 (gilat_fy2025 p.55-56; Vodacom Group-Starlink partnership of
 # 12.11.2025): its 2025 contribution at the 2025 global-segment margin removed (contract margin UNVERIFIED); IRU as in the base
 VODACOM_CONTRIB = VODACOM_REV_2025 * GLOBAL_SEG_RES_2025 / GLOBAL_SEG_REV_2025 * FX
-OE_CONS = unlevered_owner_earnings(EBIT_NORM - VODACOM_CONTRIB, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)
+OE_CONS = unlevered_owner_earnings(EBIT_NORM - VODACOM_CONTRIB, AMORT_ACQ_NORM, TAX, DEP_TTM, MAINT_TTM)
 e_cons = equity_value(OE_CONS)
 v_cons, how_cons = per_share(e_cons)
 v_cons_iru, _ = per_share(equity_value(OE_NORM, iru_cost=DEAD_HALF))                  # variant: Vodacom renewed, half the unfilled lines unused (the team's conservative)
 v_cons_both, _ = per_share(equity_value(OE_CONS, iru_cost=DEAD_HALF))                 # variant: both
 v_base_no_iru, _ = per_share(equity_value(OE_NORM, iru_cost=0.0))                      # sensitivity: no IRU expected cost
 v_base_no_fx, _ = per_share(equity_value(OE_NORM, fx_adj=0.0))                         # sensitivity: bridge at the 30.6.2026 rate
-v_base_5, _ = per_share(equity_value(unlevered_owner_earnings(norm_5.ebit_norm, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)))
-v_base_w_ttm, _ = per_share(equity_value(unlevered_owner_earnings(norm_w_ttm.ebit_norm, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)))
-v_base_team, _ = per_share(equity_value(unlevered_owner_earnings(norm_team.ebit_norm, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)))
+v_base_5, _ = per_share(equity_value(unlevered_owner_earnings(norm_5.ebit_norm, amort_acq_mean(YEARS_5), TAX, DEP_TTM, MAINT_TTM)))
+v_base_w_ttm, _ = per_share(equity_value(unlevered_owner_earnings(norm_w_ttm.ebit_norm, amort_acq_mean(YEARS, True), TAX, DEP_TTM, MAINT_TTM)))
+v_base_team, _ = per_share(equity_value(unlevered_owner_earnings(norm_team.ebit_norm, amort_acq_mean(YEARS_5, True), TAX, DEP_TTM, MAINT_TTM)))
 v_isp_stall, _ = per_share(equity_value(OE_NORM, iru_cost=DEAD_ALL_AT))               # variant: base earnings, ISP stalls at today's lines
 # worst (ten years out): pre-war demand, Vodacom lost (3.2027), ISP stalls; liquidation basis: Dempster value pro forma (Series D
 # handled at par in per_share) less every unfilled committed IRU line at its PV, FX at 3.157
@@ -833,7 +900,7 @@ f4 = {}
 for shock in (0.10, 0.20, -0.10):
     flow = shock * USD_COST_PROXY * FX
     remeasure = NET_USD_LIAB_30JUN * FX / FX_30JUN26 * shock
-    oe_s = unlevered_owner_earnings(EBIT_NORM - flow, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)
+    oe_s = unlevered_owner_earnings(EBIT_NORM - flow, AMORT_ACQ_NORM, TAX, DEP_TTM, MAINT_TTM)
     v_s, _ = per_share(equity_value(oe_s, iru_cost=IRU_EXP_BASE + remeasure))
     hedge = shock * FWD_NOTIONAL_USD_K * FX
     v_h, _ = per_share(equity_value(oe_s, iru_cost=IRU_EXP_BASE + remeasure - hedge))
@@ -848,10 +915,40 @@ v_cpi, _ = per_share(equity_value(OE_NORM, iru_cost=IRU_EXP_BASE + CPI_HIT * (1 
 P(f"      high CPI (5% vs 2% a year): PV at r of the committed IRU cash from 2027 +{CPI_HIT:,.0f} pre-tax = {CPI_HIT * (1 - TAX) * 1000 / SHARES_LISTED:.3f} ILS/share"
   f" after tax -> base {v_cpi:.3f}. No CPI-linked FINANCIAL debt (Series D unlinked: gilat_h1_2026 p.24); about ILS {IRU_UNPAID_ALL / 1000:,.0f}M of IRU")
 P("         commitments carry 50% CPI linkage on pulses 2-3 and O&M (gilat_fy2025 p.153), and the addendum is 'CPI-linked' (p.42, p.183) (UNVERIFIED balance)")
-P("      +2 points on rates: no floating debt (Series D fixed 5.5%); r stays 10% (IL y10 6.16% + 3 < 10%); the vendor rate of later IRU pulses")
+P(f"      +2 points on rates: no floating debt (Series D fixed 5.5%); r stays 10% (IL y10 {Y10_IL + 0.02:.2%} + 3 < 10%); the vendor rate of later IRU pulses")
 P("         resets to Bezeq's yield at each pulse, but those pulses are conditional; cash earns more: no hit to the base")
 F4_FAILS = f4[0.10][0] < 0.5 * v_base and f4[0.20][0] < 0.1 * v_base
 P(f"      F4 verdict: the base does not survive a sharp shekel move (+10% -> {f4[0.10][0] / v_base - 1:+.0%}; +20% -> {f4[0.20][0] / v_base - 1:+.0%}): F4 FAILS = {F4_FAILS}")
+
+
+# AR-5: what the F4 failure rests on. The filed linkage table gives the remeasurement; the flow is the UNVERIFIED proxy.
+def f4_base(shock: float, usd_flow_k: float, remeasure: bool = True) -> float:
+    flow = shock * usd_flow_k * FX
+    rem = NET_USD_LIAB_30JUN * FX / FX_30JUN26 * shock if remeasure else 0.0
+    oe = unlevered_owner_earnings(EBIT_NORM - flow, AMORT_ACQ_NORM, TAX, DEP_TTM, MAINT_TTM)
+    return per_share(equity_value(oe, iru_cost=IRU_EXP_BASE + rem))[0]
+
+
+def f4_fails_at(usd_flow_k: float) -> bool:
+    return f4_base(0.10, usd_flow_k) < 0.5 * v_base and f4_base(0.20, usd_flow_k) < 0.1 * v_base
+
+
+f4_rem_only = {s: f4_base(s, 0.0) for s in (0.10, 0.20)}
+f4_flow_only = {s: f4_base(s, USD_COST_PROXY, remeasure=False) for s in (0.10, 0.20)}
+lo, hi = 0.0, USD_COST_PROXY
+assert f4_fails_at(hi) == F4_FAILS
+for _ in range(60):
+    mid = (lo + hi) / 2
+    lo, hi = (lo, mid) if f4_fails_at(mid) else (mid, hi)
+F4_BREAKEVEN_USD_K = hi
+# Cross-check of the proxy from the FY2025 cost structure (USD k): cost lines priced in USD by their nature (satellite services,
+# mobile-satellite airtime and telephony, equipment sold: gilat_fy2025 p.173) and satellite-lease cash (p.132), less the global
+# segment's USD revenue (p.181). The filings do not split costs by currency: UNVERIFIED, a cross-check only.
+USD_COST_LINES_2025 = 11_220 + 12_614 + 5_559 + LEASE_PRIN_USD[2025] + LEASE_INT_USD[2025]
+P(f"      what F4 rests on (AR-5): the filed remeasurement alone leaves the base at {f4_rem_only[0.10]:.3f} (+10%) and {f4_rem_only[0.20]:.3f} (+20%),"
+  f" which would pass; the flow proxy alone gives {f4_flow_only[0.10]:.3f} and {f4_flow_only[0.20]:.3f}. F4 fails for any net USD cost flow above"
+  f" USD {F4_BREAKEVEN_USD_K / 1000:.1f}M a year (proxy USD {USD_COST_PROXY / 1000:.0f}M, UNVERIFIED); cross-check: FY2025 USD-priced costs"
+  f" {USD_COST_LINES_2025:,} less global-segment revenue {GLOBAL_SEG_REV_2025:,} = USD {(USD_COST_LINES_2025 - GLOBAL_SEG_REV_2025) / 1000:.1f}M")
 
 # Sensitivity grid around base (D3): r +/- 1 point, g +/- 2 points; ROIIC held at 10% (no moat), terminal growth min(g, 2.5%) >= 0
 def base_value(r: float, g: float) -> float:
@@ -882,8 +979,9 @@ methods = {
 class CioValueRange(ValueRange):
     """ValueRange with two presentational changes made at the CIO gate (the arithmetic is the library's):
     (1) a zero scenario value prints price/value as n/m (report() divides the price by each value);
-    (2) the buy line is the charter's Tier C net-net line (framework d6, d11), not base x (1 - margin): an earnings
-        value is not private-owner value (d7), so the library's base-times-margin line does not apply to Lane C here."""
+    (2) the line printed is the charter's Tier C net-net line (framework d6, d11), not base x (1 - margin): an earnings
+        value is not private-owner value (d7), so the library's base-times-margin line does not apply to Lane C here.
+        Under NO_THESIS it is a reference line, not a buy price (constitution checklist, "Recording the result"; CH-2)."""
 
     NAMES = ("worst_case", "conservative", "base", "optimistic")
 
@@ -902,21 +1000,25 @@ class CioValueRange(ValueRange):
                 setattr(self, n, v)
         for n in zero:
             text = re.sub(rf"(  {n}\s+)nan(\s+price/value\s+)nan", lambda m: f"{m.group(1)}{0:.4f}{m.group(2)}n/m", text)
-        return re.sub(r"buy price \(\d+% of base\)", "buy line (Tier C net-net)", text)
+        text = re.sub(r"buy price \(\d+% of base\)\s{10}", "net-net reference line (no buy price)", text)
+        return text.replace("price/buy price", "price/line")
 
 
 vr = CioValueRange("Gilat Telecom Global (TASE 1080597), per share", "ILS", PRICE, f"{PRICE_DATE} close",
                    v_worst, v_cons, v_base, v_opt, margin, methods)
-BUY = vr.buy_price()
+BUY = vr.buy_price()          # the net-net reference line; NO_THESIS sets no buy price
 P("")
-P("== 6. Margin of safety and buy line")
+P("== 6. Margin of safety and the net-net reference line (no buy price: NO_THESIS)")
 P(vr.report())
 P(f"  data additions: {', '.join(DATA_FLAGS)} (+5 each, capped at +10); no endogenous add-back. The {margin.total_margin:.0%} Tier C margin would apply")
-P("      to an EVIDENCED private-owner value (d7, d11); none exists, so it yields no buy line here.")
+P("      to an EVIDENCED private-owner value (d7, d11); none exists, so it yields no line here.")
 P("  the earlier 'shadow' line (40% of the EPV base) is WITHDRAWN (B-O2, A-O8): EPV is not private-owner value; it is not a buy price.")
-P(f"  the charter's only Tier C line is the net-net route: <= 2/3 NCAV and <= Dempster (30.6.2026, one balance-sheet date) = {fmt(BUY)};"
-  f" price / line {PRICE / BUY:.1f}; pro forma 3.11.2026 {NETNET_LINE_PF:.3f}. It is NOT a live buy price: H2 fails (the IRU makes the asset value")
-P("      infirm) and B3, B5, E1, E3, F4, H4 and H5 fail at any price.")
+P(f"  the charter's only Tier C line is the net-net route: <= 2/3 NCAV and <= Dempster (30.6.2026 balance sheet, one date; per 3.11.2026 listed"
+  f" share: the price at which today's market cap equals it) = {fmt(BUY)}; per 30.6.2026 share {NETNET_LINE_30JUN:.3f}; price / line {PRICE / BUY:.1f};"
+  f" pro forma 3.11.2026 {NETNET_LINE_PF:.3f}.")
+P("      It is a reference line, NOT a buy price: under NO_THESIS no buy price is set (only a watchlist name, whose only failure is price,")
+P("      gets a dated one). Before any Tier C line could become a buy price, Q1 must be answered yes (CIRCLE.md or an industry study) and")
+P("      B3, B5, E1, F4, H2, H4 and H5, which fail at any price, must clear; D2, D5 and E3 also fail at today's price.")
 asset_ps = {"NCAV 30.6.2026": NCAV * 1000 / SHARES_30JUN, "Dempster 30.6.2026": DEMPSTER * 1000 / SHARES_30JUN}
 P(f"  method spread (A-O8): earnings methods + tangible book {vr.method_spread():.0%}; EPV vs NCAV {v_epv / asset_ps['NCAV 30.6.2026'] - 1:+.0%};"
   f" EPV vs Dempster {v_epv / asset_ps['Dempster 30.6.2026'] - 1:+.0%}. The >30% disagreement is resolved as follows (charter: resolve first):")
@@ -956,49 +1058,74 @@ SHARES_END_2022 = 58_438_636     # gilat_fy2023 p.151
 share_multiple = SHARES_LISTED / SHARES_END_2022
 share_cagr = share_multiple ** (1 / ((2026 + 307 / 365) - 2023.0)) - 1   # 31.12.2022 (= 2023.0) to 3.11.2026 (day 307): derived
 P(f"  lane C (cyclical), tier C: A/B fail A3 (no moat in the numbers: operating losses FY2021-22, ROTC minimum {min(rotc_w):.0%}; competition")
-P("      'mainly on price', share 'not material', gilat_fy2025 p.32); D needs an A/B franchise; E has no deal. C is the only lane whose")
-P(f"      basis (assets, normalised earnings) could ever apply; today it is not a C bargain: market cap {MCAP / NCAV:.1f}x NCAV, TTM EBIT_adj"
+P("      'focuses mainly on price and on the ability to provide the customer a total solution', share 'not material', gilat_fy2025 p.32);")
+P("      D needs an A/B franchise; E has no deal. C is the only lane whose basis (assets, normalised earnings) could ever apply; today it is")
+P(f"      not a C bargain: the asset value is not firm (H2), there is no catalyst or basket (H4), market cap {MCAP / NCAV:.1f}x NCAV, TTM EBIT_adj"
   f" {EBIT_ADJ_TTM / EBIT_NORM:.1f}x EBIT_norm (a peak), no evidenced private-owner value. No lane is satisfied today.")
 P(f"  VETO items that fail: B3 (listed shares x{share_multiple:.2f} since 31.12.2022, {share_cagr:.0%} a year, issued at 0.30-1.35; Series D adds"
-  f" {SERIES_D_PAR / SHARES_LISTED:.0%}), B5 (metrics and pay exclude the IRU cost; policy and charge irreconcilable), D2 (price {PRICE / BUY:.0f}x the")
-P(f"      net-net line), D5 (price/base {PRICE / v_base:.1f}, price/probability-weighted {PRICE / v_pw:.1f}), E1 (new money by {NEW_MONEY_YEAR} in the worst"
+  f" {SERIES_D_PAR / SHARES_LISTED:.0%}), B5 (metrics and pay exclude the IRU cost; policy and charge irreconcilable), D1 (process: the price")
+P("      was in the valuation brief before value was estimated, so 'before looking at the price' fails closed; CIO review of the")
+P(f"      verification, as in the Paymeant study's C-1), D2 (price {PRICE / BUY:.0f}x the")
+P(f"      net-net reference line), D5 (price/base {PRICE / v_base:.1f}, price/probability-weighted {PRICE / v_pw:.1f}), E1 (new money by {NEW_MONEY_YEAR} in the worst"
   " case), E3 (the discount to TTM is explained by known facts), F4 (shekel stress), H2 (asset value not firm), H4 (no catalyst,")
-P("      no basket), H5 (no low-cost position; net debt once the IRU is counted). Open, failing closed: D8 (Maya immediate reports unread).")
-P("  investment test: Q1 no (outside the circle except as a net-net: not predictable 5-10 years out, business.md §13); Q2 no (no C bargain);")
-P(f"      Q3 no (price/base {PRICE / v_base:.1f}); Q4 the price implies {IG_NORM:+.1%} a year from normalised earnings, or {IG_TTM:+.1%} from TTM:")
-P("      it already pays for the war-era earnings, and the CEO has told the market the war doubled turnover (Bizportal 20014148).")
-P("  VERDICT: NO_THESIS (not WATCHLIST: price is not the only failure; E1, B5, F4 and H2 fail at any price until the facts change).")
-P("  re-examination triggers (dated, observable; the net-net line is the only charter C line and the withdrawn shadow line must not be used):")
-P("      1. by 31.1.2027: 2027 orders from Israeli defence and government customers reported in Dec 2026-Jan 2027 vs ~ILS 110M incl. VAT a")
-P("         year earlier (gilat_h1_2026 p.14); below half confirms the normalisation, at or above it calls for re-underwriting EBIT_norm.")
-P("      2. by 31.3.2027 (FY2026 report): the unpaid Bezeq consideration and its schedule, the amortisation applied and whether pulse-1")
-P("         tranches can be declined are stated, and the Bezeq commitment and LEO substitution appear as risk factors (B5, E1, H2).")
-P("      3. by 31.3.2027: Vodacom DRC (16% of 2025 revenue, gilat_fy2025 p.55) renewed at >= USD 1M a month, or lost.")
-P("      4. quarterly: private ISP net additions below 3,000 a quarter for two consecutive quarters (gilat_h1_2026 p.8 reports 7,116 in H1 2026).")
-P("      5. by 31.12.2026: renewal of the unified satellite, Iridium, trade and OneWeb licences that expire on that date (gilat_fy2025 p.69-72).")
+P("      no basket), H5 (no low-cost position; net debt once the IRU is counted). Open, failing closed: B7 (court and class-action databases")
+P("      unread), D8 (Maya immediate reports unread), G2, G3 (fund data not available).")
+P("  investment test: Q1 no (not in a written circle: CIRCLE.md unavailable; not predictable 5-10 years out, business.md §13);")
+P(f"      Q2 no (Lane C: the asset value is not firm, H2, unpaid Bezeq consideration {IRU_UNPAID_ALL / NCAV:.1f}x NCAV; no catalyst or basket, H4;"
+  " not burned, H3);")
+P(f"      Q3 no (Tier C test: market cap {MCAP / NCAV:.1f}x NCAV and {MCAP / DEMPSTER:.1f}x Dempster, no evidenced private-owner value; price/EPV"
+  f" {PRICE / v_base:.1f} as context);")
+P(f"      Q4 the price implies {IG_NORM:+.1%} a year from normalised earnings, or {IG_TTM:+.1%} from TTM: it already pays for the war-era")
+P("      earnings; the CEO told the market turnover reached 'about double the normal period' in the war (Bizportal 20014148; asked about")
+P("      the defence activity, so company-wide or defence turnover: both readings in §5).")
+P("  VERDICT: NO_THESIS (not WATCHLIST: price is not the only failure; B3, B5, E1, F4, H2, H4 and H5 fail at any price until the facts")
+P("      change, D1 fails on process, and D2, D5 and E3 also fail at today's price).")
+P("  falsification conditions (gate.md §3; dated, observable; the net-net line is a reference, not a buy price, and the withdrawn shadow")
+P("  line must not be used):")
+P("      1. by 31.1.2027: 2027 orders from Israeli defence and government customers reported in Dec 2026-Jan 2027 at least the ~ILS 110M")
+P("         incl. VAT reported for 2026 (gilat_h1_2026 p.14) falsifies the peak premise (re-underwrite EBIT_norm); below half confirms it.")
+P("      2. by 31.3.2027 (FY2026 report): the unpaid IRU consideration and its payment schedule are stated (or that pulse-1 tranches can be")
+P("         declined), and the runway re-run here on the filed schedule keeps cash above two months' costs through 2031 with a zero core.")
+P("      3. by 31.3.2027: Vodacom DRC (16% of 2025 revenue, gilat_fy2025 p.55) renewed for >= 24 months at >= USD 1M a month.")
+P("  monitoring triggers (not falsification conditions):")
+P("      a. quarterly: private ISP net additions below 3,000 a quarter for two consecutive quarters (gilat_h1_2026 p.8 reports 7,116 in H1 2026).")
+P("      b. by 31.12.2026: renewal of the unified satellite, Iridium, trade and OneWeb licences that expire on that date (gilat_fy2025 p.69-72).")
+P("      c. FY2026 report: the IRU amortisation applied, and whether the Bezeq commitment and LEO substitution appear as risk factors (B5).")
 
 # =====================================================================================================
-# 8. What the CIO gate changed (previous run = output.txt before the gate, quoted as inputs)
+# 8. What the CIO gate and the final edit changed (previous run = output.txt before the gate; gate = output.txt as committed
+#    at the gate, 3.11.2026; both quoted as inputs). The final edit changed no price, rate or date (verification.md).
 # =====================================================================================================
 PREV = {"EBIT_norm": 11_100, "worst": 0.0, "conservative": 0.3563, "base": 0.7888, "optimistic": 1.9215, "probability-weighted": 0.8283,
-        "buy line": 0.3155, "implied growth (normalised)": 0.114, "sensitivity minimum": 0.614}
+        "line (buy -> reference)": 0.3155, "implied growth (normalised)": 0.114, "sensitivity minimum": 0.614}
+GATE = {"EBIT_norm": 7_643, "worst": 0.0, "conservative": 0.0, "base": 0.4281, "optimistic": 1.7177, "probability-weighted": 0.3644,
+        "line (buy -> reference)": 0.0921, "implied growth (normalised)": 0.165, "sensitivity minimum": 0.2967}
 NOW = {"EBIT_norm": EBIT_NORM, "worst": v_worst, "conservative": v_cons, "base": v_base, "optimistic": v_opt, "probability-weighted": v_pw,
-       "buy line": BUY, "implied growth (normalised)": IG_NORM, "sensitivity minimum": grid["min"]}
+       "line (buy -> reference)": BUY, "implied growth (normalised)": IG_NORM, "sensitivity minimum": grid["min"]}
 P("")
-P("== 8. Changes at the CIO gate (previous run -> now)")
+P("== 8. Changes at the CIO gate and at the final edit (previous run -> gate -> now)")
 for k in PREV:
-    a, b = PREV[k], NOW[k]
+    a, g, b = PREV[k], GATE[k], NOW[k]
     if k == "EBIT_norm":
-        P(f"  {k:<30} {a:>10,.0f} -> {b:>10,.0f}")
+        P(f"  {k:<30} {a:>10,.0f} -> {g:>10,.0f} -> {b:>10,.0f}")
     elif "growth" in k:
-        P(f"  {k:<30} {a:>+10.1%} -> {b:>+10.1%}")
+        P(f"  {k:<30} {a:>+10.1%} -> {g:>+10.1%} -> {b:>+10.1%}")
     else:
-        P(f"  {k:<30} {a:>10.4f} -> {b:>10.4f}" + ("   (previous: 'shadow' 40% of EPV, withdrawn; now the net-net line)" if k == "buy line" else ""))
+        P(f"  {k:<30} {a:>10.4f} -> {g:>10.4f} -> {b:>10.4f}" + ("   (previous: 'shadow' buy line, 40% of EPV, withdrawn; then the"
+                                                                 " net-net reference line, not a buy price)" if k.startswith("line") else ""))
+IRU_EXP_UNDATED = P_IRU_HALF_DEAD * LINES_UNFILLED / 2 * pv_iru2 / 1000 * (1 - TAX)       # the gate's undated expected cost
+OE_NORM_GATE = unlevered_owner_earnings(EBIT_NORM, AMORT_ACQ, TAX, DEP_TTM, MAINT_TTM)      # the gate's add-back (809 a year)
+v_gate_check = per_share(equity_value(OE_NORM_GATE, iru_cost=IRU_EXP_UNDATED))[0]
+v_ar1_only = per_share(equity_value(OE_NORM, iru_cost=IRU_EXP_UNDATED))[0]
+v_ar3_only = per_share(equity_value(OE_NORM_GATE))[0]
+P(f"  final edit: Amort_acq matched to the W mean (AR-1), IRU dead-line PVs dated to 3.11.2026 (AR-3: expected cost {IRU_EXP_UNDATED:,.0f} at the gate"
+  f" -> {IRU_EXP_BASE:,.0f}), FY2021 depreciation as filed (AR-2: C4 and the pre-war runway core)")
+P(f"  base: gate {v_gate_check:.4f} -> AR-1 alone {v_ar1_only:.4f} (AR-3 alone {v_ar3_only:.4f}) -> both {v_base:.4f}")
 
 P("")
 P("Per-share summary (ILS, agorot, USD at 3.157):")
 for label, v in (("price", PRICE), ("worst case", v_worst), ("conservative", v_cons), ("base", v_base),
-                 ("optimistic", v_opt), ("probability-weighted (15/30/45/10)", v_pw), ("charter Tier C net-net line (not a buy price)", BUY)):
+                 ("optimistic", v_opt), ("probability-weighted (15/30/45/10)", v_pw), ("charter Tier C net-net line (not a buy price)", BUY)):  # per 3.11.2026 listed share
     P(f"  {label:<46}{fmt(v)}")
 P(f"  implied growth (normalised OE, ten years)   {IG_NORM:+.1%};  on TTM OE {IG_TTM:+.1%}")
 P(f"  Tier C margin {margin.total_margin:.0%} (applies only to an evidenced private-owner value); sensitivity minimum {grid['min']:.3f};"

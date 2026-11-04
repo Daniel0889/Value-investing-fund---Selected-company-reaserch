@@ -39,8 +39,23 @@ Rejected, with evidence printed below: B11 (the three-year tax reconciliation su
 sensitivity), and the part of B2 that calls the EV basis the charter-literal basis for a lender (screen_spec 3.1:
 "EBIT, EV and ROIC [are] meaningless" for financials). The EV basis is still printed beside the lender basis.
 
+FINAL VERIFICATION (the record as it stood on 3.11.2026, checked through three lenses; research/paymeant/verification.md).
+No price, rate or date was updated. Fixed here:
+  * F1: the run-off low end no longer deducts the 1,919 net deferred tax liability, which sits on the fair-value
+    step-up and the intangible asset that the run-off already removes.
+  * F3: the option count follows note 17's roll-forward (260,915 at 0.01 at 31.12.2025, less the 85,000 shares issued
+    in 2026); the plugged 177,225 options at an implied 5.89 are gone.
+  * F5: leases are debt, as in d3, so the lease interest leaves the lender-basis earnings (it was charged twice).
+  * F4, MF-2: covenant (a) is tested on both denominators; covenant (b) is shown on equity (the note) and on tangible
+    equity (the directors' report).
+  * C-3: y10 is the generic 10-year (4.162%); the 0537 bond is a cross-check. r is 10% either way.
+  * C-2, F6: tier statistics over the fiscal-year window, FY2021 counted as the loss year it was; TTM shown, not counted.
+  * F2: the d8 line no longer calls lib's capped figure "charged"; it prints the value at full internal reinvestment.
+  * C-4: the price-reliability block. F7, MF-4, C-5: labels.
+
 Every input cites document id and PDF page (table figures checked on the page images) or is marked derived / assumed.
-Market and scuttlebutt inputs cite work/paymeant/market.md and work/paymeant/scuttlebutt.md (with their calc files).
+Market and scuttlebutt inputs cite research/paymeant/work/market.md and research/paymeant/work/scuttlebutt.md (their calc
+files stayed in the scratchpad workspace, work/paymeant/, and are not committed).
 All valuation arithmetic runs through lib/charter_valuation.py.
 Run: python3 -I research/paymeant/valuation.py > research/paymeant/output.txt
 """
@@ -67,17 +82,20 @@ SHARES_FY2024 = 37_278_200  # paymeant_fy2025 p.108
 SHARES_FY2023 = 37_021_525  # paymeant_fy2023 p.107 (note 17a, image checked)
 SHARES_FY2022 = 36_890_750  # paymeant_fy2023 p.107
 SHARES_FY2021 = 30_903_464  # derived: 36,890,750 - 4,852,476 (Aug-2022 placement) - 1,134,810 (2022 exercises),
-                            # paymeant_fy2023 p.107-109 (work/paymeant/financials.json)
+                            # paymeant_fy2023 p.107-109 (research/paymeant/financials.json)
 EXERCISES_2025 = (1_966_835, 2.02)   # shares issued on exercise in 2025 and their weighted strike (paymeant_fy2025 p.112)
 FOUNDERS_EXERCISE_2022 = (985_000, 10)   # 1.3.2022: 985,000 shares for 10k ILS in total (paymeant_fy2023 p.107)
-Y10_ILS = 0.0429            # Israel 10y on 3.11.2026: 4.29% YTM on ממשל שקלית 0537 [TM-0537]; generic 4.162% [TE]
+Y10_ILS = 0.04162           # Israel 10-year government yield on 3.11.2026: the generic 10-year, 4.162% [TE, 17:42]
+#                             (market.md §5), the series the fund's Gilat Telecom study of the same date uses (C-3)
+Y10_CROSSCHECK = 0.0429     # cross-check only: YTM of ממשל שקלית 0537 (10.58 years to maturity, price 77.20) [TM-0537]
 USDILS = 3.157              # Bank of Israel representative rate 3.11.2026 (brief)
 LIQ_FLOOR = 50_000          # ILS median daily turnover over 60 sessions (charter; screen_spec X5, a hard exclusion)
 LIQ_RELIABILITY = 100_000   # ILS: below this the price-reliability block and the control section are mandatory
 
 # 60 sessions to 3.11.2026, Bizportal's own daily series (the quote page's history call; on-exchange trades only):
 # (date 2026, volume in shares, close in agorot as Bizportal adjusts it for dividends, proceeds in ILS).
-# Saved as work/paymeant/scuttle/raw2/rt1_refetch.json (scuttlebutt.md [BZ-RT]); 3.11.2026 from the general view
+# Saved in the scratchpad workspace as work/paymeant/scuttle/raw2/rt1_refetch.json, not committed; the 60 sessions are
+# reproduced below (scuttlebutt.md [BZ-RT]); 3.11.2026 from the general view
 # [BZ-GV]: 352,392 ILS, 111,691 shares. Checked against Bank Leumi's calendar: no session missing (scuttlebutt §7).
 # This replaces the volume x close series of the first version, which missed the 12.10.2026 session (O11).
 BZ_SESSIONS = [
@@ -146,6 +164,8 @@ CAPEX_DEV_CASH = {"FY2023": 2_789, "FY2024": 2_211, "FY2025": 1_167, "H1_2025": 
 CAPEX_DEV_SBP = {"FY2023": 104, "FY2024": 145, "FY2025": 112, "H1_2025": 55, "H1_2026": 92}
 CAPEX_ROU = {"FY2023": 0, "FY2024": 0, "FY2025": 25, "H1_2025": 25, "H1_2026": 0}
 LEASE_PRIN = {"FY2023": 520, "FY2024": 575, "FY2025": 1_017, "H1_2025": 466, "H1_2026": 368}
+LEASE_INTEREST = 191        # FY2025 interest on lease liabilities (paymeant_fy2025 p.97, note 9a); it sits in the
+#                             funding-cost line (finance expense 4,711, note 20, p.114; financials.json caveat 7)
 DIVIDENDS = {"FY2025": 9_000, "H1_2025": 4_000, "H1_2026": 4_000}
 TAX_PAID = {"FY2025": 7_124, "H1_2025": 0, "H1_2026": 3_758}       # paymeant_h1_2026 p.28: H1 2025 shows none
 BANK_CF = {"FY2025": 21_831, "H1_2025": -19_060, "H1_2026": 10_985}  # change in bank credit inside OCF (h1 p.28)
@@ -178,6 +198,11 @@ PPE = {D21: 88, D22: 396, D23: 386, D24: 353, D25: 738, J25: 543, J26: 677}
 ROU = {D21: 482, D22: 1_348, D23: 932, D24: 883, D25: 2_671, J25: 2_950, J26: 2_392}
 INTANG = {D22: 4_271, D23: 6_937, D24: 7_920, D25: 7_307, J25: 7_757, J26: 8_269}
 CURRENT_ASSETS_J26 = 215_334
+# net deferred tax liability 30.6.2026 (paymeant_h1_2026 p.23, image checked). Note 15d (paymeant_fy2025 p.105, image
+# checked) shows what it is: at 31.12.2025 the liability on the intangible asset (1,681) and on the loans' fair-value
+# step-up (1,934) less deferred tax assets (2,385), net 1,230. A run-off that values the loans at amortised cost and the
+# intangible at nil pays none of it (verification F1).
+DTL_NET_J26 = 1_919
 TOTAL_ASSETS = {D21: 32_944, D22: 163_878, D23: 186_342, D24: 166_563, D25: 213_192, J25: 156_199, J26: 231_943}
 BANK = {D22: 101_245 + 23, D23: 114_892, D24: 82_410, D25: 104_241, J25: 63_350, J26: 115_225}
 PAY_CT = {D22: 3_256, D23: 3_650, D24: 5_133, D25: 14_146, J25: 8_487, J26: 19_273}
@@ -191,9 +216,11 @@ PREFERRED = 0
 # =====================================================================================================
 # 4. Other filed facts used by the tests
 # =====================================================================================================
-# bank covenants, note 11a(6) (paymeant_fy2025 p.99, image checked; repeated paymeant_h1_2026 p.18, p.33)
-COV_TE_RATIO = 0.20         # tangible equity >= 20% of the (tangible) balance sheet
-COV_TE_MIN = 25_000         # tangible equity >= 25M
+# bank covenants, note 11a(6) (paymeant_fy2025 p.99, image checked; repeated in note 5e, paymeant_h1_2026 p.33; the
+# directors' report tables are paymeant_fy2025 p.68 and paymeant_h1_2026 p.18, images checked)
+COV_TE_RATIO = 0.20         # tangible equity >= 20% "of the total balance sheet (or the tangible balance sheet)"
+COV_TE_MIN = 25_000         # note 11a(6)(b) says equity >= 25M; the directors' report tables say tangible equity:
+#                             tested on tangible equity, the stricter reading, with the note's equity shown beside it
 COV_SENIOR_DEBT = 0.80      # senior financial debt <= 80% of loans to customers
 COV_NI_MIN = 1_000          # annual net profit >= 1M
 TE_COMPANY_J26 = 76_000     # the company's own covenant "tangible equity" (paymeant_h1_2026 p.18)
@@ -210,19 +237,32 @@ DRAWN = {"A": 0, "B": 92_000, "C": 1_000, "D": 11_000}     # paymeant_fy2025 p.4
 ARREARS = {D25: {"current": 186_422, "1-90 days": 3_590, "default": 1_481},    # paymeant_fy2025 p.66
            J26: {"current": 200_260, "1-90 days": 5_198, "default": 4_395}}    # paymeant_h1_2026 p.15
 PROVISION_AC = {D24: (2_859, 1_831), D25: (5_731, 934)}   # amortised-cost book (gross, provision), fy2025 p.95
-# options and RSUs (treasury method, instrument by instrument; B10)
+# options and RSUs (treasury method, instrument by instrument; B10). Note 17's roll-forward (paymeant_fy2025 p.112,
+# image checked): 2,737,750 at 31.12.2024 = the 1,920,000 warrants exercised in 2025 + 510,000 Amitim warrants +
+# 307,750 at 0.01; in 2025 1,519,000 granted (1,000,000 at 3.01 and 519,000 at 3.97), 1,966,835 exercised (the
+# 1,920,000 warrants and 46,835 options at 0.01) and 100,040 forfeited at 3.97, leaving 2,189,875 at 31.12.2025. Every
+# one of them is identified below. The 257,475 exercised at 0.01 in 2024 came from earlier grants: the 313,000 of
+# 31.7.2023 and the 75,000 of 25.2.2024 vest nothing before 1.8.2025 and 1.4.2026 (p.109-110). (Verification F3: the
+# first count netted the 2024 exercises against those grants and plugged 177,225 options at an implied 5.89.)
+LOW_STRIKE_FY2025 = 2_737_750 - 1_920_000 - 510_000 - 46_835   # 260,915 options at 0.01 at 31.12.2025 (p.112)
+ISSUED_2026 = SHARES - SHARES_FY2025   # 85,000 shares issued in 2026; H1 2026 shows option exercises for under 1k ILS
+#                                        (paymeant_h1_2026 p.25), so they came from the 0.01 options or the RSUs and are
+#                                        netted here so that no share is counted twice
 OPTIONS = [  # (instrument, number, strike ILS, source)
     ("founders' options, 15.1.2025", 1_000_000, 3.01, "paymeant_fy2025 p.111"),
     ("employee options 6.4.2025, less 100,040 forfeited", 519_000 - 100_040, 3.97, "paymeant_fy2025 p.111-112"),
     ("Amitim warrants, second tranche, to 12.1.2027", 255_000, 6.05, "paymeant_fy2025 p.108-109"),
-    ("employee options at 0.01 (313,000 + 75,000 granted; 257,475 + 46,835 exercised)",
-     313_000 + 75_000 - 257_475 - 46_835, 0.01, "paymeant_fy2025 p.109, p.110, p.112"),
-    ("restricted share units (all counted; some converted after 1.4.2026: conservative)", 175_000, 0.0,
-     "paymeant_fy2025 p.110"),
+    ("employee options at 0.01: 260,915 at 31.12.2025 less the 85,000 shares issued in 2026",
+     LOW_STRIKE_FY2025 - ISSUED_2026, 0.01, "paymeant_fy2025 p.109, p.110, p.112; paymeant_h1_2026 p.25"),
+    ("restricted share units (12.5% convert each quarter from 1.4.2026)", 175_000, 0.0, "paymeant_fy2025 p.110"),
     ("options granted 20.8.2026", 512_000, 5.74, "paymeant_h1_2026 p.33"),
 ]
 NOTE17_OPTIONS, NOTE17_STRIKE = 2_189_875, 4.02    # 31.12.2025 (paymeant_fy2025 p.112); Reg. 24A shows 1,136,125 (p.123)
 AMITIM_TRANCHE1 = (255_000, 6.05)                  # expired 24.7.2026, out of the money (market.md §1)
+# note 17's options at 31.12.2025, instrument by instrument (number, strike): the count reconciles exactly
+NOTE17_INSTRUMENTS = [(1_000_000, 3.01), (519_000 - 100_040, 3.97), (255_000, 6.05), AMITIM_TRANCHE1,
+                      (LOW_STRIKE_FY2025, 0.01)]
+assert sum(n for n, _ in NOTE17_INSTRUMENTS) == NOTE17_OPTIONS
 # peers and holders (Tier 2, read 3.11.2026; scuttlebutt.md §1.2 and §6, scuttle_calc §3-§5)
 PEER_PE_MEDIAN, PEER_PB_MEDIAN = 7.67, 1.37        # profitable Israeli specialist lenders, TTM
 FOUNDERS_SALE = (869_564, 6.90, "13.3.2026")       # Globes interested-party register (one source)
@@ -230,7 +270,7 @@ FOUNDERS_SALE = (869_564, 6.90, "13.3.2026")       # Globes interested-party reg
 BUSINESS_NORM_PRETAX = 20_679
 
 # =====================================================================================================
-# 5. Assumptions (each explained in work/paymeant/valuation_notes.md and work/paymeant/gate.md)
+# 5. Assumptions (each explained in research/paymeant/work/valuation_notes.md and research/paymeant/work/gate.md)
 # =====================================================================================================
 G_BASE = 0.02               # assumed: CPI-level nominal growth (the midpoint of the Bank of Israel's 1-3% target)
 G_OPT = 0.05                # assumed: the first version's base growth, kept for the optimistic case only
@@ -254,17 +294,14 @@ def ttm(d: dict) -> float:
     return d["FY2025"] + d["H1_2026"] - d["H1_2025"]
 
 
-def residual_note17() -> tuple[float, float]:
-    """Note-17 options not identified instrument by instrument, and their implied strike (derived)."""
-    known = [o for o in OPTIONS if o[2] > 0 and "20.8.2026" not in o[0]]       # in note 17 at 31.12.2025
-    n_known = sum(o[1] for o in known) + AMITIM_TRANCHE1[0]
-    v_known = sum(o[1] * o[2] for o in known) + AMITIM_TRANCHE1[0] * AMITIM_TRANCHE1[1]
-    n_res = NOTE17_OPTIONS - n_known
-    return n_res, (NOTE17_OPTIONS * NOTE17_STRIKE - v_known) / n_res
+def avg_strike(instruments: list) -> float:
+    """Weighted average strike of (number, strike) pairs (a check on note 17's printed average; not a valuation)."""
+    return sum(n * k for n, k in instruments) / sum(n for n, _ in instruments)
 
 
-RES_N, RES_K = residual_note17()
-INSTRUMENTS = [(o[1], o[2]) for o in OPTIONS] + [(RES_N, RES_K)]
+NOTE17_AVG_ALL = avg_strike(NOTE17_INSTRUMENTS)
+NOTE17_AVG_EX_LOW = avg_strike([x for x in NOTE17_INSTRUMENTS if x[1] > 0.01])
+INSTRUMENTS = [(o[1], o[2]) for o in OPTIONS]
 
 
 def dilutive_shares(v: float) -> float:
@@ -336,7 +373,9 @@ p(f"  price {PRICE:.3f} ILS ({PRICE * 100:.1f} ag), {PRICE_DATE}; Mega snapshot 
 p(f"  shares {SHARES:,} basic (31.12.2025 filed: {SHARES_FY2025:,}); market cap {MCAP:,.0f}k ILS = USD"
   f" {MCAP / USDILS / 1000:,.1f}M at {USDILS}; dilutive shares at the price {dilutive_shares(PRICE):,.0f}"
   f" ({dilutive_shares(PRICE) / SHARES:.2%})")
-p(f"  hurdle r = max(10%, y10 {Y10_ILS:.2%} on 3.11.2026 + 3 points) = {R:.0%}")
+p(f"  hurdle r = max(10%, y10 {Y10_ILS:.2%} on 3.11.2026 + 3 points) = {R:.0%} (generic 10-year; the 0537 bond's"
+  f" {Y10_CROSSCHECK:.2%} also gives {cv.hurdle(Y10_CROSSCHECK):.0%}; y10 + 2 points still gives"
+  f" {cv.hurdle(Y10_ILS + RATE_SHOCK):.0%})")
 p(f"  P/E TTM {MCAP / NI['TTM']:.2f}; P/B {MCAP / EQUITY[J26]:.2f}; P/TBV {MCAP / TE_J26:.2f}; tangible equity"
   f" {TE_J26:,.0f}k")
 
@@ -344,7 +383,9 @@ p(f"  P/E TTM {MCAP / NI['TTM']:.2f}; P/B {MCAP / EQUITY[J26]:.2f}; P/TBV {MCAP 
 p("")
 p("== 1. Lane and tier evidence")
 p("  1a. Pre-tax return on tangible operating capital, UNLEVERED: (EBIT_adj + funding cost) / (loan book + receivables")
-p("      + PP&E + ROU - operating payables). EBIT_adj per screen_spec 2.3 (stock pay a cost). FY2021: no balance sheet.")
+p("      + PP&E + ROU - operating payables). EBIT_adj per screen_spec 2.3 (stock pay a cost). FY2021 is in the window but")
+p(f"      has no full balance sheet; it was an operating loss (EBIT_unl {EBIT_UNL['FY2021']:,}, EBIT_adj"
+  f" {EBIT_ADJ['FY2021']:,}), so both its returns are negative on any positive capital.")
 ends = {"FY2022": D22, "FY2023": D23, "FY2024": D24, "FY2025": D25, "TTM": J26}
 starts = {"FY2023": D22, "FY2024": D23, "FY2025": D24, "TTM": J25}
 rotc_ye, rotc_avg, rote_ye = {}, {}, {}
@@ -359,12 +400,21 @@ for per, d in ends.items():
     rote_ye[per] = EBIT_ADJ[per] / cv.tangible_book(EQUITY[d], 0, INTANG[d])
     line += f"  | pre-tax RoTE {pct(rote_ye[per])}"
     p(line)
-p(f"      unlevered ROTC: median year-end {pct(statistics.median(rotc_ye.values()))}, minimum {pct(min(rotc_ye.values()))};"
-  f" median on average capital {pct(statistics.median(rotc_avg.values()))}, minimum {pct(min(rotc_avg.values()))}")
-p(f"      bank lens, pre-tax return on tangible equity: median {pct(statistics.median(rote_ye.values()))},"
-  f" minimum {pct(min(rote_ye.values()))} (levered: equity is {EQUITY[J26] / TOTAL_ASSETS[J26]:.1%} of assets)")
-p("      tier test: A needs median >= 20% and never < 10%; B is 12-20%. Unlevered returns sit in B's band only, and the")
-p("      TTM return on equity is a single benign-credit reading (no credit cycle in the window).")
+# Tier statistics over the window W of fiscal years (framework d2, d11; gate B3): TTM is printed above but not counted.
+# FY2021 enters by its sign only: an operating loss, so it ranks lowest whatever its capital (verification C-2, F6).
+assert EBIT_UNL["FY2021"] < 0 and EBIT_ADJ["FY2021"] < 0
+W_FY = ["FY2022", "FY2023", "FY2024", "FY2025"]
+LOSS_YEAR = float("-inf")                  # placeholder for FY2021's negative return in the five-year medians
+ye_w, avg_w, rote_w = ([d_[k] for k in W_FY if k in d_] for d_ in (rotc_ye, rotc_avg, rote_ye))
+p(f"      over W (fiscal years; TTM not counted): unlevered ROTC median {pct(statistics.median(ye_w + [LOSS_YEAR]))}"
+  f" with FY2021, {pct(statistics.median(ye_w))} on FY2022-FY2025 (on average capital, FY2023-FY2025:"
+  f" {pct(statistics.median(avg_w))}); minimum negative (FY2021), {pct(min(ye_w))} without it")
+p(f"      bank lens, pre-tax return on tangible equity: median {pct(statistics.median(rote_w + [LOSS_YEAR]))} with FY2021,"
+  f" {pct(statistics.median(rote_w))} on FY2022-FY2025; minimum negative (FY2021) (levered: equity is"
+  f" {EQUITY[J26] / TOTAL_ASSETS[J26]:.1%} of assets)")
+p("      tier test: A needs median >= 20% and never < 10%; B is 12-20%. Unlevered returns sit in B's band on either")
+p("      reading and FY2021 fails A's floor; the TTM return on equity is a single benign-credit reading (no credit cycle")
+p("      in the window).")
 p("  1b. Leverage (30.6.2026)")
 p(f"      bank credit {BANK[J26]:,} (on-call, all due within a year) + leases {LEASES[J26]:,} - cash {CASH[J26]:,}"
   f" = net debt with leases {NET_DEBT_LEASES:,}")
@@ -374,10 +424,12 @@ p(f"      net debt with leases / normalised EBIT: {NET_DEBT_LEASES / n_base_pre.
   f" (EBIT_norm {n_base_pre.ebit_norm:,.0f}), {NET_DEBT_LEASES / n_unl_pre.ebit_norm:.1f}x before it"
   f" ({n_unl_pre.ebit_norm:,.0f}); Tier A allows 1x, Tier B 2x (C2)")
 p(f"      bank credit / equity {BANK[J26] / EQUITY[J26]:.2f}x; drawn 31.12.2025 {sum(DRAWN.values()):,} of {LINES_TOTAL:,}"
-  f" of lines; bank B {DRAWN['B'] / sum(DRAWN.values()):.1%} of drawn; lines A and D unused"
-  f" {LINES_TOTAL - sum(DRAWN.values()) - (100_000 - DRAWN['B']) - (40_000 - DRAWN['C']):,}")
+  f" of lines; bank B {DRAWN['B'] / sum(DRAWN.values()):.1%} of drawn; unused on lines A and D"
+  f" {LINES_TOTAL - sum(DRAWN.values()) - (100_000 - DRAWN['B']) - (40_000 - DRAWN['C']):,} (A undrawn; D"
+  f" {DRAWN['D']:,} drawn)")
 p(f"      interest cover TTM (EBIT before funding / funding cost) {EBIT_UNL['TTM'] / FUND['TTM']:.1f}x (C2 needs >= 8x);"
-  f" FY2022 stress year {EBIT_UNL['FY2022'] / FUND['FY2022']:.1f}x; FY2020 not in the documents (C6)")
+  f" FY2022 stress year {EBIT_UNL['FY2022'] / FUND['FY2022']:.1f}x; FY2020 not in the documents (C6), so the"
+  f" screen_spec X4 history gate fails closed")
 spc_since_2025 = sum(v for k, v in SPC_SALES.items() if k >= "2025")
 p(f"      SPC debt consolidated: cannot be computed. The SPCs' bank borrowings and outstanding pools are not disclosed"
   f" (paymeant_fy2025 p.94, p.106-108).")
@@ -427,13 +479,21 @@ maint = cv.maintenance_capex(capex_run, DA["TTM"], netppe_to_rev, REV["TTM"] - R
 p(f"  maintenance capex: H1 2026 run-rate capex {capex_run:,} (TTM {capex_ttm:,}) - growth part {g_capex:,.0f}, floor D&A"
   f" {DA['TTM']:,} -> {maint:,.0f} (first version {maint_v1:,.0f}; B4)")
 ni_norm = n_base.ebit_norm * (1 - T_STATUTORY)            # no finance line below operating profit for this lender
-oe_norm = cv.owner_earnings(ni_norm, DA["TTM"], 0, 0, maint, 0)
-oe_ttm = cv.owner_earnings(NI["TTM"], DA["TTM"], 0, 0, maint, 0)
-oe_opt = cv.owner_earnings(n_opt.ebit_norm * (1 - T_STATUTORY), DA["TTM"], 0, 0, maint, 0)
+# d3 treats leases as debt: the lease liability is deducted in the equity bridge, so its interest leaves earnings. On the
+# lender basis the funding-cost line stays in EBIT_adj because the bank credit is not deducted; the lease interest inside
+# that line is the one item charged twice, so it is added back after tax (verification F5). NI-based tests (Graham's
+# yardstick, the bank-route line) keep it as a cost.
+lease_int_at = LEASE_INTEREST * (1 - T_STATUTORY)
+oe_norm = cv.owner_earnings(ni_norm + lease_int_at, DA["TTM"], 0, 0, maint, 0)
+oe_ttm = cv.owner_earnings(NI["TTM"] + lease_int_at, DA["TTM"], 0, 0, maint, 0)
+oe_opt = cv.owner_earnings(n_opt.ebit_norm * (1 - T_STATUTORY) + lease_int_at, DA["TTM"], 0, 0, maint, 0)
 oe_v1 = cv.owner_earnings(n_v1.ebit_norm * (1 - T_STATUTORY), DA["TTM"], 0, 0, maint_v1, 0)
-p(f"  owner earnings (d1), lender basis: OE_norm = EBIT_norm x (1 - t) + D&A - maintenance = {oe_norm:,.0f};"
-  f" TTM {oe_ttm:,.0f}; optimistic input {oe_opt:,.0f}; first version {oe_v1:,.0f}")
-p("      (SBC stays expensed; the D&A floor charges ROU depreciation, so leases stay an operating cost; dWC_maint = 0.)")
+p(f"  owner earnings (d1), lender basis: OE_norm = (EBIT_norm + lease interest {LEASE_INTEREST}) x (1 - t) + D&A -"
+  f" maintenance = {oe_norm:,.0f}; TTM {oe_ttm:,.0f}; optimistic input {oe_opt:,.0f}; first version {oe_v1:,.0f}")
+p(f"      (SBC stays expensed; maintenance {maint:,.0f} is above the D&A floor of {DA['TTM']:,}, which includes right-of-use"
+  f" depreciation, so the floor does not bind; leases are debt, as in d3: the {LEASES[J26]:,} liability is deducted in"
+  f" the bridge and the {LEASE_INTEREST} of FY2025 lease interest in the funding-cost line leaves earnings; the bank"
+  f" credit is not deducted, so its interest stays; dWC_maint = 0.)")
 
 net_cap = {k: DEV_ADD[k] - DEV_AMORT[k] for k in DEV_AMORT}
 amort_h1_25 = INTANG[D24] + DEV_ADD["H1_2025"] - INTANG[J25]
@@ -489,9 +549,14 @@ xs_cash = cv.excess_cash(CASH[J26], op_costs_lender)
 xs_cash_unl = cv.excess_cash(CASH[J26], REV["TTM"] - EBIT_UNL["TTM"])
 p(f"  excess cash: cash {CASH[J26]:,} vs two months of operating costs {op_costs_lender * 2 / 12:,.0f} -> {xs_cash:,.0f}"
   f" (the cash sits in pledged dedicated accounts, paymeant_fy2025 p.99 note 11b)")
-p(f"  dilution (B10): note-17 residual {RES_N:,.0f} options at an implied strike {RES_K:.2f}; diluted shares at 2.00 /"
-  f" 3.173 / 5.00: {dilutive_shares(2.0):,.0f} / {dilutive_shares(PRICE):,.0f} / {dilutive_shares(5.0):,.0f};"
-  f" note 17 ({NOTE17_OPTIONS:,}) and Reg. 24A (1,136,125) are not reconciled by the company")
+p(f"  dilution (B10): note 17's {NOTE17_OPTIONS:,} options at 31.12.2025 are all identified (1,000,000 at 3.01;"
+  f" 418,960 at 3.97; 510,000 Amitim at 6.05; {LOW_STRIKE_FY2025:,} at 0.01). Note 17 prints an average strike of"
+  f" {NOTE17_STRIKE:.2f}; the instruments average {NOTE17_AVG_ALL:.2f} with the 0.01 options and"
+  f" {NOTE17_AVG_EX_LOW:.2f} without them")
+p(f"      treasury method at 3.11.2026 (the {ISSUED_2026:,} shares issued in 2026 netted against the 0.01 options;"
+  f" 175,000 RSUs; 512,000 options of 20.8.2026): diluted shares at 2.00 / 3.173 / 5.00: {dilutive_shares(2.0):,.0f} /"
+  f" {dilutive_shares(PRICE):,.0f} / {dilutive_shares(5.0):,.0f}; note 17 ({NOTE17_OPTIONS:,}) and Reg. 24A"
+  f" (1,136,125) are not reconciled by the company")
 sh = {"FY2021": SHARES_FY2021, "FY2022": SHARES_FY2022, "FY2023": SHARES_FY2023, "FY2024": SHARES_FY2024,
       "FY2025": SHARES_FY2025, "3.11.2026": SHARES}
 keys = list(sh)
@@ -531,8 +596,8 @@ p(f"  d6 NCAV = current assets {CURRENT_ASSETS_J26:,} - total liabilities {TL_J2
 p(f"  d6 Dempster = cash {CASH[J26]:,} + 85% x loans and receivables {recv_all:,} - liabilities {TL_J26:,} = {dempster:,.0f}"
   f" -> {money(ps(dempster))}; net-net test (MCap <= 2/3 NCAV and <= Dempster): {netnet['passes']}")
 tbv_cost = TE_J26 - FV_UPLIFT_J26 * (1 - T_STATUTORY)
-p(f"  d7 tangible book {TE_J26:,.0f} -> {money(ps(TE_J26))}; at amortised cost (step-up {FV_UPLIFT_J26:,} removed after tax)"
-  f" {tbv_cost:,.0f} -> {money(ps(tbv_cost))}")
+p(f"  d7 tangible book {TE_J26:,.0f} -> {money(ps(TE_J26))}; at amortised cost (step-up {FV_UPLIFT_J26:,} pre-tax,"
+  f" {FV_UPLIFT_J26 * (1 - T_STATUTORY):,.0f} after tax, removed) {tbv_cost:,.0f} -> {money(ps(tbv_cost))}")
 p("  d7 private-owner value: none. No disclosed control transaction; minority placements and blocks are not owner value.")
 ev_l = cv.enterprise_value(MCAP, 0, CASH[J26], LEASES[J26], NCI, PREFERRED)
 pm_l = cv.pretax_multiple(ev_l, n_base.ebit_norm)
@@ -578,7 +643,7 @@ p("== 4. Value range (per diluted share) and stresses")
 worst_high = ps(dempster)
 performing_cost = LOANS_FV_AT_COST_J26 + LOANS_AC[J26] - ARREARS[J26]["default"]
 wind_down = WIND_DOWN_YEARS * WIND_DOWN_OPEX_SHARE * OPEX["TTM"]
-runoff_low = cv.dempster_value(CASH[J26], performing_cost, 0, 0, 0, TL_J26 + wind_down, PREFERRED,
+runoff_low = cv.dempster_value(CASH[J26], performing_cost, 0, 0, 0, TL_J26 - DTL_NET_J26 + wind_down, PREFERRED,
                                other_assets_at_value=RECOVERY_DEFAULT * ARREARS[J26]["default"]
                                + RECOVERY_RECV * RECV[J26])
 worst_low = ps(runoff_low)
@@ -594,8 +659,10 @@ optimistic = ps(cv.equity_bridge(dcf_o.operations_value, xs_cash, 0, 0, LEASES[J
 p(f"  worst case  {money(worst_low)} to {money(worst_high)}  run-off of the 30.6.2026 book (funding withdrawn, origination")
 p(f"              stops). Low end: book at amortised cost {LOANS_FV_AT_COST_J26:,}, performing loans at 85%, defaults"
   f" {ARREARS[J26]['default']:,} at {RECOVERY_DEFAULT:.0%},")
-p(f"              receivables {RECV[J26]:,} at {RECOVERY_RECV:.0%}, wind-down cost {wind_down:,.0f}. High end: Dempster at"
-  f" 85% on every loan. Both exclude the SPC")
+p(f"              receivables {RECV[J26]:,} at {RECOVERY_RECV:.0%}, wind-down cost {wind_down:,.0f}; liabilities exclude the"
+  f" {DTL_NET_J26:,} net deferred tax liability,")
+p("              which sits on the fair-value step-up and the intangible asset that the run-off removes (fy2025 p.105).")
+p("              High end: Dempster at 85% on every loan, all liabilities deducted (d6). Both exclude the SPC")
 p("              indemnities and the 360 guarantee exposure (not disclosed), so neither is held with confidence (A2).")
 p(f"  conservative {money(conservative)}  no moat: ROE converges on r, so equity is worth tangible book at amortised cost"
   f" {tbv_cost:,.0f}")
@@ -611,7 +678,7 @@ first_version_base = ps(fv_equity)
 p(f"  superseded first-version base (note 19e added back, W + TTM, g 5%): {money(first_version_base)} per diluted share"
   f" ({fv_equity * 1000 / SHARES:.2f} per basic share, as first published)")
 t_ttm = TAX["TTM"] / PBT["TTM"]
-oe_t = cv.owner_earnings(n_base.ebit_norm * (1 - t_ttm), DA["TTM"], 0, 0, maint, 0)
+oe_t = cv.owner_earnings((n_base.ebit_norm + LEASE_INTEREST) * (1 - t_ttm), DA["TTM"], 0, 0, maint, 0)
 base_t = ps(cv.equity_bridge(cv.dcf_operations(oe_t, R, G_BASE, oe_t / TE_J26).operations_value, xs_cash, 0, 0,
                              LEASES[J26], 0, NCI, PREFERRED))
 p(f"  tax sensitivity (B11 rejected): base at the TTM effective rate {t_ttm:.1%} {money(base_t)} ({base_t / base - 1:+.1%})")
@@ -625,13 +692,22 @@ p(f"      the price equals the weighted value only if the optimistic case carrie
 p("      cases in their stated proportions): the market is paying for today's scale persisting and growing")
 
 p("  covenants, note 11a(6) (B6), at 30.6.2026:")
-tbs = TOTAL_ASSETS[J26] - INTANG[J26]
+tbs = TOTAL_ASSETS[J26] - INTANG[J26]                      # tangible balance sheet
 tbs_co = tbs - (TE_J26 - TE_COMPANY_J26)
+bs = TOTAL_ASSETS[J26]                                     # total balance sheet: the lower ratio, so it binds
+bs_co = bs - (TE_J26 - TE_COMPANY_J26)
 cov_loss_bs = (TE_J26 - COV_TE_RATIO * tbs) / (1 - COV_TE_RATIO)
 cov_loss_co = (TE_COMPANY_J26 - COV_TE_RATIO * tbs_co) / (1 - COV_TE_RATIO)
-p(f"      (a) TE >= 20% of the tangible balance sheet: {TE_J26 / tbs:.1%} on the balance-sheet definition, {TE_COMPANY_J26 / tbs_co:.1%}"
-  f" on the company's TE of {TE_COMPANY_J26:,}; breaks after a loss of {cov_loss_bs:,.0f} / {cov_loss_co:,.0f}")
-p(f"      (b) TE >= 25M: breaks after a loss of {TE_J26 - COV_TE_MIN:,.0f} / {TE_COMPANY_J26 - COV_TE_MIN:,.0f}")
+cov_loss_bs_tot = (TE_J26 - COV_TE_RATIO * bs) / (1 - COV_TE_RATIO)
+cov_loss_co_tot = (TE_COMPANY_J26 - COV_TE_RATIO * bs_co) / (1 - COV_TE_RATIO)
+p(f"      (a) TE >= 20% of the balance sheet (or the tangible balance sheet): on balance-sheet TE {TE_J26 / bs:.1%} of the"
+  f" balance sheet and {TE_J26 / tbs:.1%} of the tangible one; on the company's TE of {TE_COMPANY_J26:,}"
+  f" {TE_COMPANY_J26 / bs_co:.1%} / {TE_COMPANY_J26 / tbs_co:.1%} (the company reports 34% / 33%-34%, h1_2026 p.18)")
+p(f"          breaks after a loss of {cov_loss_bs_tot:,.0f} / {cov_loss_bs:,.0f} on balance-sheet TE and"
+  f" {cov_loss_co_tot:,.0f} / {cov_loss_co:,.0f} on the company's TE: the total balance sheet binds")
+p(f"      (b) equity >= 25M in note 11a(6)(b); tangible equity in the directors' report (fy2025 p.68): breaks after a loss of"
+  f" {TE_J26 - COV_TE_MIN:,.0f} / {TE_COMPANY_J26 - COV_TE_MIN:,.0f} on tangible equity (the stricter reading),"
+  f" {EQUITY[J26] - COV_TE_MIN:,.0f} on equity")
 p(f"      (c) senior debt <= 80% of loans: {BANK[J26] / LOAN_BOOK_J26:.1%}; with debt unchanged the book can shrink to"
   f" {BANK[J26] / COV_SENIOR_DEBT:,.0f} ({BANK[J26] / COV_SENIOR_DEBT / LOAN_BOOK_J26 - 1:+.1%})")
 need = PBT["TTM"] - COV_NI_MIN / (1 - T_STATUTORY)
@@ -685,9 +761,10 @@ for lab, held_m in (("held-book duration = loan duration 14 months (fy2025 p.42)
       f" {sale_comp:,.0f}/yr for {REPRICE_LAG_YEARS} yr = year-1 pre-tax hit {y1:,.0f} ({y1 / PBT['TTM']:.0%} of TTM);")
     p(f"          profit covenant: TTM NI after the hit {(PBT['TTM'] - y1) * (1 - T_STATUTORY):,.0f}; on EBIT_norm"
       f" {(n_base.ebit_norm - y1) * (1 - T_STATUTORY):,.0f} (>= {COV_NI_MIN:,} needed)")
-oe_never = cv.owner_earnings((n_base.ebit_norm - wh - sale_comp) * (1 - T_STATUTORY), DA["TTM"], 0, 0, maint, 0)
+oe_never = cv.owner_earnings((n_base.ebit_norm - wh - sale_comp + LEASE_INTEREST) * (1 - T_STATUTORY), DA["TTM"], 0, 0,
+                             maint, 0)
 epv_never = ps(cv.equity_bridge(cv.epv_operations(oe_never, R), xs_cash, 0, 0, LEASES[J26], 0, NCI, PREFERRED))
-oe_rep = cv.owner_earnings((n_base.ebit_norm - wh) * (1 - T_STATUTORY), DA["TTM"], 0, 0, maint, 0)
+oe_rep = cv.owner_earnings((n_base.ebit_norm - wh + LEASE_INTEREST) * (1 - T_STATUTORY), DA["TTM"], 0, 0, maint, 0)
 epv_rep = ps(cv.equity_bridge(cv.epv_operations(oe_rep, R), xs_cash, 0, 0, LEASES[J26], 0, NCI, PREFERRED))
 p(f"      lender EPV on the base normalisation: repriced after the lag (warehouse cost kept) {money(epv_rep)}; never repriced"
   f" {money(epv_never)}; the held book's discount-rate sensitivity is not disclosed: F4 open")
@@ -758,6 +835,17 @@ p(f"  floor {LIQ_FLOOR:,} (screen_spec X5, hard exclusion): passes {med >= LIQ_F
   f" the floor; {oct_share:.1%} of the proceeds in the {len(oct_idx)} sessions from 20.10")
 p(f"  October selling: {oct_vol:,} shares traded 20.10-3.11 = {oct_vol / SHARES:.2%} of the company, all on-exchange; no"
   f" holder above 5% reported a sale (seller unidentified, scuttlebutt.md §6)")
+# price-reliability block, required below 100,000 of median turnover (framework h6; small_investor_and_israel.md Part 3
+# rule 10; checklist F6). The trade count and range of the 3.11.2026 session are Bizportal's transactions page
+# [BZ-TRANS] (scuttlebutt.md §7); the rest is the series above (verification C-4).
+PRICE_SESSION_TRADES, PRICE_SESSION_RANGE_AG = 46, (307.5, 319.0)
+last_d, last_vol, last_close, last_ils = BZ_SESSIONS[-1]
+thin = [t for t in turnover if t < 1_000]
+p(f"  price-reliability block (median below {LIQ_RELIABILITY:,}): the {PRICE:.3f} close is a traded price, from a session"
+  f" of {last_ils:,} ILS and {last_vol:,} shares in {PRICE_SESSION_TRADES} trades (range {PRICE_SESSION_RANGE_AG[0]}-"
+  f"{PRICE_SESSION_RANGE_AG[1]:.0f} ag), {last_ils / med:.1f}x the 60-session median;")
+p(f"      but {len(thin)} of the 60 sessions traded under 1,000 ILS (the lowest {min(turnover):,}), and the October selling"
+  f" sets the 60-session statistics. It is a dated mark, not a level at which a position could be built.")
 outcomes = [(SCENARIO_P[k], v) for k, v in range_vals.items()]
 size = cv.position_size(PRICE, worst_low, outcomes, "C", turnover_p25_daily=p25)
 size_b = cv.position_size(PRICE, worst_low, outcomes, "B", turnover_p25_daily=p25)
@@ -774,9 +862,17 @@ g_impl_v1 = cv.implied_growth(ev_impl_l, oe_v1, R, oe_v1 / TE_J26)
 _, oe_u_v1, epv_e_v1 = ev_methods["first-version normalisation (stable)"]
 g_impl_ev = cv.implied_growth(MCAP + BANK[J26] + LEASES[J26] - xs_cash_unl, oe_u_v1, R, roiic_u1)
 ni_ttm_prior = NI["FY2024"] + NI["H1_2025"] - (NI_Q1_2024 + NI_Q2_2024)
-p(f"  d8 implied growth at {PRICE:.3f} (ten years, lender basis): on OE_norm {g_impl:+.1%} with reinvestment charged at"
-  f" ROIIC {roiic:.1%}, {g_impl_free:+.1%} if growth were free;")
-p(f"      on today's scale (optimistic OE {oe_opt:,.0f}) {g_impl_opt:+.1%}; first version {g_impl_v1:+.1%}; EV basis, first-version"
+# the most the business can fund itself: growth at ROIIC with all of OE reinvested (above ROIIC the reinvestment would
+# exceed OE and need outside capital). lib implied_growth caps the charge at 100% of OE, so its charged figure leaves
+# the growth above ROIIC free (verification F2; library issue L1).
+ops_full_reinv = cv.dcf_operations(oe_norm, R, roiic, roiic, cap_growth=False).operations_value
+p(f"  d8 implied growth at {PRICE:.3f} (ten years, lender basis): on today's scale (optimistic OE {oe_opt:,.0f})"
+  f" {g_impl_opt:+.1%}; on OE_norm {g_impl_free:+.1%} if growth were free;")
+p(f"      with the reinvestment charged at ROIIC {roiic:.1%}, no growth the business can fund from its own earnings"
+  f" reaches the price: at g = ROIIC, with all of OE reinvested, operations are worth {ops_full_reinv:,.0f} against"
+  f" the {ev_impl_l:,.0f} the price implies")
+p(f"      (lib d8 prints {g_impl:+.1%} because it caps the reinvestment at 100% of OE, which leaves growth above ROIIC"
+  f" partly free: library issue, verification.md); first version {g_impl_v1:+.1%}; EV basis, first-version"
   f" normalisation {g_impl_ev:+.1%}")
 p(f"      the record: TTM NI {NI['TTM'] / ni_ttm_prior - 1:+.1%} y/y; H1 2026 NI {NI['H1_2026'] / NI['H1_2025'] - 1:+.1%};"
   f" H1 2026 pre-tax before net capitalisation {h1_und:+.1%}")
@@ -794,10 +890,11 @@ p("       C fails (not a net-net, no private-owner value, net debt: H2, H4, H5);
 p(f"    Q3 price well below value? No: price / base {PRICE / base:.2f}, price / EPV {PRICE / ps(epv_l):.2f}, price / tangible"
   f" book {PRICE / ps(TE_J26):.2f}; probability-weighted {money(pw)}.")
 p(f"    Q4 what the price assumes: today's earnings scale persisting ({g_impl_opt:+.1%} a year on it); on the charter's")
-p(f"       normalisation {g_impl_free:+.1%} to {g_impl:+.1%} a year. The record cannot show that is too pessimistic, and the")
-p("       remaining gap to peers is explained by known facts the filings do not refute: on-call funding concentrated in")
-p("       one bank, defaults up x2.97, the BNPL circular from 12.1.2027, informed insiders selling at 6.90, illiquidity.")
-p("       Priced (the Petco rule).")
+p(f"       normalisation {g_impl_free:+.1%} a year even if growth were free, and more growth than the business can fund")
+p(f"       itself once the reinvestment is charged ({ops_full_reinv:,.0f} at most against {ev_impl_l:,.0f}). The record")
+p("       cannot show that is too pessimistic, and the remaining gap to peers is explained by known facts the filings do")
+p("       not refute: on-call funding concentrated in one bank, defaults up x2.97, the BNPL circular from 12.1.2027,")
+p("       informed insiders selling at 6.90, illiquidity. Priced (the Petco rule).")
 p("  CIO VERDICT: NO_THESIS. Price is not the only failure (so not WATCHLIST); the deciding failures rest on filed,")
 p("  verified facts (so not TOO_HARD). Price alone never reopens the file (re-examination conditions: gate.md).")
 p("")

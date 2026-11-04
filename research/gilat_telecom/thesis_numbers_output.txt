@@ -1,0 +1,25 @@
+1. ROE = NI to owners / average equity (USD k; TTM ILS k)
+   FY2021: NI -5,423 / avg(17,143, 13,785) = -35.1%
+   FY2022: NI -4,064 / avg(13,785, 9,835) = -34.4%
+   FY2023: NI 715 / avg(9,835, 11,438) = 6.7%
+   FY2024: NI 1,786 / avg(11,438, 15,843) = 13.1%
+   FY2025: NI 6,350 / avg(15,843, 24,322) = 31.6%
+   TTM: NI 32,985 / avg(57,272, 132,371) = 34.8%
+2. Segment revenue shares
+   FY2021: revenue 51,816; government/defence 13,385 = 25.8%; global (Africa) 38,431 = 74.2%; Israel ISP 0 = 0.0%
+   FY2022: revenue 42,997; government/defence 14,771 = 34.4%; global (Africa) 27,346 = 63.6%; Israel ISP 881 = 2.0%
+   FY2023: revenue 55,154; government/defence 22,213 = 40.3%; global (Africa) 25,747 = 46.7%; Israel ISP 7,194 = 13.0%
+   FY2024: revenue 69,592; government/defence 36,949 = 53.1%; global (Africa) 19,948 = 28.7%; Israel ISP 12,695 = 18.2%
+   FY2025: revenue 75,793; government/defence 48,065 = 63.4%; global (Africa) 19,655 = 25.9%; Israel ISP 8,073 = 10.7%
+   government/defence revenue FY2025 / FY2021 = 3.59x; global (Africa) FY2025 / FY2021 = 0.51x (-49%)
+   FY2021: government/defence segment margin 26.4%
+   FY2022: government/defence segment margin 28.4%
+   FY2023: government/defence segment margin 26.4%
+   FY2024: government/defence segment margin 28.1%
+   FY2025: government/defence segment margin 34.6%
+3. FY2025 named customers: A (global business) 12,400 = 16.4%; C (government & defence) 19,300 = 25.5%; together 31,700 = 41.8%
+4. ISP private subscribers 31.12.2024 6,566 -> 30.6.2026 25,045 = 3.8x; ARPU FY2024 87.83 -> Q2 2026 80.19
+5. CEO employment cost (related-parties note, USD k) and NI to owners
+   2023: CEO 515 = 72% of NI 715; key management 534
+   2024: CEO 543 = 30% of NI 1,786; key management 562
+   2025: CEO 775 = 12% of NI 6,350; key management 797

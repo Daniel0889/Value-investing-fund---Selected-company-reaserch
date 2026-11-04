@@ -1084,7 +1084,7 @@
    "bank_credit_short_term": {
     "v": 101245,
     "ref": "paymeant_fy2023 p.81",
-    "note": "on-call revolving bank lines (prime-0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
+    "note": "on-call revolving bank lines (prime+0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
    },
    "loans_borrowings_long_term": {
     "v": 0,
@@ -1829,7 +1829,7 @@
    "bank_credit_short_term": {
     "v": 114892,
     "ref": "paymeant_fy2024 p.80 (restated presentation); original paymeant_fy2023 p.81",
-    "note": "on-call revolving bank lines (prime-0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
+    "note": "on-call revolving bank lines (prime+0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
    },
    "loans_borrowings_long_term": {
     "v": 0,
@@ -2582,7 +2582,7 @@
    "bank_credit_short_term": {
     "v": 82410,
     "ref": "paymeant_fy2024 p.80; paymeant_fy2025 p.82",
-    "note": "on-call revolving bank lines (prime-0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
+    "note": "on-call revolving bank lines (prime+0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
    },
    "loans_borrowings_long_term": {
     "v": 0,
@@ -3325,7 +3325,7 @@
    "bank_credit_short_term": {
     "v": 104241,
     "ref": "paymeant_fy2025 p.82; paymeant_h1_2026 p.23; total liabilities paymeant_fy2025 p.20",
-    "note": "on-call revolving bank lines (prime-0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
+    "note": "on-call revolving bank lines (prime+0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
    },
    "loans_borrowings_long_term": {
     "v": 0,
@@ -3967,7 +3967,7 @@
    "bank_credit_short_term": {
     "v": 63350,
     "ref": "paymeant_h1_2026 p.23",
-    "note": "on-call revolving bank lines (prime-0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
+    "note": "on-call revolving bank lines (prime+0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
    },
    "loans_borrowings_long_term": {
     "v": 0,
@@ -4511,7 +4511,7 @@
    "bank_credit_short_term": {
     "v": 115225,
     "ref": "paymeant_h1_2026 p.23",
-    "note": "on-call revolving bank lines (prime-0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
+    "note": "on-call revolving bank lines (prime+0.5% to prime+0.8%), secured on the loans they fund; covenants apply"
    },
    "loans_borrowings_long_term": {
     "v": 0,

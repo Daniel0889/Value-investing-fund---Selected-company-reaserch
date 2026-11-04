@@ -1,12 +1,14 @@
 # Paymeant Financial Technologies (TASE 1180876) — inputs and sources, 3.11.2026
 
 **Status: statement figures VERIFIED against the filings; market data confirmed by two or more sites; the items
-marked UNVERIFIED are not verified.**
+marked UNVERIFIED are not verified.** The final verification (`verification.md`) re-read the disputed pages as images
+and corrected these input rows: y10, covenants, options, lease interest and the deferred tax liability. No price, rate
+or date was updated.
 
 - **Filings.** Every P&L, balance-sheet, cash-flow and note figure comes from the company's four filings, supplied by
   the investor: `paymeant_fy2023`, `paymeant_fy2024`, `paymeant_fy2025` (annual reports) and `paymeant_h1_2026` (Q2 2026
   report). Page numbers are PDF page indexes.
-  - Two independent extractions were reconciled (`work/paymeant/reconcile.md`, `financials.json`).
+  - Two independent extractions were reconciled (`research/paymeant/work/reconcile.md`, `financials.json`).
   - The figures used were read on the PDF page images, and the red team and the CIO gate re-read the disputed ones.
   - The reports use the small-corporation and TA Tech-Elite reliefs, so disclosure is thinner than usual. There is no
     ICFR report, and the half-year report is a short "main developments" report.
@@ -50,11 +52,12 @@ Units: ILS thousands unless stated; per-share figures in ILS (1 ILS = 100 agorot
 | Shares registered for trading | 39,330,034 (3.11.2026) | Bizportal general view ("הון רשום למסחר"); StockAnalysis "Shares Out 39.33M"; Mega cap ÷ 3.18 |
 | Shares at year-end | FY2021 30,903,464 (derived); FY2022 36,890,750; FY2023 37,021,525; FY2024 37,278,200; FY2025 39,245,034 | paymeant_fy2023 p.107-109; paymeant_fy2025 p.108 (note 17a) |
 | Market cap at the price | 124,794 = USD 39.5M | out §0 |
-| Israel 10-year | 4.29% YTM on ממשל שקלית 0537 (3.11.2026 17:14); generic 4.162% | TheMarker bond page 1166180; Trading Economics (17:42) |
-| Hurdle r | 10% = max(10%, 4.29% + 3) | out §0 |
+| Israel 10-year (y10) | 4.162%, the generic 10-year on 3.11.2026 (the series the Gilat Telecom study of the same date uses). Cross-check: 4.29% YTM on ממשל שקלית 0537, a single bond with 10.58 years to run (3.11.2026 17:14) | Trading Economics (17:42); TheMarker bond page 1166180 (market.md §5). Neither is a primary source; the Bank of Israel or Ministry of Finance benchmark would be |
+| Hurdle r | 10% = max(10%, 4.16% + 3); 10% on the cross-check too, and still 10% at y10 + 2 points | out §0 |
 | USD/ILS | 3.157 (Bank of Israel representative rate, 3.11.2026) | brief |
 | Bank of Israel rate | 3.25%, held 21.10.2026; next decision 23.11.2026 | Bizportal 21.10.2026 (market.md §5) |
 | Daily turnover, 60 sessions 4.8-3.11.2026 | median 19,125 ILS; 25th percentile 2,590 ILS; 3.11.2026 session 352,392 ILS (111,691 shares) | Bizportal history call, read 3.11.2026 21:15 (scuttlebutt.md [BZ-RT]); Bizportal general view |
+| Price-reliability block (out §6) | the 3.11.2026 close came from 46 trades in a range of 307.5-319 agorot | Bizportal transactions page, read 18:01 (scuttlebutt.md [BZ-TRANS]) |
 | October trading | 3,485,393 shares, 20.10-3.11.2026 = 8.86% of the company, all on-exchange | Bizportal / StockAnalysis daily data (out §6; market.md §2) |
 | Liquidity floor / price-reliability line | 50,000 / 100,000 ILS median daily turnover | charter; screen_spec X5 |
 | Peer medians (Direct Finance, Menif, Michlol, Jacob, Opal; TTM) | P/E 7.67; P/B 1.37; ROE 17.5% (Tier 2) | StockAnalysis statistics pages, 3.11.2026 21:29 (scuttlebutt.md §1.2) |
@@ -88,6 +91,7 @@ Units: ILS thousands unless stated; per-share figures in ILS (1 ILS = 100 agorot
 | Change in bank credit inside OCF | FY2025 21,831; H1 2025 −19,060; H1 2026 10,985 | pages above |
 | Capex: PP&E; development (cash); capitalised SBP; ROU | 116 / 128 / 559 and 266 / 28; 2,789 / 2,211 / 1,167 and 642 / 1,902; 104 / 145 / 112 and 55 / 92; 0 / 0 / 25 and 25 / 0 | pages above |
 | Lease principal | 520 / 575 / 1,017; H1 466 / 368 | pages above |
+| Lease interest | 49 (FY2024) / 191 (FY2025), inside the funding-cost line (finance expense 4,711, note 20); 191 leaves the lender-basis earnings, because the lease liability is deducted in the bridge | paymeant_fy2025 p.97 (note 9a), p.114 |
 | Dividends paid | FY2025 9,000; H1 2025 4,000; H1 2026 4,000 (FY2023 6,000; FY2024 7,000) | pages above; financials.json |
 | Tax paid | FY2025 7,124; H1 2025 none as presented; H1 2026 3,758 | paymeant_h1_2026 p.28 |
 | Capitalised development (additions; amortisation) | 2,377 / 2,892 / 2,356 / 1,279 (FY2022-FY2025); 127 / 226 / 1,373 / 1,892 | paymeant_fy2023 p.98; paymeant_fy2025 p.98 |
@@ -104,6 +108,7 @@ Units: ILS thousands unless stated; per-share figures in ILS (1 ILS = 100 agorot
 | Payables for credit transactions | 19,273 | p.23 |
 | Lease liabilities | 2,594 (781 current + 1,813 non-current) | p.23 |
 | Intangibles | 8,269 | p.23 |
+| Deferred tax liability, net | 1,919 (non-current). At 31.12.2025 it was the liability on the intangible asset (1,681) and on the loans' fair-value step-up (1,934) less deferred tax assets (2,385); released in the worst-case low end, which removes both | p.23; paymeant_fy2025 p.105 (note 15d, image) |
 | Equity to owners | 86,912 (no NCI, no preferred) | p.23 |
 | Total assets; current assets | 231,943; 215,334 | p.23 |
 | Equity, earlier dates | 22,163 (31.12.2021, paymeant_fy2023 p.83); 56,186; 61,569; 68,081; 82,198; 76,556 (30.6.2025) | pages above |
@@ -115,7 +120,8 @@ Units: ILS thousands unless stated; per-share figures in ILS (1 ILS = 100 agorot
 |---|---|---|
 | Bank lines (31.12.2025) | 340,000 at four banks, on-call, prime +0.5% to +0.8%; drawn A 0, B 92,000, C 1,000, D 11,000 (bank B 88.5% of 104,000 drawn) | paymeant_fy2025 p.48-49 (image) |
 | "The financing bodies may stop the engagement unilaterally" | — | paymeant_fy2025 p.55 |
-| Covenants (note 11a(6)) | TE ≥ 20% of the tangible balance sheet; TE ≥ 25M; senior debt ≤ 80% of loans; annual net profit ≥ 1M; change-of-control restrictions; grounds for immediate repayment | paymeant_fy2025 p.99 (image); paymeant_h1_2026 p.18, p.33 |
+| Covenants (note 11a(6)) | (a) tangible equity ≥ 20% of the total balance sheet (or the tangible balance sheet); (b) equity ≥ 25M; (c) senior debt ≤ 80% of loans; (d) annual net profit ≥ 1M; change-of-control restrictions; grounds for immediate repayment | paymeant_fy2025 p.99 (image); paymeant_h1_2026 p.33 (note 5e) |
+| Directors' report covenant tables | (a) 34% of the balance sheet, 33%-34% of the tangible balance sheet (30.6.2026); 35% and 32%-40% (31.12.2025). (b) is written as tangible equity there, the stricter reading, which the record tests | paymeant_h1_2026 p.18; paymeant_fy2025 p.68 (images) |
 | Company's covenant "tangible equity" | 82M (31.12.2025); 76,000 (30.6.2026) | paymeant_fy2025 p.68; paymeant_h1_2026 p.18 |
 | Rate sensitivity | 1,152 pre-tax per point on bank credit | paymeant_h1_2026 p.9 |
 | CPI sensitivity | 1,981 fair value per CPI point | paymeant_h1_2026 p.8 |
@@ -126,8 +132,8 @@ Units: ILS thousands unless stated; per-share figures in ILS (1 ILS = 100 agorot
 | Merchants may cancel "at any time and for any reason" | — | paymeant_fy2025 p.41 |
 | BNPL circular 2026-10-4 | published 12.7.2026, in force 12.1.2027; credit cancelled when goods or services are not supplied | paymeant_h1_2026 p.7-8; Gornitzky note 29.7.2026 |
 | Credit Data Law amendment 6 | published 26.7.2026, in force six months later; negative data kept 1 year, not 3 | paymeant_h1_2026 p.7 |
-| Options and RSUs (treasury method) | 1,000,000 at 3.01 (founders, 15.1.2025); 519,000 at 3.97 less 100,040 forfeited; Amitim 255,000 at 6.05 to 12.1.2027; at 0.01: 313,000 + 75,000 granted less 257,475 + 46,835 exercised; 175,000 RSUs; 512,000 at 5.74 (20.8.2026); note-17 residual 177,225 at an implied 5.89 | paymeant_fy2025 p.108-112; paymeant_h1_2026 p.33; out §2 (the netting is done in valuation.py) |
-| Note 17 against Reg. 24A option counts | 2,189,875 at 4.02 against 1,136,125 (not reconciled by the company) | paymeant_fy2025 p.112, p.123 |
+| Options and RSUs (treasury method) | 1,000,000 at 3.01 (founders, 15.1.2025); 519,000 at 3.97 less 100,040 forfeited; Amitim 255,000 at 6.05 to 12.1.2027; at 0.01: 260,915 at 31.12.2025 by note 17's roll-forward (2,737,750 − 1,920,000 warrants − 510,000 Amitim − 46,835 exercised in 2025), less the 85,000 shares issued in 2026; 175,000 RSUs; 512,000 at 5.74 (20.8.2026). The 31.7.2023 and 25.2.2024 grants vest nothing before 1.8.2025 and 1.4.2026, so the 2024 exercises came from earlier grants | paymeant_fy2025 p.108-112 (p.109-112 images); paymeant_h1_2026 p.25, p.33; out §2 (the netting is done in valuation.py) |
+| Note 17 against Reg. 24A option counts | 2,189,875 at 4.02 against 1,136,125 (not reconciled by the company). The 2,189,875 are all identified; they average 3.54, and 4.02 without the 0.01 options | paymeant_fy2025 p.112, p.123; out §2 |
 | 2025 exercises | 1,966,835 shares at a weighted 2.02 | paymeant_fy2025 p.112 |
 | Founders' 2022 exercise | 985,000 shares for 10k in total | paymeant_fy2023 p.107 |
 | Founders' holdings | Gilor 6,907,886 + Yochanan 4,709,381 = 11,617,267 (29.54%); voting agreement while above 25% | Globes and Bizportal registers 3.11.2026 (scuttlebutt.md §5); paymeant_fy2025 p.123 |

@@ -2,7 +2,9 @@
 
 **Status: statement figures VERIFIED against the filings on page images; market data confirmed on two or more
 sites; the Bezeq IRU balance and schedule, the one-off amounts, the October 2026 buyback, Series D par at 3.11.2026
-and the other items marked UNVERIFIED are not verified.**
+and the other items marked UNVERIFIED are not verified.** Revised at the final edit after verification (record as of
+3.11.2026; `verification.md`): FY2021 depreciation as filed, the acquired-amortisation and IRU rows, customer labels,
+the licence threshold and several page citations. No price, rate or date changed.
 
 - **Filings.** Every P&L, balance-sheet, cash-flow and note figure comes from the company's own filings. Page numbers
   are PDF page indexes of each file (p.1 = first PDF page).
@@ -95,8 +97,8 @@ figures in ILS (1 ILS = 100 agorot). The USD window is converted at one dated ra
 ### Window FY2020-FY2025 (USD thousands, audited)
 
 FY2020 from gilat_fy2022 p.119, p.123-124 (cross-checked with gilat_fy2021 p.114-116, p.145-146); FY2021-FY2023
-gilat_fy2023 p.116-118, p.122-123; FY2024 gilat_fy2024 p.118-120, p.124-125; FY2025 gilat_fy2025 p.125-127,
-p.131-132.
+gilat_fy2023 p.116-118, p.122-123 (FY2021 PP&E depreciation from gilat_fy2021 p.145); FY2024 gilat_fy2024 p.118-120,
+p.124-125; FY2025 gilat_fy2025 p.125-127, p.131-132.
 
 | Input | FY2020 | FY2021 | FY2022 | FY2023 | FY2024 | FY2025 |
 |---|---|---|---|---|---|---|
@@ -107,7 +109,7 @@ p.131-132.
 | Operating cash flow | 18,264 | 14,028 | 10,099 | 8,718 | 10,587 | 20,533 |
 | Share-based pay | −67 | 63 | 123 | 53 | 51 | 88 |
 | Capex: PP&E / intangibles | 3,050 / 390 | 1,810 / 271 | 1,402 / 62 | 3,082 / 196 | 2,529 / 118 | 1,362 / 82 |
-| Depreciation of PP&E / licence amortisation | 2,690 / 115 | 3,729 / 141 | 2,640 / 151 | 1,776 / 135 | 1,905 / 136 | 2,130 / 177 |
+| Depreciation of PP&E / licence amortisation | 2,690 / 115 | 3,353 / 141 (filed, gilat_fy2021 p.145; the gate used a derived 3,729) | 2,640 / 151 | 1,776 / 135 | 1,905 / 136 | 2,130 / 177 |
 | Lease principal / lease interest paid | 13,621 / 1,974 | 13,387 / 1,396 | 7,986 / 724 | 4,297 / 408 | 6,717 / 1,698 | 9,521 / 1,788 |
 | Other interest paid (bonds, loans) | 898 | 1,075 | 910 | 733 | 470 | 858 |
 | Net PP&E / right-of-use assets | 6,074 / 25,588 | 4,529 / 14,937 | 3,292 / 9,168 | 4,599 / 7,541 | 5,223 / 23,856 | 4,455 / 16,769 |
@@ -119,7 +121,7 @@ Other window inputs:
 | Input | Value | Source |
 |---|---|---|
 | FY2019 revenue (used only for the sign of the FY2020 revenue change) | 56,441 | gilat_fy2021 p.116 |
-| Customer-relations amortisation (Amort_acq) | 809 a year, 2020-2025; FY2020 also 949 of contract-backlog amortisation, left in EBIT | gilat_fy2021 p.146; gilat_fy2025 p.150 |
+| Acquired-intangible amortisation (Amort_acq) | customer relations 809 a year (814 in FY2023); FY2020 also 949 of amortisation of the acquired contract backlog (cost 5,698, fully amortised in 2020). EBIT_adj keeps it as a cost; d3 adds back the W mean, USD 968k a year (3,056 ILS k); the TTM's d1 add-back is 809 (2,554) | gilat_fy2021 p.146; gilat_fy2023 p.141; gilat_fy2025 p.150 |
 | FY2021 doubtful debts (not added back) | 3,191 | gilat_fy2023 p.158 |
 | 2025 quarters: revenue / gross profit | 15,994 / 4,521; 18,585 / 5,494; 20,075 / 5,580; 21,139 / 7,455 | gilat_fy2025 p.92 |
 | Gross profit FY2020-FY2024 (for "what the base needs") | 15,141; 12,444; 10,495; 12,016; 16,120 | gilat_fy2022 p.119; gilat_fy2023 p.118; gilat_fy2025 p.92 |
@@ -235,12 +237,12 @@ Other window inputs:
 | Input | Value | Source |
 |---|---|---|
 | Segments 2025 (USD k): government/defence; global (Africa); Israeli ISP | revenue 48,065; 19,655; 8,073; result 16,620; 4,106; 524 | gilat_fy2025 p.181 |
-| Named customers 2025 (FS note) | government customer 19,300 (25.5%); Vodacom DRC 12,400 (16.4%) | gilat_fy2025 p.182; directors' report p.32 (19,278) and p.55 (12,392) |
+| Material customers 2025 (FS note, which names neither) | a government & defence segment customer 19,300 (25.5%), the "Customer A" of the directors' report, "an Israeli customer that buys mobile satellite communication solutions" (p.32: 19,278); a global-business customer 12,400 (16.4%), Vodacom DRC (p.55: 12,392) | gilat_fy2025 p.182; p.32; p.55 |
 | Vodacom DRC contract | renewed 5.2024 to 31.3.2027, about USD 45M over the term; about USD 1M a month in 2023-2025; "working to renew" | gilat_fy2025 p.55-56; gilat_h1_2026 p.15 |
 | Government backlog 2027-2029 at the FY2025 report date | USD 2,195k | gilat_fy2025 p.32 |
-| 2026 government orders (12.2025-1.2026) | about ILS 110M including VAT "for the coming year" | gilat_fy2025 p.101; gilat_h1_2026 p.14-15 |
+| 2026 government orders (12.2025-1.2026) | about ILS 110M including VAT "for the coming year" | gilat_fy2025 p.101; gilat_h1_2026 p.14 |
 | Licences expiring 31.12.2026 | unified satellite, Iridium, trade, OneWeb | gilat_fy2025 p.69-72 |
-| Holding of 5% or more | needs the Minister's prior consent and an "Israeli" holder | gilat_fy2025 p.72-74 |
+| Holding of 5% or more | a holding of 5% or more (10% for an institutional investor as the licence defines it) needs the Minister's prior written consent; acquiring a control stake needs an "Israeli" holder | gilat_fy2025 p.73 §3(b)-(c); p.72-73 |
 | Warning-sign working-capital disclosures | 31.12.2023 deficit USD 357k (gilat_fy2023 p.91); 31.12.2024 USD 9,484k (gilat_fy2024 p.88); 31.12.2025 USD 1,874k, solo 3,942k (gilat_fy2025 p.99); ended at 30.6.2026 (working capital 69,035, gilat_h1_2026 p.14) | page images at the gate |
 | Shelf prospectus | open since April 2026 | gilat_h1_2026 p.49 |
 | CEO pay terms | 70% of the 2025 bonus on Adjusted EBITDA, 30% on gross profit; free cash flow dropped (30% in 2023-24); cap raised from 6 to 8 salaries on 4.12.2025 | gilat_fy2025 p.206-207; gilat_fy2024 p.193-194 |
@@ -248,7 +250,7 @@ Other window inputs:
 | "Not leveraged … zero levels" | — | gilat_fy2025 p.90 (risk factors, section 27: p.82-87) |
 | No controller; related-party dealings | none since 17.2.2021; pay only | gilat_fy2025 p.214-215, p.176 |
 | 2021 dispersal of the control block | 41% sold in 2-3% lots for about ILS 26M at a market value of about ILS 68M, "after previous attempts to sell the control core did not succeed" | Calcalist L-3894358 (17.2.2021, saved copy re-read) |
-| CEO interview | wartime turnover "about double" the normal period; defence about 50% of turnover in wartime, about 30% in routine | Bizportal 20014148 (4.3.2025, saved copy re-read) |
+| CEO interview | wartime turnover "about double" the normal period; defence about 50% of turnover in wartime, about 30% in routine. Said in answer to "what is the scope of Gilat's defence activity, and how did the last war affect it?", so it may mean the company's or the defence division's turnover | Bizportal 20014148 (4.3.2025, saved copy re-read) |
 | Vodacom Group and Starlink | pan-African backhaul and resale partnership, 12.11.2025 | Space in Africa; Connecting Africa; Total Telecom |
 | Analyst segment normalisation (reference only) | 15,099 after lease interest | business.md §12 (business_calcs_output §11) |
 
@@ -257,9 +259,9 @@ Other window inputs:
 | Assumption | Value | Basis |
 |---|---|---|
 | Scenario probabilities | worst 15%, conservative 30%, base 45%, optimistic 10% | model judgements, uncalibrated (B-O3) |
-| Expected IRU cost in the base | 25% of "half the unfilled lines unused" (52,268 after tax) = 13,067 | B-O6; private net additions ran about 3,500 a quarter against tranches of 3,000 |
+| Expected IRU cost in the base | 25% of "half the unfilled lines unused": the latest-delivered half, each line's PV dated from its tranche's delivery to 3.11.2026 (45,768 after tax) = 11,442 | B-O6; AR-3 (final edit); private net additions ran about 3,500 a quarter against tranches of 3,000 |
 | Conservative case | Vodacom not renewed: 2025 contribution at the 2025 global-segment margin, 8,173 | contract margin UNVERIFIED |
-| Worst case | pre-war demand, Vodacom lost, ISP stalls; Dempster value pro forma less every unfilled line at its PV (135,760, pre-tax) | B-O4, A-O3 |
+| Worst case | pre-war demand, Vodacom lost, ISP stalls; Dempster value pro forma less every unfilled line at its PV dated to 3.11.2026 (125,093, pre-tax) | B-O4, A-O3, AR-3 |
 | One-offs | the whole Q4 2025 gross-margin excess as the supplier credit (upper bound); the H1 2026 equipment rise at the 2025 equipment margin | A-O10 |
 | Maintenance capex | floored at depreciation incl. ROU and the IRU (46,361): leases stay an operating cost | framework d1 |
 | Growth | 0% in the base DCF; ROIIC = r (no moat) | framework d4 |
@@ -272,9 +274,11 @@ Other window inputs:
   `financials.json` (directors' report, 32,981). Mega shows 39,534. TTM pre-tax: 31,315 against 31,316.
 - **Shares at 30.6.2026.** 118,063,162 in `valuation.py` (market.md, with about 652,000 option exercises) against
   117,411,162 in `financials.json`, whose upper bound is 118,063,313.
-- **Customer letters.** "Customer A" in business.md, gate.md and checklist.md is the unnamed Israeli government
-  customer (25.4% of 2025 revenue, gilat_fy2025 p.32). The financial-statement note that `financials.json` follows
-  (p.182) calls it "C" (19,300, 25.5%) and calls Vodacom "A" (12,400, 16.4%).
+- **Customer letters.** "Customer A" in business.md, gate.md and checklist.md is the directors' report's "לקוח א'": an
+  unnamed Israeli buyer of mobile satellite solutions in the government & defence segment (19,278, 25% of 2025 revenue,
+  gilat_fy2025 p.32). The financial-statement note (p.182) uses no letters ("one customer", "a second customer").
+  `financials.json` labels the same two customers "C" (19,300, 25.5%) and "A" (Vodacom, 12,400, 16.4%): those letters are
+  the dataset's own.
 - **June buyback price.** 258.97 agorot before fees (market.md) and 260.36 including fees (governance_risk.md;
   out §7 uses 2.603). Both are in the filing.
 - **Fully diluted count.** market.md: about 150.27M (net options about 3.52M, December and November 2025 packages
@@ -283,8 +287,10 @@ Other window inputs:
   cap 3,841,000). The record uses the 60 sessions to 3.11.2026 (1,325,803; 1,001,604; 4,006,416).
 - **Ayalon funds.** 6.22% on the 3.11.2026 count (scuttlebutt.md §5), 6.13% on the 30.9.2026 count (market.md) and
   6.46% in Bizportal's fund snapshot of 31.8.2026: dates and bases differ.
-- **The CEO's 2023 placement.** 6,148,754 shares in note 15d and in `financials.json`; 6,134,442 in
-  governance_risk.md, the only count that reconciles the share bridge (gilat_fy2023 p.151).
+- **The CEO's 2023 placement.** The company prints 6,134,442 shares for ILS 1,840,333 in the directors' report and the
+  Reg. 20 description (gilat_fy2023 p.7, p.91, p.183; gilat_fy2024 p.8, p.90, p.190), and 6,148,754 in the equity note
+  (gilat_fy2023 p.151; gilat_fy2024 p.155). Only 6,134,442 reconciles: 58,438,636 + 6,134,442 + 4,056,402 = 68,629,480,
+  the printed count. The record uses 6,134,442; `financials.json` keeps both.
 - **Mega's share count.** A `financials.json` caveat says Mega "probably uses the stale count" (2.110 ILS on
   93,937,313 shares). market.md and out §0 show Mega's figure equals 164.6 agorot × 120,417,631 exactly; the caveat is
   superseded.
